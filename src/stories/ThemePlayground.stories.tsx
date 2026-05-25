@@ -132,6 +132,11 @@ const meta: Meta = {
   title: "Foundations/Theme playground",
   parameters: {
     layout: "fullscreen",
+    options: {
+      showPanel: false
+    },
+    controls: { disable: true },
+    actions: { disable: true },
     docs: {
       description: {
         component:
