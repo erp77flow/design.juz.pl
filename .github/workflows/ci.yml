@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate (TS + lint + build)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: TypeScript check
+        run: npx tsc --noEmit
+
+      - name: Build Storybook
+        run: pnpm build-storybook
+        env:
+          STORYBOOK_DISABLE_TELEMETRY: 1
+
+      - name: Build library (dist/)
+        # Tylko jeśli istnieje skrypt build:lib (po dodaniu library mode)
+        run: |
+          if pnpm run | grep -q "build:lib"; then
+            pnpm build:lib
+            ls -lh dist/
+          else
+            echo "build:lib not configured yet, skipping"
+          fi
+
+      - name: Check that no source files have been forgotten in src/index.ts
+        run: |
+          # Sprawdza czy nie ma nowych komponentów w src/components/ui|ds|layout/
+          # które nie są re-eksportowane w src/index.ts (heurystyka — alarm tylko)
+          MISSING=0
+          for f in src/components/ui/*.tsx src/components/ds/*.tsx src/components/layout/*.tsx; do
+            name=$(basename "$f" .tsx)
+            # pomiń showcase
+            case "$name" in
+              auth-screens|chart-showcase|client-detail|enterprise-screens|form-showcase|production-orders-list|production-screens|token-showcase|typography-scale)
+                continue
+                ;;
+            esac
+            if ! grep -q "$(dirname "$f" | sed 's|src/components/|./components/|')/$name" src/index.ts 2>/dev/null; then
+              echo "::warning::Component $f is not re-exported in src/index.ts"
+              MISSING=$((MISSING + 1))
+            fi
+          done
+          if [ "$MISSING" -gt 0 ]; then
+            echo "::warning::$MISSING components not in src/index.ts (regenerate it)"
+          fi
