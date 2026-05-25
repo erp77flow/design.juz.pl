@@ -6,6 +6,7 @@
   "author": "Rafał Mazur",
   "homepage": "https://design.juz.pl",
   "type": "module",
+  "packageManager": "pnpm@9.15.9",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

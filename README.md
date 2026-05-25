@@ -1,6 +1,6 @@
 # design.juz.pl
 
-**juz.pl Design System** — Storybook + shadcn/ui-compatible components + tokeny marki juz.pl.
+**juz.pl | Design System** — Storybook + shadcn/ui-compatible components + tokeny marki juz.pl.
 
 - Live demo: https://erp77flow.github.io/design.juz.pl
 - Theme playground: https://erp77flow.github.io/design.juz.pl/?path=/story/foundations-theme-playground--playground
