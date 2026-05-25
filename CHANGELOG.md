@@ -13,6 +13,7 @@ Format bazuje na prostym modelu:
 
 ### Added
 
+- Interaktywna strona `Foundations/Theme playground` — color pickery dla `primary`, `success`, `warning`, `destructive` i suwak `radius`, na żywo aktualizujące CSS variables w obrębie playgroundu. Presety (juz.pl, Ocean blue, Forest green, Sunset orange, Mono slate) + generowany snippet CSS gotowy do wklejenia w `src/styles/globals.css` własnego projektu.
 - Strona `Foundations/Theme palette` z opisem centralnej zmiany kolorów przez `src/styles/globals.css`.
 - Storybook jako docelowa dokumentacja `design.juz.pl`.
 - Warstwy dokumentacji: Introduction, AI Usage, Implementation, Publishing, Component map, Accessibility.
