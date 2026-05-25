@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [`f3aa679`](https://github.com/erp77flow/design.juz.pl/commit/f3aa679873580a4d50007c529c29ec5ec56fbc56) Thanks [@erp77flow](https://github.com/erp77flow)! - Major rebuild: 88 nowych komponentów (58 atomów, 19 molekuł, 11 organizmów), konwersja makiet HTML w Storybook na prawdziwe komponenty React. Dodane entry points (main/module/types/exports) — paczka gotowa do importowania w innych projektach. Patrz CHANGELOG.md po pełną listę.
+
 Wszystkie istotne zmiany w design.juz.pl zapisujemy w tym pliku. Nie trzymamy historii decyzji tylko w rozmowie z AI.
 
 Format bazuje na prostym modelu:
