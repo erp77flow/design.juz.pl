@@ -3,7 +3,6 @@
 **juz.pl Design System** — Storybook + shadcn/ui-compatible components + tokeny marki juz.pl.
 
 - Live demo (Storybook): https://erp77flow.github.io/design.juz.pl
-- Docelowa domena: https://design.juz.pl
 
 Ten projekt jest docelową bazą dla nowych aplikacji juz.pl i publicznej dokumentacji design systemu.
 
