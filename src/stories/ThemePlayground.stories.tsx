@@ -191,7 +191,7 @@ function Playground() {
 
   return (
     <div style={cssVars} className="min-h-screen bg-background p-6 text-foreground">
-      <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[320px_1fr]">
+      <div className="mx-auto grid max-w-[1400px] gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
         <aside className="space-y-6 rounded-lg border bg-card p-5">
           <div>
             <h2 className="text-lg font-semibold">Tokeny</h2>
@@ -292,7 +292,7 @@ function Playground() {
           </Button>
         </aside>
 
-        <section className="space-y-6">
+        <section className="min-w-0 space-y-6">
           <header>
             <h1 className="text-2xl font-bold">Theme Playground</h1>
             <p className="mt-1 text-muted-foreground">
@@ -402,19 +402,19 @@ function Playground() {
             </TabsContent>
 
             <TabsContent value="order-basic" className="pt-4">
-              <div className="overflow-hidden rounded-lg border bg-background">
+              <div className="overflow-x-auto rounded-lg border bg-background">
                 <OrderDetailScreen mode="basic" />
               </div>
             </TabsContent>
 
             <TabsContent value="order-shipping" className="pt-4">
-              <div className="overflow-hidden rounded-lg border bg-background">
+              <div className="overflow-x-auto rounded-lg border bg-background">
                 <OrderDetailScreen mode="shipping" />
               </div>
             </TabsContent>
 
             <TabsContent value="order-billing" className="pt-4">
-              <div className="overflow-hidden rounded-lg border bg-background">
+              <div className="overflow-x-auto rounded-lg border bg-background">
                 <OrderDetailScreen mode="billing" />
               </div>
             </TabsContent>
