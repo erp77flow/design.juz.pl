@@ -1,0 +1,70 @@
+version: 2
+updates:
+  # NPM dependencies (paczka design system)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "Europe/Warsaw"
+    open-pull-requests-limit: 10
+    groups:
+      # Radix-UI — wszystkie radix razem żeby się nie rozjeżdżały
+      radix-ui:
+        patterns:
+          - "@radix-ui/*"
+      # Storybook — wszystkie story-* razem
+      storybook:
+        patterns:
+          - "@storybook/*"
+          - "storybook"
+          - "@storybook/test-runner"
+      # Linting / build tools
+      tooling:
+        patterns:
+          - "typescript"
+          - "vite"
+          - "@vitejs/*"
+          - "autoprefixer"
+          - "postcss"
+          - "tailwindcss"
+      # Mniejsze libki UI razem (recharts, react-day-picker, cmdk, vaul, etc.)
+      ui-libs:
+        patterns:
+          - "recharts"
+          - "react-day-picker"
+          - "cmdk"
+          - "vaul"
+          - "input-otp"
+          - "sonner"
+          - "react-dropzone"
+          - "embla-carousel-react"
+          - "lucide-react"
+          - "next-themes"
+          - "@tanstack/*"
+    ignore:
+      # React/ReactDOM — kontrolujemy ręcznie bo to peerDependency
+      - dependency-name: "react"
+      - dependency-name: "react-dom"
+      - dependency-name: "@types/react"
+      - dependency-name: "@types/react-dom"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "automated"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "first monday"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    labels:
+      - "github-actions"
+      - "automated"
