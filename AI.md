@@ -1,63 +1,144 @@
 # AI instructions for design.juz.pl
 
-Ten plik jest przeznaczony dla AI i developerow budujacych nowe aplikacje na bazie design.juz.pl. Ma byc aktualizowany razem z kodem.
+Ten plik jest źródłem reguł dla AI (Claude / Copilot / Cursor / inne) budujących aplikacje na bazie design.juz.pl. Powinien być aktualizowany razem z kodem.
 
-Przed rozpoczeciem kolejnej sesji przeczytaj tez `PROJECT_STATUS.md`. To jest zapis aktualnego stanu projektu, ostatniej weryfikacji i instrukcji kontynuacji po przerwie.
+Przed startem sesji przeczytaj też:
 
-## Cel
+- `DESIGN_SYSTEM_GUIDELINES.md` — zasady architektury DS.
+- `PROJECT_STATUS.md` — aktualny stan projektu i ostatnia weryfikacja.
+- W Storybooku: `AI Usage / Prompt Guide` — czytelna wersja tych reguł.
 
-Buduj aplikacje w oparciu o design.juz.pl: tokeny, atomy, molecules, patterns, layouts i screens. Nie tworz lokalnych zamiennikow, jezeli komponent albo wzorzec juz istnieje.
-
-## Zasady podstawowe
-
-1. Najpierw sprawdz Storybook i `src/components`.
-2. Uzywaj atomow z `src/components/ui/*`.
-3. Molecules, patterns, layouts i screens skladaj z atomow.
-4. Kolory bierz z tokenow: `primary`, `success`, `warning`, `destructive`, `muted`, `border`, `ring`.
-5. Nie wpisuj lokalnych kolorow hex w komponentach biznesowych.
-6. Ikony bierz z `lucide-react`, chyba ze projekt ma dedykowany komponent ikon.
-7. Zachowania interaktywne buduj na Radix/shadcn wrappers, nie jako statyczne makiety.
-8. Kazdy nowy ekran musi byc responsywny i dostepny klawiatura.
-9. Tabele, filtry, modale, drawery, selecty i tabsy musza miec realne stany.
-10. Po zmianie uruchom `npm run build` i testy Storybooka.
+---
 
 ## Prompt bazowy
 
 ```txt
-Buduj aplikacje na podstawie design.juz.pl.
-Uzywaj komponentow @juz/design-system opartych o shadcn/Radix.
-Nie tworz wlasnych kolorow, spacingu, radiusow, cieni ani buttonow.
-Najpierw dobierz istniejace Atoms, Molecules, Patterns, Layouts i Screens.
-Jezeli komponentu brakuje, dodaj go do najnizszej sensownej warstwy DS i udokumentuj w Storybooku.
-Zachowaj WCAG AA, focus states, obsluge klawiatury i responsywnosc.
+Buduj aplikację na podstawie design.juz.pl
+(https://github.com/erp77flow/design.juz.pl).
+
+Używaj atomów, molecules i patterns z design systemu. Nie twórz lokalnych
+zamienników kolorów, buttonów, tabel, formularzy ani layoutów.
+
+Kolory bierz tylko z tokenów: --primary, --success, --warning,
+--destructive, --muted, --border, --ring. Radius i spacing też przez tokeny.
+
+Komponenty interaktywne muszą używać prawdziwych Radix/shadcn wrapperów
+(Dialog, Select, DropdownMenu, Tabs), nie statycznych makiet.
+
+Każdy nowy element UI ma być responsywny i dostępny klawiaturą (WCAG AA).
+
+W stopce wdrażanej aplikacji wstaw widoczną atrybucję:
+  UI based on design.juz.pl (https://github.com/erp77flow/design.juz.pl)
 ```
 
-## Jak dodawac nowy element
+---
 
-- Nowy primitive UI: dodaj do `src/components/ui`, potem story w `src/stories/Atoms.*`.
-- Nowe zlozenie: dodaj molecule w `src/components/ds` albo `src/stories/story-parts.tsx`, potem story w `src/stories/Molecules.*`.
-- Nowy wzorzec pracy: dodaj pattern i dokumentacje w `Patterns`.
-- Nowy ekran: dodaj do `Screens`, ale tylko po zbudowaniu brakujacych atomow/molecules.
+## ✅ DO — co AI **może** i **powinno** robić
 
-## Jak zmieniac theme
+### Komponenty
+- ✅ **Składać ekrany z istniejących Atoms / Molecules / Patterns / Layouts / Screens.** Najpierw sprawdź Storybook i `src/components/`, dopiero potem rozważ nowe rzeczy.
+- ✅ **Dodawać nowy atom**, gdy w istniejących screenach pojawia się element nieopisany w `Atoms` — wynieś go do `src/components/ui/`, dodaj story w `src/stories/Atoms.<Nazwa>.stories.tsx` z `StorySpec`.
+- ✅ **Wzbogacać molecules/patterns** w `src/components/ds/` o nowe wzorce, gdy używasz tego samego układu w więcej niż dwóch screenach.
+- ✅ **Używać Radix/shadcn wrapperów** dla wszystkich interakcji: `Dialog`, `AlertDialog`, `DropdownMenu`, `Select`, `Tabs`, `Tooltip`, `Collapsible`.
+- ✅ **Stosować lucide-react** dla ikon — chyba że projekt ma dedykowany komponent ikon.
 
-Zmieniaj theme przez `src/styles/globals.css`.
+### Theme i tokeny
+- ✅ **Zmieniać motyw przez tokeny** w `src/styles/globals.css`: `--primary`, `--primary-soft`, `--success`, `--success-soft`, `--warning`, `--warning-soft`, `--destructive`, `--destructive-soft`, `--ring`, `--radius`.
+- ✅ **Sprawdzić motyw na żywo** w Storybooku: `Foundations / Theme playground` — color pickery + suwak radius + presety.
+- ✅ **Pilnować tonalności** — statusy mają być rozróżnialne od `primary`, ale spójne z całym motywem.
 
-Nie poprawiaj pojedynczych komponentow, jezeli problem jest semantyczny:
+### Stories i dokumentacja
+- ✅ **Dodawać story z `play`** dla interaktywnych komponentów (Dialog, Select, DropdownMenu, filters, data list) — opisz przebieg kliknięć i asercji.
+- ✅ **Używać `StorySpec`** w atomach do spójnej dokumentacji (opis, features, usage, warianty, API).
+- ✅ **Aktualizować `CHANGELOG.md`** — każda istotna zmiana komponentu, tokenu, wzorca albo zasady AI dostaje wpis w `[Unreleased]`.
+
+### Architektura
+- ✅ **Najniższa sensowna warstwa** — primitive → Atom, złożenie → Molecule, powtarzalny wzorzec → Pattern, rama ekranu → Layout, pełny widok → Screen.
+- ✅ **Responsywność i WCAG AA** — focus, keyboard, kontrast, aria labels w każdym nowym ekranie.
+
+### Atrybucja
+- ✅ **Wstaw widoczną stopkę** w aplikacjach pochodnych:
+  ```html
+  <footer>
+    UI based on
+    <a href="https://github.com/erp77flow/design.juz.pl">design.juz.pl</a>
+  </footer>
+  ```
+
+---
+
+## ❌ DON'T — czego AI **nie wolno** robić
+
+### Kolory i style
+- ❌ **Nie wpisuj lokalnych hexów** (`#3B82F6`, `#fff`, `rgb(...)`, `rgba(...)`) w komponentach biznesowych. Wszystko przez tokeny.
+- ❌ **Nie używaj klas Tailwinda na surowych kolorach** (`bg-blue-500`, `text-red-600`, `border-gray-300`). Używaj semantycznych klas opartych o tokeny (`bg-primary`, `text-destructive`, `border`).
+- ❌ **Nie ustawiaj radius/spacing/cieni jako wartości twardych** — używaj tokenów (`rounded-lg`, `rounded-md`).
+
+### Komponenty
+- ❌ **Nie twórz własnych wariantów Buttona**, jeśli istniejące pokrywają potrzebę. Dostępne: `primary` (default), `secondary`, `outline`, `ghost`, `success`, `warning`, `destructive`.
+- ❌ **Nie rób statycznych makiet zachowania** dropdownów, dialogów, selectów — to mają być prawdziwe komponenty Radix z realnym stanem, focusem i klawiaturą.
+- ❌ **Nie duplikuj atomów** — nie twórz „local Button" / „custom Card" / „my Badge" obok istniejących.
+- ❌ **Nie kopiuj kodu komponentu UI do screena** — importuj atom z `@/components/ui/...`.
+
+### Architektura
+- ❌ **Nie pomijaj warstw DS** — nie wklejaj nowego primitive UI bezpośrednio do screena bez wcześniejszego wyniesienia go do `Atoms`.
+- ❌ **Nie używaj branż ani marek spoza juz.pl** w przykładach biznesowych (żadnych "Cerec", "Britenet", branż medycznych/stomatologicznych). Domyślny kontekst biznesowy: firma produkcyjna (długopisy, markery, papier, magazyn, produkcja, PZ, zamówienia).
+- ❌ **Nie zostawiaj literówek bez polskich znaków** w dokumentacji i story (np. „wartosc", „zamow", „naglow", „glown", „domysln" — używaj poprawnych form z polskimi znakami).
+
+### Licencja
+- ❌ **Nie usuwaj `LICENSE.md`** ani informacji o autorze (Rafał Mazur) i właścicielu (Alfabet sp. z o.o.).
+- ❌ **Nie pomijaj atrybucji w stopce** wdrażanej aplikacji. Brak atrybucji = naruszenie licencji.
+- ❌ **Nie ukrywaj atrybucji** przez `display:none`, `opacity:0`, `color:transparent`. Atrybucja musi być widoczna dla użytkownika.
+
+### Decyzje i dokumenty
+- ❌ **Nie zostawiaj decyzji projektowych tylko w rozmowie z AI.** Decyzja ma trafić do pliku: `PROJECT_STATUS.md`, `AI.md`, `DESIGN_SYSTEM_GUIDELINES.md` lub `CHANGELOG.md`.
+
+---
+
+## Jak dodawać nowy element
+
+| Typ elementu | Gdzie | Story |
+|--------------|-------|-------|
+| Nowy primitive UI | `src/components/ui/<nazwa>.tsx` | `src/stories/Atoms.<Nazwa>.stories.tsx` z `StorySpec` |
+| Złożenie atomów | `src/components/ds/<nazwa>.tsx` | `src/stories/Molecules.<Nazwa>.stories.tsx` |
+| Wzorzec pracy | `src/components/ds/<nazwa>.tsx` | `src/stories/Patterns.<Nazwa>.stories.tsx` |
+| Rama ekranu | `src/components/ds/<nazwa>.tsx` | `src/stories/Layouts.<Nazwa>.stories.tsx` |
+| Pełny widok | `src/components/ds/<nazwa>.tsx` | `src/stories/Screens.<Folder>.<Nazwa>.stories.tsx` |
+
+Po dodaniu: wpis do `CHANGELOG.md` i `npm run qa`.
+
+---
+
+## Theme — gdzie zmieniać
+
+Główna paleta jest w **jednym pliku**: `src/styles/globals.css`.
 
 ```css
---primary: ...;
---primary-soft: ...;
---ring: ...;
---success: ...;
---warning: ...;
---destructive: ...;
+:root {
+  --primary: 258 89% 59%;
+  --primary-soft: 261 100% 97%;
+  --success: 166 44% 41%;
+  --warning: 41 66% 47%;
+  --destructive: 348 68% 55%;
+  --ring: 258 89% 59%;
+  --radius: 14px;
+}
 ```
 
-Statusy musza byc tonalnie zgrane z primary, ale nie powinny byc tym samym kolorem.
+Wartości są HSL bez `hsl(...)`, bo Tailwind i shadcn opakowują je przez `hsl(var(--primary))`. **Nie ruszaj pojedynczych komponentów, gdy problem jest semantyczny — popraw token i niech komponenty same się dostosują.**
 
-## Changelog
+---
 
-Po kazdej istotnej zmianie dopisz wpis do `CHANGELOG.md`.
+## Quick checks przed merge
 
-Nie uznajemy rozmowy z AI za dokumentacje decyzji. Decyzja ma zostac w pliku.
+```bash
+npm run qa            # build + build-storybook + testy interakcji
+```
+
+Po zmianie:
+
+1. Czy nowe komponenty mają story z `StorySpec`?
+2. Czy CHANGELOG ma wpis?
+3. Czy nie ma lokalnych hexów w komponentach biznesowych?
+4. Czy interaktywne elementy używają Radix, a nie makiet?
+5. Czy WCAG AA: focus, keyboard, kontrast, aria labels?

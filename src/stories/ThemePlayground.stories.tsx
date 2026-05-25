@@ -317,8 +317,9 @@ function Playground() {
                   <Button variant="secondary">Secondary</Button>
                   <Button variant="outline">Outline</Button>
                   <Button variant="ghost">Ghost</Button>
+                  <Button variant="success">Success</Button>
+                  <Button variant="warning">Warning</Button>
                   <Button variant="destructive">Destructive</Button>
-                  <Button variant="link">Link</Button>
                 </CardContent>
               </Card>
 
@@ -329,15 +330,11 @@ function Playground() {
                 </CardHeader>
                 <CardContent className="flex flex-wrap gap-2">
                   <Badge>Primary</Badge>
-                  <Badge variant="secondary">Secondary</Badge>
+                  <Badge variant="neutral">Neutral</Badge>
                   <Badge variant="outline">Outline</Badge>
+                  <Badge variant="success">Success</Badge>
+                  <Badge variant="warning">Warning</Badge>
                   <Badge variant="destructive">Destructive</Badge>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-success-soft px-2.5 py-0.5 text-xs font-semibold text-[hsl(var(--success))]">
-                    <Check className="h-3 w-3" /> Success
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-warning-soft px-2.5 py-0.5 text-xs font-semibold text-[hsl(var(--warning))]">
-                    <TriangleAlert className="h-3 w-3" /> Warning
-                  </span>
                 </CardContent>
               </Card>
 

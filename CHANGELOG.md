@@ -13,7 +13,11 @@ Format bazuje na prostym modelu:
 
 ### Added
 
-- Interaktywna strona `Foundations/Theme playground` — color pickery dla `primary`, `success`, `warning`, `destructive` i suwak `radius`, na żywo aktualizujące CSS variables w obrębie playgroundu. Presety (juz.pl, Ocean blue, Forest green, Sunset orange, Mono slate) + generowany snippet CSS gotowy do wklejenia w `src/styles/globals.css` własnego projektu.
+- Prawdziwy znak graficzny juz.pl jako SVG (`public/logo.svg` + komponent `JuzLogoMark`). Logo zostało wstawione jako `brandImage` w sidebarze Storybooka — w lewym górnym rogu widać teraz markę juz.pl, klikalną do GitHub repo.
+- Nowa wersja `LICENSE.md` (Attribution License v1.0): jasne pozwolenie na użycie komercyjne z wymogiem widocznej atrybucji w stopce produktu (`UI based on design.juz.pl` + link do repo). Sekcje: przyznane prawa, warunek atrybucji, ograniczenia, brak gwarancji, wygasanie licencji.
+- Rozszerzony `README.md` z sekcjami: Quick install (opcja shadcn-style copy lub `npm install github:` z repo), Architektura warstw, Tokeny, AI usage (DO/DON'T), Local run, License TL;DR, Contributing.
+- Rozszerzony `AI.md` w formacie DO/DON'T: jasne `✅ Co AI może` (komponenty, theme, stories, architektura, atrybucja) i `❌ Czego AI nie wolno` (lokalne hexy, własne warianty, statyczne makiety, usuwanie licencji, ukrywanie atrybucji).
+- Interaktywna strona `Foundations/Theme playground` — color pickery dla `primary`, `success`, `warning`, `destructive` i suwak `radius`, na żywo aktualizujące CSS variables w obrębie playgroundu. Presety (juz.pl, Ocean blue, Forest green, Sunset orange, Mono slate) + generowany snippet CSS gotowy do wklejenia w `src/styles/globals.css` własnego projektu. W Theme playground zakładki `Atomy / Zamówienie: dane / wysyłka / rozliczenie` z pełnym ekranem `OrderDetailScreen` jako podgląd zmian.
 - Strona `Foundations/Theme palette` z opisem centralnej zmiany kolorów przez `src/styles/globals.css`.
 - Storybook jako docelowa dokumentacja `design.juz.pl`.
 - Warstwy dokumentacji: Introduction, AI Usage, Implementation, Publishing, Component map, Accessibility.
