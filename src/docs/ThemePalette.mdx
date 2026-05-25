@@ -1,0 +1,137 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Theme palette" />
+
+# Theme palette
+
+Ta strona opisuje jedno miejsce, w którym zmieniamy paletę design.juz.pl.
+Komponenty, atomy, molecules, patterns, layouts i screens mają pobierać kolory z tokenów, a nie z lokalnych wartości `#...`.
+
+## Plik źródłowy
+
+Główna paleta jest w:
+
+```txt
+src/styles/globals.css
+```
+
+Sekcja:
+
+```css
+:root {
+  --primary: 258 89% 59%;
+  --primary-foreground: 0 0% 100%;
+  --primary-soft: 261 100% 97%;
+
+  --success: 166 44% 41%;
+  --success-foreground: 0 0% 100%;
+  --success-soft: 165 54% 94%;
+
+  --warning: 41 66% 47%;
+  --warning-foreground: 0 0% 100%;
+  --warning-soft: 42 92% 95%;
+
+  --destructive: 348 68% 55%;
+  --destructive-foreground: 0 0% 100%;
+  --destructive-soft: 348 100% 96%;
+
+  --muted: 250 43% 97%;
+  --muted-foreground: 220 15% 54%;
+  --border: 222 26% 89%;
+  --input: 222 26% 89%;
+  --ring: 258 89% 59%;
+}
+```
+
+Wartości są zapisane jako HSL bez `hsl(...)`, bo Tailwind i shadcn czytają je potem przez:
+
+```css
+hsl(var(--primary))
+hsl(var(--success))
+hsl(var(--warning))
+hsl(var(--destructive))
+```
+
+## Co zmienia caly system
+
+Jesli zmieniasz brand z fioletowego na niebieski, zaczynasz od:
+
+```css
+--primary: ...;
+--primary-soft: ...;
+--ring: ...;
+```
+
+To automatycznie zmieni przyciski primary, linki, aktywne taby, focus ring, zaznaczenia i elementy oznaczone jako brandowe.
+
+Statusy nie powinny być kopia koloru brandu. Trzeba je dostroic tonalnie:
+
+```css
+--success: ...;
+--success-soft: ...;
+--warning: ...;
+--warning-soft: ...;
+--destructive: ...;
+--destructive-soft: ...;
+```
+
+Zielony, zolty i czerwony mają pasowac do primary, ale nadal oznaczaja inne stany semantyczne.
+
+## Mapa tokenów
+
+| Token | Zastosowanie |
+| --- | --- |
+| `--primary` | akcje główne, linki, aktywne taby, elementy brandowe |
+| `--primary-soft` | delikatne tla brandowe, aktywne stany w menu, badge pomocnicze |
+| `--ring` | focus, aktywna obwodka inputow i kontrolek |
+| `--success` | aktywny, gotowe, pozytywny wynik |
+| `--success-soft` | tla statusow pozytywnych |
+| `--warning` | uwaga, oczekuje, pauza, wymaga decyzji |
+| `--warning-soft` | tla ostrzezen |
+| `--destructive` | usun, błąd, krytyczne |
+| `--destructive-soft` | tla bledow i akcji ryzykownych |
+| `--muted` | tlo sekcji, panele, puste obszary |
+| `--muted-foreground` | opisy, metadane, tekst drugiego planu |
+| `--border` | linie tabel, separatory, ramki kart |
+| `--input` | ramki inputow, selectow, textarea |
+
+## Zasada dla komponentów
+
+Poprawnie:
+
+```tsx
+<button className="bg-primary text-primary-foreground hover:bg-primary/90" />
+<span className="bg-success-soft text-success">Aktywny</span>
+<div className="border border-border bg-card" />
+```
+
+Niepoprawnie:
+
+```tsx
+<button className="bg-[#6d38f5] text-white" />
+<span style={{ color: "#16a34a" }}>Aktywny</span>
+<div className="border-[#e5e7eb]" />
+```
+
+## Po zmianie palety
+
+1. Zmien tokeny w `src/styles/globals.css`.
+2. Sprawdz `Foundations/Tokens` i `Foundations/Theme palette`.
+3. Sprawdz atomy: `Button`, `Badge`, `Input`, `Select`, `Tabs`, `Dialog`.
+4. Sprawdz molecules: `DataTableToolbar`, `AdvancedFiltersPanel`, `ColumnManagerPanel`, `DatePicker`.
+5. Sprawdz patterns i screens, zwlaszcza listy, detail header, formularze i statusy.
+6. Uruchom:
+
+```bash
+npm run build-storybook
+npm run test:storybook
+```
+
+## Prompt dla AI
+
+```txt
+Theme design.juz.pl zmieniaj tylko przez tokeny w src/styles/globals.css.
+Nie zmieniaj kolorów w pojedynczych komponentach.
+Primary, success, warning i destructive mają być tonalnie spójne.
+Po zmianie sprawdz Storybook: Foundations/Tokens, Button, Badge, Select, Tabs, DataList, DetailHeader i wybrane Screens.
+```

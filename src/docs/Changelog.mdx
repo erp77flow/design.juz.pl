@@ -1,0 +1,43 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Changelog" />
+
+# Changelog
+
+Historia zmian design.juz.pl jest trzymana w pliku `CHANGELOG.md`. Ten widok pokazuje najwazniejsze wpisy i zasade utrzymania.
+
+## Unreleased
+
+### Added
+
+- Storybook jako docelowa dokumentacja `design.juz.pl`.
+- Atoms zgodne z architekturą shadcn/Radix oraz rozszerzenia juz.pl: FilterSelect, SearchableSelect, MultiSelect, DateFilter, CalendarEvent, ProductionCards.
+- Molecules dla tabel, filtrów, menu, uploadu, daty, czasu, akcji plikow i tygodniowego widoku stanowisk.
+- Patterns: DataList, SocialCalendar, Charts, Timeline, Stepper, ProgressLineCard.
+- Screens dla auth, rekordów, zamówień, magazynu, produkcji, mobile, CRM, admina i contentu.
+- Pliki utrzymaniowe: `AI.md`, `DESIGN_SYSTEM_GUIDELINES.md`, `CHANGELOG.md`.
+- Informacje właścicielskie i autorskie: Alfabet sp. z o.o., [www.alfabet.lu](https://www.alfabet.lu), autor Rafał Mazur.
+
+### Changed
+
+- Ujednolicono theme juz.pl przez tokeny w `src/styles/globals.css`.
+- `DetailHeader` dostal propsy dla tytulu, statusu, akcji i metadanych.
+- Przykłady biznesowe są oparte o firmę produkcyjną, a nie o stare nazwy projektów źródłowych.
+
+### Fixed
+
+- Usuńięto niechciany cień z `DetailHeader`.
+- Usuńięto wewnętrzny scroll ze środkowej kolumny w `ClientDetail`.
+- Poprawiono tabele zagniezdzone w `PZDocument`.
+- Uporzadkowano shell `EmailTemplate`: top menu juz.pl oraz lewy panel bez obcego brandingu.
+
+## Zasada
+
+Po każdej istotnej zmianie dopisz wpis do `CHANGELOG.md`. Rozmowa z AI nie jest źródłem prawdy - decyzja musi zostać zapisana w repo.
+
+Przed publikacją wersji:
+
+1. Zmien `[Unreleased]` na numer wersji i date.
+2. Dodaj nowy pusty blok `[Unreleased]`.
+3. Uruchom `npm run qa`.
+4. Zbuduj Storybook przez `npm run build-storybook`.

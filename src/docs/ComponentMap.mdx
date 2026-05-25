@@ -1,0 +1,34 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Component map" />
+
+# Component map
+
+Zakres bazuje na oficjalnej liscie shadcn/ui:
+
+Accordion, Alert, Alert Dialog, Aspect Ratio, Avatar, Badge, Breadcrumb, Button, Button Group, Calendar, Card, Carousel, Chart, Checkbox, Collapsible, Combobox, Command, Context Menu, Data Table, Date Picker, Dialog, Direction, Drawer, Dropdown Menu, Empty, Field, Hover Card, Input, Input Group, Input OTP, Item, Kbd, Label, Menubar, Native Select, Navigation Menu, Pagination, Popover, Progress, Radio Group, Resizable, Scroll Area, Select, Separator, Sheet, Sidebar, Skeleton, Slider, Sonner, Spinner, Switch, Table, Tabs, Textarea, Toast, Toggle, Toggle Group, Tooltip, Typography.
+
+## Dodatki juz.pl do atomów
+
+Te elementy nie są czystymi atomami shadcn, ale są potrzebne w produktach juz.pl i mają własne strony w katalogu:
+
+- **DateFilter**: input daty + popover kalendarza do filtrowania tabel.
+- **FilterSelect**: select filtrujacy z checkboxami i lista wielokrotnego wyboru.
+- **SearchableSelect**: pojedynczy wybor z wyszukiwarka.
+- **MultiSelect**: wielokrotny wybor z wyszukiwarka i chipami.
+- **CalendarEvent**: karta wydarzenia dla kalendarzy dziennych, tygodniowych i stanowisk.
+- **ProductionCards**: male karty statusow procesu z paskiem postepu.
+
+## Podzial juz.pl
+
+- **Atoms**: pojedyncze primitive zgodne z shadcn albo rozszerzone atomy juz.pl, np. `FilterSelect`.
+- **Molecules**: typowe złozenia dla produktu juz.pl, np. toolbar tabeli, header, file actions, date picker.
+- **Patterns**: listy, kalendarz, timeline, wykresy, steppers, DataList.
+- **Layouts**: app shell, detail header, rekordy, panele i układy ekranów.
+- **Screens**: logowanie, rejestracja, reset hasła, listy złeceń, produkcja, magazyn, rekordy i przyklady mobile.
+
+## Zasada
+
+Nie kopiujemy wizualnego stylu shadcn. Kopiujemy architekture komponentów, a theme, tokeny, kolory i zachowanie wizualne zostaja juz.pl.
+
+Każdy komponent ma być oparty o tokeny: kolor przez `primary/success/warning/destructive`, promienie przez `radius`, cień przez `shadow-juz*`, a spacing przez klasy Tailwind spięte z tym samym systemem. Zmiana koloru brandu zaczyna się od tokenów w `globals.css`, nie od ręcznego poprawiania komponentów.

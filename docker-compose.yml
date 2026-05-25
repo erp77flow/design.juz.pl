@@ -1,0 +1,20 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: design-nginx
+    expose:
+      - "80"
+    volumes:
+      - ./storybook-static:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.design.rule=Host(`design.test`)"
+      - "traefik.http.routers.design.entrypoints=web"
+      - "traefik.http.services.design.loadbalancer.server.port=80"
+    networks:
+      - proxy
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true

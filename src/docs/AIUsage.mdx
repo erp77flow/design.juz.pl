@@ -1,0 +1,76 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="AI Usage/Prompt Guide" />
+
+# AI Usage
+
+Ta sekcja ma być kopiowana do promptow, kiedy nowa aplikacja ma bazowac na design.juz.pl.
+
+## Prompt bazowy
+
+```txt
+Buduj aplikacje na podstawie design.juz.pl.
+Używaj komponentów @juz/design-system opartych o shadcn/ui.
+Nie twórz własnych kolorów, spacingu, radiusów, cieni ani buttonów.
+Kolory statusów mają używać tokenów success, warning, destructive i primary.
+Tabele zawsze mają kolumne Akcje po prawej.
+Akcje ikonowe używają ikon SVG/lucide, nie znaków tekstowych.
+Ekrany list są pełnej szerokości.
+Podglądy rekordów są wyrównane do lewej i skalują się do szerokości kontentu.
+Formularze używają Field, Input, Select, SearchableSelect, Checkbox, Radio, Toggle.
+Zachowaj WCAG AA, widoczne focus states, klawiature i responsywnosc.
+```
+
+## Prompt dla nowego ekranu
+
+```txt
+Stwórz ekran w stylu design.juz.pl.
+Najpierw dobierz istniejace patterns i layouts ze Storybooka.
+Użyj atomów z src/components/ui oraz molecules z dokumentacji.
+Jeżeli potrzebny komponent nie istnieje, dodaj go jako Atom/Molecule z tokenami DS, a potem użyj w ekranie.
+Nie używaj lokalnych kolorów hex, przypadkowych radiusów ani niestandardowych ikon.
+Weryfikuj interakcje: otwieranie dropdownow, zamykanie modali, wybieranie opcji, walidacje formularzy.
+```
+
+## Prompt dla zmiany theme
+
+```txt
+Zmien theme przez tokeny w src/styles/globals.css.
+Nie edytuj kolorów pojedynczych komponentów.
+Dopasuj tonalnie primary, success, warning i destructive.
+Po zmianie uruchom build Storybooka i sprawdz kontrast WCAG AA.
+```
+
+## Gdzie zmienia sie paletę
+
+Kolory brandu i statusow są opisane w `Foundations/Theme palette`.
+Źródłem prawdy jest plik:
+
+```txt
+src/styles/globals.css
+```
+
+Najwazniejsze tokeny:
+
+```css
+--primary: ...;
+--primary-soft: ...;
+--ring: ...;
+
+--success: ...;
+--success-soft: ...;
+--warning: ...;
+--warning-soft: ...;
+--destructive: ...;
+--destructive-soft: ...;
+```
+
+AI ma zmieniac paletę przez te zmienne, a nie przez lokalne klasy typu `bg-[#...]`.
+
+## Zakazane
+
+- losowe kolory spoza tokenów
+- ręcznie rysowane pseudoikony w przyciskach
+- wycentrowane waskie ekrany list, jesli lista wymaga pełnej szerokości
+- inne radiusy niz tokeny DS
+- statyczne makiety dla dropdownow, selectow, dialogow, tabsow i tooltipow, jeżeli istnieje komponent Radix/shadcn

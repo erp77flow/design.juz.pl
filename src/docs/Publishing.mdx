@@ -1,0 +1,71 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Implementation/Publishing design.juz.pl" />
+
+# Publishing design.juz.pl
+
+Ta dokumentacja opisuje przygotowanie publicznej wersji design systemu. Publikacja do GitHub lub na serwer jest osobnym krokiem i nie jest wykonywana automatycznie.
+
+## Build
+
+```bash
+npm run build
+npm run build-storybook
+```
+
+Wynik Storybooka trafia do:
+
+```txt
+storybook-static/
+```
+
+To ten katalog nalezy wystawic pod domena:
+
+```txt
+https://design.juz.pl
+```
+
+## Hosting
+
+Minimalne wymagania hostingu:
+
+- statyczny hosting plikow HTML/CSS/JS,
+- HTTPS,
+- przekierowanie `design.juz.pl` na katalog `storybook-static`,
+- cache dla assetow z hashem,
+- brak cache albo krotki cache dla `index.html`.
+
+Przyklad konfiguracji nginx:
+
+```nginx
+server {
+  server_name design.juz.pl;
+  root /var/www/design-juz-pl/storybook-static;
+  index index.html;
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+  location /assets/ {
+    expires 30d;
+    add_header Cache-Control "public, immutable";
+  }
+}
+```
+
+## Publiczne README
+
+Repo publiczne powinno zawierac:
+
+- cel projektu,
+- sposób uruchomienia lokalnie,
+- zasady tokenów i theme,
+- zasady atrybucji,
+- link do `https://design.juz.pl`,
+- informacje, że właścicielem rozwiązania i marki juz.pl jest Alfabet sp. z o.o. (`www.alfabet.lu`),
+- informacje, ze marka juz.pl nie jest objeta licencja komponentów.
+
+## Licencja
+
+Aktualna robocza licencja jest w `LICENSE.md`. Zezwala na użycie komponentów i układów z atrybucją `UI based on design.juz.pl`, ale nie przenosi praw do marki juz.pl należącej do Alfabet sp. z o.o.

@@ -1,0 +1,17 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Foundations/Accessibility" />
+
+# Dostępność
+
+Minimalny standard dla aplikacji budowanych na design.juz.pl:
+
+- WCAG AA dla kontrastu tekstu i elementów interaktywnych
+- widoczny focus przez `focus-visible`
+- obsluga klawiatury dla dialogow, dropdownow, selectow i tabel z akcjami
+- przyciski ikonowe zawsze mają `aria-label`
+- status nie moze być komunikowany tylko kolorem
+- formularze mają label, opis bledu i logiczny porzadek tabulacji
+- layout mobile nie moze ukrywac akcji krytycznych
+
+Komponenty shadcn/Radix są bazą techniczną, bo dają dobre primitive pod a11y. Nasze komponenty wyższego poziomu muszą zachować te same zasady.
