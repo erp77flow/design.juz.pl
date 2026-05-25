@@ -5,20 +5,19 @@ import {
   ArrowLeft,
   BarChart3,
   Building2,
-  Calendar,
+  Calendar as CalendarIcon,
   Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
   ClipboardList,
-  Clock,
+  Clock as ClockIcon,
   Copy,
   Download,
   Eye,
   ExternalLink,
   FileText,
   GripVertical,
-  Image,
   Layers,
   Link,
   MapPin,
@@ -26,13 +25,11 @@ import {
   Package,
   Pencil,
   Phone,
-  Play,
   Share2,
   Search,
   Send,
   Settings,
   Trash2,
-  UploadCloud,
   User,
   Wrench,
   X
@@ -91,6 +88,110 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Spinner } from "@/components/ui/spinner";
+import { Switch } from "@/components/ui/switch";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from "@/components/ui/breadcrumb";
+import { ButtonGroup } from "@/components/ui/button-group";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from "@/components/ui/carousel";
+import {
+  Command as CommandRoot,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList
+} from "@/components/ui/command";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuSeparator,
+  ContextMenuTrigger
+} from "@/components/ui/context-menu";
+import { DateFilter } from "@/components/ui/date-filter";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger
+} from "@/components/ui/drawer";
+import { Empty } from "@/components/ui/empty";
+import { FilterSelect } from "@/components/ui/filter-select";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { InputGroup } from "@/components/ui/input-group";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { Kbd } from "@/components/ui/kbd";
+import {
+  Menubar,
+  MenubarContent,
+  MenubarItem,
+  MenubarMenu,
+  MenubarTrigger
+} from "@/components/ui/menubar";
+import { MultiSelect } from "@/components/ui/multi-select";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Progress } from "@/components/ui/progress";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { SearchableSelect } from "@/components/ui/searchable-select";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger
+} from "@/components/ui/sheet";
+import { Slider } from "@/components/ui/slider";
+import { Toaster, toast as showToast } from "@/components/ui/toast";
+import { Toggle } from "@/components/ui/toggle";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Typography } from "@/components/ui/typography";
+import { Upload } from "@/components/ui/upload";
+import { ColumnVisibilitySwitch } from "@/components/ui/column-visibility-switch";
+import { DateRangeInput } from "@/components/ui/date-range-input";
+import { DonutChart } from "@/components/ui/donut-chart";
+import { BarChart as DsBarChart } from "@/components/ui/bar-chart";
+import { LineChart as DsLineChart } from "@/components/ui/line-chart";
+import { MetricCard } from "@/components/ui/metric-card";
+import { SummaryTile } from "@/components/ui/summary-tile";
+import { AddressCard } from "@/components/ui/address-card";
+import { Autocomplete } from "@/components/ds/autocomplete";
+import { BasicMenuItem } from "@/components/ds/basic-menu-item";
+import { CollapsibleMenuItem } from "@/components/ds/collapsible-menu-item";
+import { Combobox } from "@/components/ds/combobox";
+import { DatePicker } from "@/components/ds/date-picker";
+import { FileActions } from "@/components/ds/file-actions";
+import { Pagination as DsPagination } from "@/components/ds/pagination";
+import { ProfileMenu } from "@/components/ds/profile-menu";
+import { TextEditor } from "@/components/ds/text-editor";
+import { TimePicker } from "@/components/ds/time-picker";
 
 export function StoryCanvas({ children }: { children: React.ReactNode }) {
   return <div className="w-full max-w-none bg-background p-8 text-foreground">{children}</div>;
@@ -353,7 +454,7 @@ function RichCalendarEvent({
         <Badge>{status}</Badge>
       </div>
       <div className="mt-2 space-y-1 text-sm font-semibold">
-        <p className="flex items-center gap-1.5"><Clock className="size-4 text-primary" /> {time} ({duration})</p>
+        <p className="flex items-center gap-1.5"><ClockIcon className="size-4 text-primary" /> {time} ({duration})</p>
         <p className="text-muted-foreground">[{station}] {owner}</p>
       </div>
     </article>
@@ -537,7 +638,6 @@ function ChartExamples() {
 }
 
 function CommandDemo() {
-  const [query, setQuery] = React.useState("");
   const [selectedAction, setSelectedAction] = React.useState("Utwórz złeceńie");
   const commands: Array<{ label: string; description: string; Icon: React.ComponentType<{ className?: string }> }> = [
     { label: "Utwórz złeceńie", description: "Dodaj nowe złeceńie produkcyjne", Icon: FileText },
@@ -545,40 +645,33 @@ function CommandDemo() {
     { label: "Zaplanuj produkcje", description: "Rezerwacja linii i terminu", Icon: Send },
     { label: "Ustawienia", description: "Profile, integracje i uprawnienia", Icon: Settings }
   ];
-  const filtered = commands.filter((command) => command.label.toLowerCase().includes(query.toLowerCase()));
 
   return (
-    <Card className="w-[520px] max-w-full overflow-hidden">
-      <div className="flex items-center gap-2 border-b px-4 py-3">
-        <Search className="size-5 text-muted-foreground" />
-        <input
-          className="h-9 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Szukaj akcji..."
-        />
-      </div>
-      <div className="p-2">
-        {filtered.length ? filtered.map(({ label, description, Icon }) => (
-          <button
-            aria-pressed={selectedAction === label}
-            className="flex w-full items-center gap-3 rounded-md px-3 py-3 text-left hover:bg-primary-soft aria-pressed:bg-primary-soft"
-            key={label}
-            onClick={() => setSelectedAction(label)}
-            type="button"
-          >
-            <span className="grid size-9 place-items-center rounded-md bg-primary-soft text-primary">
-              <Icon className="size-4" />
-            </span>
-            <span>
-              <span className="block font-bold">{label}</span>
-              <span className="text-sm text-muted-foreground">{description}</span>
-            </span>
-          </button>
-        )) : (
-          <p className="px-3 py-8 text-center text-sm font-semibold text-muted-foreground">Brak pasujacych akcji</p>
-        )}
-      </div>
+    <Card className="w-[520px] max-w-full overflow-hidden p-0">
+      <CommandRoot>
+        <CommandInput placeholder="Szukaj akcji..." />
+        <CommandList>
+          <CommandEmpty>Brak pasujacych akcji</CommandEmpty>
+          <CommandGroup>
+            {commands.map(({ label, description, Icon }) => (
+              <CommandItem
+                key={label}
+                value={label}
+                onSelect={() => setSelectedAction(label)}
+                className="gap-3"
+              >
+                <span className="grid size-9 place-items-center rounded-md bg-primary-soft text-primary">
+                  <Icon className="size-4" />
+                </span>
+                <span>
+                  <span className="block font-bold">{label}</span>
+                  <span className="text-sm text-muted-foreground">{description}</span>
+                </span>
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
+      </CommandRoot>
       <div className="border-t bg-muted/25 px-4 py-3 text-sm text-muted-foreground">
         Wybrano: <strong className="text-foreground">{selectedAction}</strong>
       </div>
@@ -651,27 +744,21 @@ function AlertDialogDemo() {
 function AlertDemo() {
   return (
     <div className="grid w-[760px] max-w-full gap-3">
-      <div className="flex gap-3 rounded-md border border-primary/25 bg-primary-soft p-4 text-primary">
-        <FileText className="size-5 shrink-0" />
-        <div>
-          <b>Plan publikacji zapisany.</b>
-          <p className="mt-1 text-sm text-foreground/70">Wpisy pojawia sie w kalendarzu po akceptacji.</p>
-        </div>
-      </div>
-      <div className="flex gap-3 rounded-md border border-warning/30 bg-warning-soft p-4 text-warning">
-        <AlertTriangle className="size-5 shrink-0" />
-        <div>
-          <b>Post wymaga akceptacji.</b>
-          <p className="mt-1 text-sm text-foreground/70">Brakuje finalnej grafiki dla kampanii MarkerPro.</p>
-        </div>
-      </div>
-      <div className="flex gap-3 rounded-md border border-destructive/25 bg-destructive-soft p-4 text-destructive">
-        <X className="size-5 shrink-0" />
-        <div>
-          <b>Nie mozna usunac aktywnej serii.</b>
-          <p className="mt-1 text-sm text-foreground/70">Najpierw zatrzymaj publikację i odpnij zaplanowane wpisy.</p>
-        </div>
-      </div>
+      <Alert variant="info">
+        <FileText />
+        <AlertTitle>Plan publikacji zapisany.</AlertTitle>
+        <AlertDescription>Wpisy pojawia sie w kalendarzu po akceptacji.</AlertDescription>
+      </Alert>
+      <Alert variant="warning">
+        <AlertTriangle />
+        <AlertTitle>Post wymaga akceptacji.</AlertTitle>
+        <AlertDescription>Brakuje finalnej grafiki dla kampanii MarkerPro.</AlertDescription>
+      </Alert>
+      <Alert variant="destructive">
+        <X />
+        <AlertTitle>Nie mozna usunac aktywnej serii.</AlertTitle>
+        <AlertDescription>Najpierw zatrzymaj publikację i odpnij zaplanowane wpisy.</AlertDescription>
+      </Alert>
     </div>
   );
 }
@@ -679,17 +766,25 @@ function AlertDemo() {
 function AvatarDemo() {
   return (
     <div className="flex flex-wrap items-center gap-4">
-      <div className="grid size-16 place-items-center rounded-full bg-primary text-xl font-extrabold text-primary-foreground">MP</div>
-      <div className="grid size-14 place-items-center rounded-full bg-success-soft text-lg font-extrabold text-success">DL</div>
-      <div className="grid size-12 place-items-center rounded-full bg-warning-soft text-base font-extrabold text-warning">KM</div>
-      <div className="grid size-10 place-items-center rounded-full border bg-card text-sm font-extrabold text-muted-foreground">
-        <User className="size-5" />
-      </div>
+      <Avatar className="size-16">
+        <AvatarFallback className="bg-primary text-xl font-extrabold text-primary-foreground">MP</AvatarFallback>
+      </Avatar>
+      <Avatar className="size-14">
+        <AvatarFallback className="bg-success-soft text-lg font-extrabold text-success">DL</AvatarFallback>
+      </Avatar>
+      <Avatar className="size-12">
+        <AvatarFallback className="bg-warning-soft text-base font-extrabold text-warning">KM</AvatarFallback>
+      </Avatar>
+      <Avatar className="size-10 border bg-card">
+        <AvatarFallback className="bg-card text-sm font-extrabold text-muted-foreground">
+          <User className="size-5" />
+        </AvatarFallback>
+      </Avatar>
       <div className="flex -space-x-3">
         {["MP", "DL", "KM", "+4"].map((label, index) => (
-          <span className="grid size-10 place-items-center rounded-full border-2 border-card bg-primary-soft text-xs font-extrabold text-primary" key={`${label}-${index}`}>
-            {label}
-          </span>
+          <Avatar className="size-10 border-2 border-card" key={`${label}-${index}`}>
+            <AvatarFallback className="bg-primary-soft text-xs font-extrabold text-primary">{label}</AvatarFallback>
+          </Avatar>
         ))}
       </div>
     </div>
@@ -699,7 +794,7 @@ function AvatarDemo() {
 function AspectRatioDemo() {
   return (
     <div className="w-[520px] max-w-full overflow-hidden rounded-lg border bg-card shadow-juz-sm">
-      <div className="aspect-video bg-primary-soft p-6">
+      <AspectRatio className="bg-primary-soft p-6" ratio={16 / 9}>
         <div className="flex h-full flex-col justify-between rounded-md border border-primary/20 bg-card/80 p-5">
           <div>
             <p className="juz-label">16:9</p>
@@ -707,7 +802,7 @@ function AspectRatioDemo() {
           </div>
           <p className="text-sm text-muted-foreground">Stały format dla miniaturek, grafik i podglądów publikacji.</p>
         </div>
-      </div>
+      </AspectRatio>
     </div>
   );
 }
@@ -716,16 +811,22 @@ function BreadcrumbDemo() {
   const items = ["Produkcja", "Zlecenia", "ZP/00042/05/26"];
 
   return (
-    <nav aria-label="Ścieżka" className="flex flex-wrap items-center gap-2 text-sm font-semibold">
-      {items.map((item, index) => (
-        <React.Fragment key={item}>
-          <button className={index === items.length - 1 ? "text-foreground" : "text-muted-foreground hover:text-primary"} type="button">
-            {item}
-          </button>
-          {index < items.length - 1 ? <ChevronRight className="size-4 text-muted-foreground" /> : null}
-        </React.Fragment>
-      ))}
-    </nav>
+    <Breadcrumb>
+      <BreadcrumbList className="text-sm font-semibold">
+        {items.map((item, index) => (
+          <React.Fragment key={item}>
+            <BreadcrumbItem>
+              {index === items.length - 1 ? (
+                <BreadcrumbPage>{item}</BreadcrumbPage>
+              ) : (
+                <BreadcrumbLink href="#" className="hover:text-primary">{item}</BreadcrumbLink>
+              )}
+            </BreadcrumbItem>
+            {index < items.length - 1 ? <BreadcrumbSeparator /> : null}
+          </React.Fragment>
+        ))}
+      </BreadcrumbList>
+    </Breadcrumb>
   );
 }
 
@@ -733,74 +834,65 @@ function ButtonGroupDemo() {
   const [active, setActive] = React.useState("Tydzień");
 
   return (
-    <div className="inline-flex overflow-hidden rounded-md border bg-card shadow-juz-sm">
+    <ButtonGroup>
       {["Dzień", "Tydzień", "Miesiąc"].map((item) => (
-        <button
-          aria-pressed={active === item}
-          className="border-r px-4 py-2 text-sm font-bold last:border-r-0 hover:bg-primary-soft aria-pressed:bg-primary aria-pressed:text-primary-foreground"
+        <Button
           key={item}
+          aria-pressed={active === item}
           onClick={() => setActive(item)}
-          type="button"
+          variant={active === item ? "default" : "outline"}
         >
           {item}
-        </button>
+        </Button>
       ))}
-    </div>
+    </ButtonGroup>
   );
 }
 
 function CarouselDemo() {
-  const slides = [
+  const slides: Array<[string, string]> = [
     ["Plan", "120 publikacji zaplanowanych na maj"],
     ["Produkcja", "68% serii w toku"],
     ["Wyniki", "Kliknięcia wzrosły o 24%"]
   ];
-  const [index, setIndex] = React.useState(0);
 
   return (
     <div className="w-[520px] max-w-full rounded-lg border bg-card p-4 shadow-juz-sm">
-      <div className="rounded-md bg-primary-soft p-6">
-        <p className="juz-label">{index + 1} / {slides.length}</p>
-        <h3 className="mt-2 text-2xl font-extrabold">{slides[index][0]}</h3>
-        <p className="mt-2 text-muted-foreground">{slides[index][1]}</p>
-      </div>
-      <div className="mt-3 flex items-center justify-between">
-        <Button
-          aria-label="Poprzedni slajd"
-          onClick={() => setIndex((value) => (value + slides.length - 1) % slides.length)}
-          size="icon"
-          variant="outline"
-        >
-          <ChevronLeft />
-        </Button>
-        <div className="flex gap-1">
+      <Carousel opts={{ loop: true }}>
+        <CarouselContent>
           {slides.map((slide, slideIndex) => (
-            <span className={`h-2 w-8 rounded-full ${slideIndex === index ? "bg-primary" : "bg-muted"}`} key={slide[0]} />
+            <CarouselItem key={slide[0]}>
+              <div className="rounded-md bg-primary-soft p-6">
+                <p className="juz-label">{slideIndex + 1} / {slides.length}</p>
+                <h3 className="mt-2 text-2xl font-extrabold">{slide[0]}</h3>
+                <p className="mt-2 text-muted-foreground">{slide[1]}</p>
+              </div>
+            </CarouselItem>
           ))}
+        </CarouselContent>
+        <div className="mt-3 flex items-center justify-between">
+          <CarouselPrevious className="static translate-y-0" />
+          <div className="flex gap-1">
+            {slides.map((slide) => (
+              <span className="h-2 w-8 rounded-full bg-muted" key={slide[0]} />
+            ))}
+          </div>
+          <CarouselNext className="static translate-y-0" />
         </div>
-        <Button
-          aria-label="Następny slajd"
-          onClick={() => setIndex((value) => (value + 1) % slides.length)}
-          size="icon"
-          variant="outline"
-        >
-          <ChevronRight />
-        </Button>
-      </div>
+      </Carousel>
     </div>
   );
 }
 
 function EmptyDemo() {
   return (
-    <div className="grid w-[460px] max-w-full place-items-center rounded-lg border bg-card p-10 text-center shadow-juz-sm">
-      <span className="grid size-14 place-items-center rounded-md bg-primary-soft text-primary">
-        <Archive className="size-6" />
-      </span>
-      <h3 className="mt-4 text-xl font-extrabold">Brak publikacji</h3>
-      <p className="mt-2 max-w-sm text-sm text-muted-foreground">Dodaj pierwszy wpis albo zmień filtry, żeby zobaczyć wyniki.</p>
-      <Button className="mt-5"><PlusIcon /> Dodaj wpis</Button>
-    </div>
+    <Empty
+      className="w-[460px] max-w-full border-solid bg-card p-10 shadow-juz-sm"
+      icon={<Archive className="size-6 text-primary" />}
+      title={<span className="text-xl font-extrabold">Brak publikacji</span>}
+      description="Dodaj pierwszy wpis albo zmień filtry, żeby zobaczyć wyniki."
+      action={<Button className="mt-5"><PlusIcon /> Dodaj wpis</Button>}
+    />
   );
 }
 
@@ -809,67 +901,61 @@ function PlusIcon() {
 }
 
 function HoverCardDemo() {
-  const [open, setOpen] = React.useState(true);
-
   return (
     <div className="w-[520px] max-w-full">
-      <button
-        className="rounded-md border bg-card px-4 py-2 font-bold shadow-juz-sm"
-        onMouseEnter={() => setOpen(true)}
-        onFocus={() => setOpen(true)}
-        type="button"
-      >
-        MarkerPro
-      </button>
-      {open ? (
-        <div className="mt-3 w-[360px] rounded-lg border bg-card p-4 shadow-juz">
+      <HoverCard defaultOpen openDelay={0}>
+        <HoverCardTrigger asChild>
+          <Button variant="outline" className="font-bold">MarkerPro</Button>
+        </HoverCardTrigger>
+        <HoverCardContent align="start" className="w-[360px]">
           <div className="flex items-center gap-3">
-            <span className="grid size-11 place-items-center rounded-full bg-primary text-primary-foreground">MP</span>
+            <Avatar className="size-11">
+              <AvatarFallback className="bg-primary text-primary-foreground">MP</AvatarFallback>
+            </Avatar>
             <div>
               <b>MarkerPro</b>
               <p className="text-sm text-muted-foreground">Klient produkcyjny · 42 aktywne linki</p>
             </div>
           </div>
-          <Button className="mt-4 w-full" variant="outline" onClick={() => setOpen(false)}>Zamknij podgląd</Button>
-        </div>
-      ) : null}
+        </HoverCardContent>
+      </HoverCard>
     </div>
   );
 }
 
 function InputGroupDemo() {
   return (
-    <div className="flex h-11 w-[520px] max-w-full overflow-hidden rounded-md border bg-card shadow-juz-sm">
-      <span className="grid h-full shrink-0 place-items-center border-r bg-muted px-3 text-muted-foreground">juz.pl/</span>
-      <Input className="h-full min-w-0 rounded-none border-0 shadow-none focus-visible:ring-0" defaultValue="markerpro-maj" />
-      <Button className="h-full shrink-0 rounded-none border-0 shadow-none" variant="ghost"><Copy /> Kopiuj</Button>
-    </div>
+    <InputGroup
+      className="h-11 w-[520px] max-w-full"
+      leading="juz.pl/"
+      trailing={
+        <Button className="h-full rounded-none border-0 shadow-none" variant="ghost">
+          <Copy /> Kopiuj
+        </Button>
+      }
+    >
+      <Input defaultValue="markerpro-maj" />
+    </InputGroup>
   );
 }
 
 function InputOtpDemo() {
-  const [value, setValue] = React.useState(["2", "4", "", "", "", ""]);
+  const [value, setValue] = React.useState("24");
 
   return (
     <div className="space-y-3">
-      <div className="flex gap-2">
-        {value.map((digit, index) => (
-          <Input
-            aria-label={`Cyfra ${index + 1}`}
-            className="h-12 w-11 text-center text-lg font-extrabold"
-            inputMode="numeric"
-            key={index}
-            maxLength={1}
-            onChange={(event) => {
-              const next = [...value];
-              next[index] = event.target.value.slice(-1);
-              setValue(next);
-            }}
-            value={digit}
-          />
-        ))}
-      </div>
-      <p className="text-sm text-muted-foreground">Kod: {value.join("") || "—"}</p>
+      <InputOTP maxLength={6} value={value} onChange={setValue}>
+        <InputOTPGroup className="gap-2">
+          {[0, 1, 2, 3, 4, 5].map((index) => (
+            <InputOTPSlot
+              key={index}
+              index={index}
+              className="h-12 w-11 rounded-md border-l text-lg font-extrabold first:rounded-l-md last:rounded-r-md"
+            />
+          ))}
+        </InputOTPGroup>
+      </InputOTP>
+      <p className="text-sm text-muted-foreground">Kod: {value || "—"}</p>
     </div>
   );
 }
@@ -949,188 +1035,226 @@ function LabelDemo() {
 function KbdDemo() {
   return (
     <div className="flex flex-wrap items-center gap-2 text-sm">
-      <kbd className="rounded border bg-muted px-2 py-1 font-mono shadow-juz-xs">⌘</kbd>
-      <kbd className="rounded border bg-muted px-2 py-1 font-mono shadow-juz-xs">K</kbd>
+      <Kbd>⌘</Kbd>
+      <Kbd>K</Kbd>
       <span className="text-muted-foreground">otwiera command palette</span>
     </div>
   );
 }
 
 function MenubarDemo() {
-  const [active, setActive] = React.useState("Produkcja");
-
   return (
-    <div className="flex w-fit overflow-hidden rounded-md border bg-card shadow-juz-sm">
-      {["Produkcja", "Magazyn", "Analityka", "Ustawienia"].map((item) => (
-        <button
-          aria-pressed={active === item}
-          className="border-r px-4 py-2 text-sm font-bold last:border-r-0 hover:bg-primary-soft aria-pressed:bg-primary-soft aria-pressed:text-primary"
-          key={item}
-          onClick={() => setActive(item)}
-          type="button"
-        >
-          {item}
-        </button>
-      ))}
-    </div>
+    <Menubar>
+      <MenubarMenu>
+        <MenubarTrigger>Produkcja</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Zlecenia</MenubarItem>
+          <MenubarItem>Plan tygodnia</MenubarItem>
+          <MenubarItem>Stanowiska</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Magazyn</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Stany</MenubarItem>
+          <MenubarItem>Przyjęcia</MenubarItem>
+          <MenubarItem>Wydania</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Analityka</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Raporty</MenubarItem>
+          <MenubarItem>Wskaźniki</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+      <MenubarMenu>
+        <MenubarTrigger>Ustawienia</MenubarTrigger>
+        <MenubarContent>
+          <MenubarItem>Profile</MenubarItem>
+          <MenubarItem>Integracje</MenubarItem>
+        </MenubarContent>
+      </MenubarMenu>
+    </Menubar>
   );
 }
 
 function PopoverDemo() {
-  const [open, setOpen] = React.useState(true);
+  const [statusColumn, setStatusColumn] = React.useState(true);
+  const [rowActions, setRowActions] = React.useState(true);
 
   return (
     <div className="w-[420px] max-w-full">
-      <Button aria-expanded={open} onClick={() => setOpen((value) => !value)} variant="outline">
-        <Settings /> Ustawienia widoku
-      </Button>
-      {open ? (
-        <div className="mt-2 rounded-lg border bg-card p-4 shadow-juz">
+      <Popover defaultOpen>
+        <PopoverTrigger asChild>
+          <Button variant="outline">
+            <Settings /> Ustawienia widoku
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent align="start">
           <b>Widok listy</b>
           <div className="mt-3 space-y-2">
-            <label className="flex items-center gap-2"><input type="checkbox" defaultChecked /> Kolumna status</label>
-            <label className="flex items-center gap-2"><input type="checkbox" defaultChecked /> Akcje w wierszu</label>
+            <Label className="flex items-center gap-2">
+              <Checkbox checked={statusColumn} onCheckedChange={(v) => setStatusColumn(Boolean(v))} /> Kolumna status
+            </Label>
+            <Label className="flex items-center gap-2">
+              <Checkbox checked={rowActions} onCheckedChange={(v) => setRowActions(Boolean(v))} /> Akcje w wierszu
+            </Label>
           </div>
-        </div>
-      ) : null}
+        </PopoverContent>
+      </Popover>
     </div>
   );
 }
 
 function RadioGroupDemo() {
   const [value, setValue] = React.useState("standard");
+  const items: Array<[string, string]> = [
+    ["standard", "Standardowy plan publikacji"],
+    ["express", "Ekspresowy plan publikacji"],
+    ["manual", "Ręczne zatwierdzanie"]
+  ];
 
   return (
-    <div className="space-y-3">
-      {[
-        ["standard", "Standardowy plan publikacji"],
-        ["express", "Ekspresowy plan publikacji"],
-        ["manual", "Ręczne zatwierdzanie"]
-      ].map(([key, label]) => (
-        <label className="flex cursor-pointer items-center gap-3 rounded-md border bg-card p-3 shadow-juz-sm" key={key}>
-          <input checked={value === key} onChange={() => setValue(key)} type="radio" />
+    <RadioGroup value={value} onValueChange={setValue} className="space-y-3">
+      {items.map(([key, label]) => (
+        <Label
+          className="flex cursor-pointer items-center gap-3 rounded-md border bg-card p-3 shadow-juz-sm"
+          htmlFor={`radio-${key}`}
+          key={key}
+        >
+          <RadioGroupItem id={`radio-${key}`} value={key} />
           <span className="font-semibold">{label}</span>
-        </label>
+        </Label>
       ))}
-    </div>
+    </RadioGroup>
   );
 }
 
 function ScrollAreaDemo() {
   return (
-    <div className="h-56 w-[420px] max-w-full overflow-y-auto rounded-lg border bg-card p-3 shadow-juz-sm">
+    <ScrollArea className="h-56 w-[420px] max-w-full rounded-lg border bg-card p-3 shadow-juz-sm">
       {Array.from({ length: 18 }, (_, index) => (
         <div className="border-b py-3 last:border-b-0" key={index}>
           <b>Zdarzenie {index + 1}</b>
           <p className="text-sm text-muted-foreground">Aktualizacja statusu partii produkcyjnej.</p>
         </div>
       ))}
-    </div>
+    </ScrollArea>
   );
 }
 
 function SeparatorDemo() {
   return (
-    <div className="w-[420px] max-w-full">
-      <b>Plan publikacji</b>
-      <div className="my-3 h-px bg-border" />
-      <p className="text-sm text-muted-foreground">Separator rozdziela grupy treści w panelach i rekordach.</p>
-    </div>
-  );
-}
-
-function SheetDemo() {
-  const [open, setOpen] = React.useState(true);
-
-  return (
-    <div className="w-[620px] max-w-full">
-      <Button onClick={() => setOpen(true)} variant="outline">Pokaż panel boczny</Button>
-      {open ? (
-        <div className="mt-4 grid min-h-72 grid-cols-[1fr_280px] overflow-hidden rounded-lg border bg-card shadow-juz-sm">
-          <div className="p-5 text-muted-foreground">Treść ekranu pozostaje w tle.</div>
-          <aside className="border-l bg-background p-5">
-            <div className="flex items-center justify-between gap-3">
-              <b>Kolumny</b>
-              <Button aria-label="Zamknij" onClick={() => setOpen(false)} size="icon" variant="ghost"><X /></Button>
-            </div>
-            <div className="mt-4 space-y-2 text-sm">
-              <label className="flex items-center gap-2"><input type="checkbox" defaultChecked /> Status</label>
-              <label className="flex items-center gap-2"><input type="checkbox" defaultChecked /> Termin</label>
-              <label className="flex items-center gap-2"><input type="checkbox" /> Opiekun</label>
-            </div>
-          </aside>
-        </div>
-      ) : null}
-    </div>
-  );
-}
-
-function DrawerDemo() {
-  const [open, setOpen] = React.useState(true);
-
-  return (
-    <div className="w-[620px] max-w-full">
-      <Button onClick={() => setOpen(true)} variant="outline">
-        <ChevronDown className="-rotate-90" /> Otwórz drawer
-      </Button>
-      <div className="mt-4 overflow-hidden rounded-xl border bg-muted/35 shadow-juz-sm">
-        <div className="grid min-h-80 place-items-end p-4">
-          {open ? (
-            <section aria-label="Drawer" className="w-full rounded-t-2xl border bg-card p-5 shadow-juz">
-              <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-border" />
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-extrabold">Szybkie akcje wpisu</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">Wariant dolnego panelu dla mobile i gestow.</p>
-                </div>
-                <Button aria-label="Zamknij drawer" onClick={() => setOpen(false)} size="icon" variant="ghost">
-                  <X />
-                </Button>
-              </div>
-              <div className="mt-5 grid gap-2 sm:grid-cols-3">
-                <Button variant="outline"><Eye /> Podgląd</Button>
-                <Button><Pencil /> Edytuj</Button>
-                <Button variant="destructive"><Trash2 /> Usuń</Button>
-              </div>
-            </section>
-          ) : (
-            <div className="grid min-h-44 w-full place-items-center text-sm font-semibold text-muted-foreground">
-              Drawer zamkniety.
-            </div>
-          )}
-        </div>
+    <div className="space-y-6">
+      <div className="w-[420px] max-w-full">
+        <b>Plan publikacji</b>
+        <Separator className="my-3" />
+        <p className="text-sm text-muted-foreground">Separator rozdziela grupy treści w panelach i rekordach.</p>
+      </div>
+      <div className="flex h-16 items-center gap-4 text-sm text-muted-foreground">
+        <span>Zlecenia</span>
+        <Separator orientation="vertical" />
+        <span>Produkcja</span>
+        <Separator orientation="vertical" />
+        <span>Magazyn</span>
       </div>
     </div>
   );
 }
 
-function SliderDemo() {
-  const [value, setValue] = React.useState(68);
+function SheetDemo() {
+  const [status, setStatus] = React.useState(true);
+  const [termin, setTermin] = React.useState(true);
+  const [opiekun, setOpiekun] = React.useState(false);
 
   return (
-    <label className="block w-[420px] max-w-full space-y-3">
-      <span className="font-bold">Priorytet kampanii: {value}%</span>
-      <input className="w-full accent-primary" max="100" min="0" onChange={(event) => setValue(Number(event.target.value))} type="range" value={value} />
-    </label>
+    <div className="w-[620px] max-w-full">
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="outline">Pokaż panel boczny</Button>
+        </SheetTrigger>
+        <SheetContent side="right">
+          <SheetHeader>
+            <SheetTitle>Kolumny</SheetTitle>
+            <SheetDescription>Wybierz kolumny widoczne w tabeli.</SheetDescription>
+          </SheetHeader>
+          <div className="mt-4 space-y-3 text-sm">
+            <Label className="flex items-center gap-2">
+              <Checkbox checked={status} onCheckedChange={(v) => setStatus(Boolean(v))} /> Status
+            </Label>
+            <Label className="flex items-center gap-2">
+              <Checkbox checked={termin} onCheckedChange={(v) => setTermin(Boolean(v))} /> Termin
+            </Label>
+            <Label className="flex items-center gap-2">
+              <Checkbox checked={opiekun} onCheckedChange={(v) => setOpiekun(Boolean(v))} /> Opiekun
+            </Label>
+          </div>
+          <SheetFooter className="mt-6">
+            <SheetClose asChild>
+              <Button variant="outline">Zamknij</Button>
+            </SheetClose>
+          </SheetFooter>
+        </SheetContent>
+      </Sheet>
+    </div>
+  );
+}
+
+function DrawerDemo() {
+  return (
+    <div className="w-[620px] max-w-full">
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button variant="outline">
+            <ChevronDown className="-rotate-90" /> Otwórz drawer
+          </Button>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle className="text-xl font-extrabold">Szybkie akcje wpisu</DrawerTitle>
+            <DrawerDescription>Wariant dolnego panelu dla mobile i gestow.</DrawerDescription>
+          </DrawerHeader>
+          <div className="grid gap-2 px-4 pb-4 sm:grid-cols-3">
+            <Button variant="outline"><Eye /> Podgląd</Button>
+            <Button><Pencil /> Edytuj</Button>
+            <Button variant="destructive"><Trash2 /> Usuń</Button>
+          </div>
+          <DrawerFooter>
+            <DrawerClose asChild>
+              <Button variant="ghost">Zamknij</Button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </div>
+  );
+}
+
+function SliderDemo() {
+  const [value, setValue] = React.useState([68]);
+
+  return (
+    <div className="block w-[420px] max-w-full space-y-3">
+      <Label className="font-bold">Priorytet kampanii: {value[0]}%</Label>
+      <Slider value={value} onValueChange={setValue} max={100} min={0} step={1} />
+    </div>
   );
 }
 
 function ToastDemo() {
-  const [visible, setVisible] = React.useState(true);
-
   return (
     <div className="w-[420px] max-w-full">
-      <Button onClick={() => setVisible(true)}>Pokaż toast</Button>
-      {visible ? (
-        <div className="mt-4 flex items-start gap-3 rounded-lg border bg-card p-4 shadow-juz">
-          <Check className="mt-0.5 size-5 text-success" />
-          <div className="flex-1">
-            <b>Widok zapisany</b>
-            <p className="text-sm text-muted-foreground">Ustawienia kolumn zostały zapamiętane.</p>
-          </div>
-          <Button aria-label="Zamknij" onClick={() => setVisible(false)} size="icon" variant="ghost"><X /></Button>
-        </div>
-      ) : null}
+      <Button
+        onClick={() =>
+          showToast.success("Widok zapisany", {
+            description: "Ustawienia kolumn zostały zapamiętane."
+          })
+        }
+      >
+        Pokaż toast
+      </Button>
+      <Toaster />
     </div>
   );
 }
@@ -1139,9 +1263,9 @@ function ToggleDemo() {
   const [pressed, setPressed] = React.useState(true);
 
   return (
-    <Button aria-pressed={pressed} onClick={() => setPressed((value) => !value)} variant={pressed ? "default" : "outline"}>
+    <Toggle aria-label="Widoczność" pressed={pressed} onPressedChange={setPressed} variant="outline">
       <Eye /> {pressed ? "Widoczne" : "Ukryte"}
-    </Button>
+    </Toggle>
   );
 }
 
@@ -1149,19 +1273,18 @@ function ToggleGroupDemo() {
   const [active, setActive] = React.useState("Lista");
 
   return (
-    <div className="inline-flex overflow-hidden rounded-md border bg-card shadow-juz-sm">
+    <ToggleGroup
+      type="single"
+      value={active}
+      onValueChange={(value) => value && setActive(value)}
+      variant="outline"
+    >
       {["Lista", "Karty", "Kalendarz"].map((item) => (
-        <button
-          aria-pressed={active === item}
-          className="border-r px-4 py-2 text-sm font-bold last:border-r-0 hover:bg-primary-soft aria-pressed:bg-primary aria-pressed:text-primary-foreground"
-          key={item}
-          onClick={() => setActive(item)}
-          type="button"
-        >
+        <ToggleGroupItem key={item} value={item}>
           {item}
-        </button>
+        </ToggleGroupItem>
       ))}
-    </div>
+    </ToggleGroup>
   );
 }
 
@@ -1169,31 +1292,29 @@ function TypographyAtomDemo() {
   return (
     <div className="space-y-3">
       <p className="juz-label">Typography primitive</p>
-      <h1 className="text-4xl font-extrabold">Nagłówek rekordu</h1>
-      <p className="text-base text-muted-foreground">Tekst pomocniczy zgodny z tokenami typografii juz.pl.</p>
-      <code className="rounded bg-muted px-2 py-1 font-mono text-sm">ZP/00042/05/26</code>
+      <Typography variant="h1" className="text-4xl font-extrabold">Nagłówek rekordu</Typography>
+      <Typography variant="muted" className="text-base">Tekst pomocniczy zgodny z tokenami typografii juz.pl.</Typography>
+      <Typography variant="code">ZP/00042/05/26</Typography>
     </div>
   );
 }
 
 function ProgressDemo() {
-  const values = [
-    ["Produkcja", 68, "bg-primary"],
-    ["Pakowanie", 42, "bg-success"],
-    ["Ryzyko opóźnienia", 18, "bg-warning"]
+  const values: Array<[string, number, string]> = [
+    ["Produkcja", 68, "[&>div]:bg-primary"],
+    ["Pakowanie", 42, "[&>div]:bg-success"],
+    ["Ryzyko opóźnienia", 18, "[&>div]:bg-warning"]
   ];
 
   return (
     <div className="w-[560px] max-w-full space-y-5">
-      {values.map(([label, value, color]) => (
+      {values.map(([label, value, colorClass]) => (
         <div key={label}>
           <div className="mb-2 flex justify-between text-sm font-bold">
             <span>{label}</span>
             <span>{value}%</span>
           </div>
-          <div className="h-3 overflow-hidden rounded-full bg-muted">
-            <div className={`h-full rounded-full ${color}`} style={{ width: `${value}%` }} />
-          </div>
+          <Progress value={value} className={`h-3 ${colorClass}`} />
         </div>
       ))}
     </div>
@@ -1226,15 +1347,11 @@ function CheckboxDemo() {
           className="flex cursor-pointer items-start gap-3 rounded-md border bg-card p-3 shadow-juz-sm transition-colors hover:bg-primary-soft/45"
           key={item.label}
         >
-          <input
+          <Checkbox
             checked={item.checked}
-            className="peer sr-only"
-            onChange={(event) => item.onChange(event.target.checked)}
-            type="checkbox"
+            onCheckedChange={(value) => item.onChange(Boolean(value))}
+            className="mt-0.5"
           />
-          <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-sm border border-input bg-card text-primary-foreground peer-checked:border-primary peer-checked:bg-primary">
-            {item.checked ? <Check className="size-3.5" /> : null}
-          </span>
           <span>
             <span className="block font-semibold">{item.label}</span>
             <span className="text-sm text-muted-foreground">{item.description}</span>
@@ -1246,66 +1363,17 @@ function CheckboxDemo() {
 }
 
 function CalendarAtomDemo() {
-  const monthNames = ["Maj", "Czerwiec", "Lipiec"];
-  const monthLengths = [31, 30, 31];
-  const leadingBlanks = [3, 6, 1];
-  const [monthIndex, setMonthIndex] = React.useState(0);
-  const [selectedDay, setSelectedDay] = React.useState(24);
-  const days = Array.from({ length: monthLengths[monthIndex] }, (_, index) => index + 1);
-
-  function changeMonth(direction: -1 | 1) {
-    setMonthIndex((current) => {
-      const next = Math.min(monthNames.length - 1, Math.max(0, current + direction));
-      setSelectedDay((day) => Math.min(day, monthLengths[next]));
-      return next;
-    });
-  }
+  const [selected, setSelected] = React.useState<Date | undefined>(new Date(2026, 4, 24));
 
   return (
     <div className="w-[340px] rounded-lg border bg-card p-4 shadow-juz-sm">
-      <div className="mb-4 flex items-center justify-between">
-        <Button
-          aria-label="Poprzedni miesiąc"
-          disabled={monthIndex === 0}
-          onClick={() => changeMonth(-1)}
-          size="icon"
-          variant="ghost"
-        >
-          <ChevronLeft className="size-4" />
-        </Button>
-        <div className="text-center">
-          <p className="font-extrabold">{monthNames[monthIndex]} 2026</p>
-          <p className="text-xs text-muted-foreground">Wybierz datę publikacji</p>
-        </div>
-        <Button
-          aria-label="Następny miesiąc"
-          disabled={monthIndex === monthNames.length - 1}
-          onClick={() => changeMonth(1)}
-          size="icon"
-          variant="ghost"
-        >
-          <ChevronRight className="size-4" />
-        </Button>
-      </div>
-      <div className="grid grid-cols-7 gap-1 text-center text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">
-        {["Pn", "Wt", "Sr", "Cz", "Pt", "So", "Nd"].map((day) => <span className="py-2" key={day}>{day}</span>)}
-      </div>
-      <div className="mt-1 grid grid-cols-7 gap-1 text-center text-sm">
-        {Array.from({ length: leadingBlanks[monthIndex] }, (_, index) => (
-          <span aria-hidden="true" className="h-10" key={`blank-${index}`} />
-        ))}
-        {days.map((day) => (
-          <button
-            aria-current={selectedDay === day ? "date" : undefined}
-            className="grid h-10 place-items-center rounded-md font-semibold text-foreground hover:bg-primary-soft hover:text-primary aria-[current=date]:bg-primary aria-[current=date]:text-primary-foreground"
-            key={day}
-            onClick={() => setSelectedDay(day)}
-            type="button"
-          >
-            {day}
-          </button>
-        ))}
-      </div>
+      <p className="mb-2 text-center text-xs text-muted-foreground">Wybierz datę publikacji</p>
+      <CalendarComponent
+        mode="single"
+        selected={selected}
+        onSelect={setSelected}
+        defaultMonth={new Date(2026, 4, 1)}
+      />
     </div>
   );
 }
@@ -1332,73 +1400,25 @@ function SelectDemo() {
 }
 
 function FilterSelectDemo() {
-  const options = ["PZ", "WZ", "MM", "RW", "PW", "FZ", "WP", "Korekta", "Inwentaryzacja"];
-  const [open, setOpen] = React.useState(true);
-  const [selected, setSelected] = React.useState<string[]>([]);
-
-  const label = selected.length ? `${selected.length} wybrane` : "Wszystkie";
-
-  function toggleOption(option: string) {
-    setSelected((current) =>
-      current.includes(option) ? current.filter((item) => item !== option) : [...current, option]
-    );
-  }
+  const options = ["PZ", "WZ", "MM", "RW", "PW", "FZ", "WP", "Korekta", "Inwentaryzacja"].map(
+    (label) => ({ value: label, label })
+  );
+  const [selected, setSelected] = React.useState<string | undefined>(undefined);
 
   return (
     <div className="w-[540px] max-w-full">
-      <label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="filter-select-trigger">
+      <Label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="filter-select-trigger">
         Typ
-      </label>
-      <button
-        aria-controls="filter-select-options"
-        aria-expanded={open}
-        className={[
-          "flex h-11 w-full items-center justify-between rounded-md border bg-card px-3 text-left text-base font-normal shadow-juz-sm transition-colors",
-          open ? "border-primary ring-4 ring-primary/15" : "border-input hover:border-primary/50"
-        ].join(" ")}
-        id="filter-select-trigger"
-        onClick={() => setOpen((value) => !value)}
-        type="button"
-      >
-        <span className={selected.length ? "text-foreground" : "text-muted-foreground"}>{label}</span>
-        <ChevronDown className={`size-4 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-
-      {open ? (
-        <div
-          className="mt-2 max-h-64 overflow-y-auto rounded-md border bg-card p-2 shadow-juz"
-          id="filter-select-options"
-          role="listbox"
-          aria-multiselectable="true"
-        >
-          {options.map((option) => {
-            const checked = selected.includes(option);
-            return (
-              <button
-                aria-selected={checked}
-                className="flex w-full items-center gap-3 rounded-md px-2 py-2.5 text-left text-sm font-semibold hover:bg-primary-soft focus-visible:bg-primary-soft focus-visible:outline-none"
-                key={option}
-                onClick={() => toggleOption(option)}
-                role="option"
-                type="button"
-              >
-                <span
-                  className={[
-                    "grid size-5 place-items-center rounded-sm border",
-                    checked ? "border-primary bg-primary text-primary-foreground" : "border-muted-foreground/55 bg-card"
-                  ].join(" ")}
-                >
-                  {checked ? <Check className="size-3.5" /> : null}
-                </span>
-                {option}
-              </button>
-            );
-          })}
-        </div>
-      ) : null}
-
+      </Label>
+      <FilterSelect
+        options={options}
+        value={selected}
+        onValueChange={setSelected}
+        placeholder="Wszystkie"
+        className="h-11 w-full"
+      />
       <p className="mt-3 text-sm text-muted-foreground">
-        Wybrano: <strong className="text-foreground">{selected.length ? selected.join(", ") : "Wszystkie"}</strong>
+        Wybrano: <strong className="text-foreground">{selected ?? "Wszystkie"}</strong>
       </p>
     </div>
   );
@@ -1414,13 +1434,13 @@ function SkeletonDemo() {
         {loading ? (
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="size-12 animate-pulse rounded-full bg-muted" />
+              <Skeleton className="size-12 rounded-full" />
               <div className="flex-1 space-y-2">
-                <div className="h-4 w-1/2 animate-pulse rounded bg-muted" />
-                <div className="h-4 w-1/3 animate-pulse rounded bg-muted" />
+                <Skeleton className="h-4 w-1/2" />
+                <Skeleton className="h-4 w-1/3" />
               </div>
             </div>
-            <div className="h-24 animate-pulse rounded-lg bg-muted" />
+            <Skeleton className="h-24 rounded-lg" />
           </div>
         ) : (
           <div>
@@ -1435,34 +1455,39 @@ function SkeletonDemo() {
 
 function SwitchDemo() {
   const [checked, setChecked] = React.useState(true);
+  const [notify, setNotify] = React.useState(false);
 
   return (
-    <button
-      aria-checked={checked}
-      className="flex items-center gap-3"
-      role="switch"
-      type="button"
-      onClick={() => setChecked((value) => !value)}
-    >
-      <span className={`inline-flex h-7 w-12 items-center rounded-full p-1 transition-colors ${checked ? "bg-primary" : "bg-muted"}`}>
-        <span className={`size-5 rounded-full bg-card shadow-juz-sm transition-transform ${checked ? "translate-x-5" : "translate-x-0"}`} />
-      </span>
-      <span className="min-w-[260px] font-semibold">{checked ? "Automatyzacja wlaczona" : "Automatyzacja wylaczona"}</span>
-    </button>
+    <div className="w-[420px] space-y-4">
+      <label className="flex cursor-pointer items-center justify-between gap-3 rounded-md border bg-card p-3 shadow-juz-sm">
+        <span>
+          <span className="block font-semibold">Automatyzacja</span>
+          <span className="text-sm text-muted-foreground">{checked ? "Włączona" : "Wyłączona"}</span>
+        </span>
+        <Switch checked={checked} onCheckedChange={setChecked} />
+      </label>
+      <label className="flex cursor-pointer items-center justify-between gap-3 rounded-md border bg-card p-3 shadow-juz-sm">
+        <span>
+          <span className="block font-semibold">Powiadomienia mailowe</span>
+          <span className="text-sm text-muted-foreground">{notify ? "Wysyłam do brygadzistów" : "Wyłączone"}</span>
+        </span>
+        <Switch checked={notify} onCheckedChange={setNotify} />
+      </label>
+    </div>
   );
 }
 
 function SpinnerDemo() {
   return (
     <div className="flex flex-wrap items-center gap-5">
-      <span className="size-5 animate-spin rounded-full border-2 border-primary border-t-transparent" aria-label="Ladowanie male" />
-      <span className="size-8 animate-spin rounded-full border-4 border-primary border-t-transparent" aria-label="Ladowanie standard" />
+      <Spinner size="sm" variant="primary" label="Ładowanie małe" />
+      <Spinner size="lg" variant="primary" label="Ładowanie standard" />
       <Button disabled>
-        <span className="size-4 animate-spin rounded-full border-2 border-primary-foreground/70 border-t-transparent" />
+        <Spinner size="sm" className="text-primary-foreground/70" />
         Zapisywanie...
       </Button>
       <div className="flex items-center gap-2 rounded-md border bg-card px-3 py-2 text-sm font-semibold shadow-juz-sm">
-        <span className="size-4 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+        <Spinner size="sm" variant="primary" />
         Synchronizacja kalendarza
       </div>
     </div>
@@ -1520,68 +1545,28 @@ function TabsDemo() {
 
 function AutocompleteDemo() {
   const options = [
-    { name: "MarkerPro", meta: "produkcja markerów i długopisów" },
-    { name: "PaperLine", meta: "hurtownia artykulow biurowych" },
-    { name: "KolorMix", meta: "flamastry i zakreslacze" },
-    { name: "OfficePilot", meta: "dystrybucja B2B" }
+    { value: "MarkerPro", label: "MarkerPro" },
+    { value: "PaperLine", label: "PaperLine" },
+    { value: "KolorMix", label: "KolorMix" },
+    { value: "OfficePilot", label: "OfficePilot" }
   ];
-  const [query, setQuery] = React.useState("");
-  const [selected, setSelected] = React.useState(options[0]);
-  const [open, setOpen] = React.useState(true);
-  const visible = options.filter((option) => option.name.toLowerCase().includes(query.toLowerCase()));
+  const [selected, setSelected] = React.useState<string>("MarkerPro");
 
   return (
     <div className="w-[480px] max-w-full">
-      <label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="autocomplete-client">
+      <Label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="autocomplete-client">
         Klient
-      </label>
-      <div className="relative">
-        <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-        <Input
-          aria-autocomplete="list"
-          aria-expanded={open}
-          aria-controls="autocomplete-client-list"
-          className="pl-9"
-          id="autocomplete-client"
-          onChange={(event) => {
-            setQuery(event.target.value);
-            setOpen(true);
-          }}
-          onFocus={() => setOpen(true)}
-          placeholder="Wpisz klienta..."
-          role="combobox"
-          value={query}
-        />
-      </div>
-      {open ? (
-        <div className="mt-2 overflow-hidden rounded-md border bg-card shadow-juz-sm" id="autocomplete-client-list" role="listbox">
-          {visible.length ? (
-            visible.map((option) => (
-              <button
-                className="flex w-full items-center justify-between gap-3 px-3 py-3 text-left hover:bg-primary-soft focus-visible:bg-primary-soft focus-visible:outline-none"
-                key={option.name}
-                onClick={() => {
-                  setSelected(option);
-                  setQuery(option.name);
-                  setOpen(false);
-                }}
-                role="option"
-                type="button"
-              >
-                <span>
-                  <span className="block font-bold">{option.name}</span>
-                  <span className="text-sm text-muted-foreground">{option.meta}</span>
-                </span>
-                {selected.name === option.name ? <Check className="size-4 text-primary" /> : null}
-              </button>
-            ))
-          ) : (
-            <p className="px-3 py-4 text-sm font-semibold text-muted-foreground">Brak wyników</p>
-          )}
-        </div>
-      ) : null}
+      </Label>
+      <Autocomplete
+        options={options}
+        value={selected}
+        onValueChange={setSelected}
+        placeholder="Wpisz klienta..."
+        searchPlaceholder="Szukaj..."
+        emptyMessage="Brak wyników"
+      />
       <p className="mt-3 text-sm text-muted-foreground">
-        Wybrano: <strong className="text-foreground">{selected.name}</strong>
+        Wybrano: <strong className="text-foreground">{selected}</strong>
       </p>
     </div>
   );
@@ -1589,34 +1574,25 @@ function AutocompleteDemo() {
 
 function BasicMenuItemDemo() {
   const items = [
-    { label: "Raport produkcji", description: "Wydajność, odpady i opóźnienia", Icon: FileText },
-    { label: "Zlecenia produkcyjne", description: "Lista partii i terminów", Icon: ClipboardList },
-    { label: "Ustawienia konta", description: "Profile, integracje, uprawnienia", Icon: Settings }
+    { label: "Raport produkcji", Icon: FileText },
+    { label: "Zlecenia produkcyjne", Icon: ClipboardList },
+    { label: "Ustawienia konta", Icon: Settings }
   ];
   const [active, setActive] = React.useState(items[0].label);
 
   return (
     <div className="w-[420px] max-w-full rounded-lg border bg-card p-2 shadow-juz-sm">
-      {items.map(({ label, description, Icon }) => (
-        <button
-          aria-current={active === label ? "page" : undefined}
-          className={`flex w-full items-center gap-3 rounded-md px-3 py-3 text-left transition-colors ${
-            active === label ? "bg-primary-soft text-primary" : "hover:bg-muted"
-          }`}
-          key={label}
-          onClick={() => setActive(label)}
-          type="button"
-        >
-          <span className="grid size-9 place-items-center rounded-md bg-background text-current">
-            <Icon className="size-4" />
-          </span>
-          <span className="min-w-0 flex-1">
-            <span className="block font-bold">{label}</span>
-            <span className="block truncate text-sm text-muted-foreground">{description}</span>
-          </span>
-          {active === label ? <Check className="size-4" /> : null}
-        </button>
-      ))}
+      <div className="space-y-1">
+        {items.map(({ label, Icon }) => (
+          <BasicMenuItem
+            key={label}
+            icon={<Icon className="size-4" />}
+            label={label}
+            active={active === label}
+            onClick={() => setActive(label)}
+          />
+        ))}
+      </div>
       <div className="mt-2 rounded-md bg-muted/55 px-3 py-2 text-sm">
         Aktywna pozycja: <strong>{active}</strong>
       </div>
@@ -1625,85 +1601,14 @@ function BasicMenuItemDemo() {
 }
 
 function DatePickerDemo() {
-  const [open, setOpen] = React.useState(true);
-  const [monthIndex, setMonthIndex] = React.useState(4);
-  const [day, setDay] = React.useState(24);
-  const months = [
-    "Styczeń",
-    "Luty",
-    "Marzec",
-    "Kwiecień",
-    "Maj",
-    "Czerwiec",
-    "Lipiec",
-    "Sierpień",
-    "Wrzesień",
-    "Październik",
-    "Listopad",
-    "Grudzień"
-  ];
-  const daysInMonth = new Date(2026, monthIndex + 1, 0).getDate();
-  const leadingDays = (new Date(2026, monthIndex, 1).getDay() + 6) % 7;
-  const value = `${String(Math.min(day, daysInMonth)).padStart(2, "0")}.${String(monthIndex + 1).padStart(2, "0")}.2026`;
-
-  function changeMonth(direction: -1 | 1) {
-    setMonthIndex((current) => {
-      const next = Math.min(11, Math.max(0, current + direction));
-      setDay((currentDay) => Math.min(currentDay, new Date(2026, next + 1, 0).getDate()));
-      return next;
-    });
-  }
+  const [value, setValue] = React.useState<Date | undefined>(new Date(2026, 4, 24));
 
   return (
     <div className="w-[360px] max-w-full">
-      <Button
-        aria-expanded={open}
-        className="w-full justify-between"
-        onClick={() => setOpen((current) => !current)}
-        variant="outline"
-      >
-        <span className="flex items-center gap-2"><Calendar /> {value}</span>
-        <ChevronDown className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} />
-      </Button>
-      {open ? (
-        <div className="mt-2 rounded-lg border bg-card p-4 shadow-juz">
-          <div className="mb-3 flex items-center justify-between">
-            <Button aria-label="Poprzedni miesiąc" disabled={monthIndex === 0} onClick={() => changeMonth(-1)} size="icon" variant="ghost">
-              <ChevronLeft className="size-4" />
-            </Button>
-            <b>{months[monthIndex]} 2026</b>
-            <Button aria-label="Następny miesiąc" disabled={monthIndex === 11} onClick={() => changeMonth(1)} size="icon" variant="ghost">
-              <ChevronRight className="size-4" />
-            </Button>
-          </div>
-          <div className="grid grid-cols-7 gap-1 text-center text-xs font-bold uppercase tracking-[0.12em] text-muted-foreground">
-            {["Pn", "Wt", "Sr", "Cz", "Pt", "So", "Nd"].map((label) => <span className="py-2" key={label}>{label}</span>)}
-          </div>
-          <div className="grid grid-cols-7 gap-1">
-            {Array.from({ length: leadingDays }, (_, index) => <span className="h-9" key={`empty-${index}`} />)}
-            {Array.from({ length: daysInMonth }, (_, index) => {
-              const nextDay = index + 1;
-              return (
-                <button
-                  aria-current={day === nextDay ? "date" : undefined}
-                  className="grid h-9 place-items-center rounded-md text-sm font-bold hover:bg-primary-soft hover:text-primary aria-[current=date]:bg-primary aria-[current=date]:text-primary-foreground"
-                  key={nextDay}
-                  onClick={() => {
-                    setDay(nextDay);
-                    setOpen(false);
-                  }}
-                  type="button"
-                >
-                  {nextDay}
-                </button>
-              );
-            })}
-          </div>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Wybrano: <strong className="text-foreground">{value}</strong>
-          </p>
-        </div>
-      ) : null}
+      <DatePicker value={value} onValueChange={setValue} placeholder="Wybierz datę" />
+      <p className="mt-3 text-sm text-muted-foreground">
+        Wybrano: <strong className="text-foreground">{value ? value.toLocaleDateString("pl-PL") : "—"}</strong>
+      </p>
     </div>
   );
 }
@@ -1717,70 +1622,22 @@ function SearchableSelectDemo() {
     "Finezja Office",
     "PaperLine",
     "Flamaster Studio"
-  ];
-  const [open, setOpen] = React.useState(true);
-  const [query, setQuery] = React.useState("");
+  ].map((label) => ({ value: label, label }));
   const [selected, setSelected] = React.useState("Długopis S.A.");
-  const filtered = options.filter((option) => option.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <div className="w-[460px] max-w-full">
-      <label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="searchable-select-trigger">
+      <Label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="searchable-select-trigger">
         Klient
-      </label>
-      <button
-        aria-controls="searchable-select-list"
-        aria-expanded={open}
-        className={[
-          "flex h-11 w-full items-center justify-between rounded-md border bg-card px-3 text-left text-base shadow-juz-sm transition-colors",
-          open ? "border-primary ring-4 ring-primary/15" : "border-input hover:border-primary/50"
-        ].join(" ")}
-        id="searchable-select-trigger"
-        onClick={() => setOpen((value) => !value)}
-        type="button"
-      >
-        <span className="truncate font-semibold text-foreground">{selected}</span>
-        <ChevronDown className={`size-4 shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-
-      {open ? (
-        <div className="mt-2 overflow-hidden rounded-md border bg-card shadow-juz" id="searchable-select-list">
-          <div className="border-b p-2">
-            <div className="flex h-10 items-center gap-2 rounded-md border bg-background px-3">
-              <Search className="size-4 text-muted-foreground" />
-              <input
-                aria-label="Szukaj klienta"
-                className="h-full min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Szukaj..."
-                value={query}
-              />
-            </div>
-          </div>
-          <div className="max-h-64 overflow-y-auto p-1" role="listbox">
-            {filtered.length ? (
-              filtered.map((option) => (
-                <button
-                  aria-selected={selected === option}
-                  className="flex w-full items-center justify-between rounded-md px-3 py-2.5 text-left text-sm font-semibold hover:bg-primary-soft aria-selected:bg-primary-soft aria-selected:text-primary"
-                  key={option}
-                  onClick={() => {
-                    setSelected(option);
-                    setOpen(false);
-                  }}
-                  role="option"
-                  type="button"
-                >
-                  <span>{option}</span>
-                  {selected === option ? <Check className="size-4" /> : null}
-                </button>
-              ))
-            ) : (
-              <p className="px-3 py-6 text-center text-sm text-muted-foreground">Brak wyników</p>
-            )}
-          </div>
-        </div>
-      ) : null}
+      </Label>
+      <SearchableSelect
+        options={options}
+        value={selected}
+        onValueChange={setSelected}
+        placeholder="Wybierz klienta"
+        searchPlaceholder="Szukaj..."
+        empty="Brak wyników"
+      />
       <p className="mt-3 text-sm text-muted-foreground">
         Wybrano: <strong className="text-foreground">{selected}</strong>
       </p>
@@ -1798,115 +1655,22 @@ function MultiSelectDemo() {
     "Magazyn",
     "Wysyłka",
     "Utrzymanie ruchu"
-  ];
-  const [open, setOpen] = React.useState(true);
-  const [query, setQuery] = React.useState("");
+  ].map((label) => ({ value: label, label }));
   const [selected, setSelected] = React.useState<string[]>(["Linia A", "Kontrola jakości"]);
-  const filtered = options.filter((option) => option.toLowerCase().includes(query.toLowerCase()));
-
-  function toggleOption(option: string) {
-    setSelected((current) =>
-      current.includes(option) ? current.filter((item) => item !== option) : [...current, option]
-    );
-  }
 
   return (
     <div className="w-[560px] max-w-full">
-      <label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="multi-select-trigger">
+      <Label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="multi-select-trigger">
         Obszary produkcji
-      </label>
-      <button
-        aria-controls="multi-select-list"
-        aria-expanded={open}
-        className={[
-          "flex min-h-11 w-full items-center justify-between gap-3 rounded-md border bg-card px-3 py-2 text-left shadow-juz-sm transition-colors",
-          open ? "border-primary ring-4 ring-primary/15" : "border-input hover:border-primary/50"
-        ].join(" ")}
-        id="multi-select-trigger"
-        onClick={() => setOpen((value) => !value)}
-        type="button"
-      >
-        <span className="flex min-w-0 flex-1 flex-wrap gap-1.5">
-          {selected.length ? (
-            selected.map((option) => (
-              <span
-                className="inline-flex items-center gap-1 rounded-full bg-primary-soft px-2.5 py-1 text-xs font-bold text-primary"
-                key={option}
-              >
-                {option}
-                <span
-                  aria-label={`Usuń ${option}`}
-                  className="grid size-4 place-items-center rounded-full hover:bg-primary/10"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    toggleOption(option);
-                  }}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      event.stopPropagation();
-                      toggleOption(option);
-                    }
-                  }}
-                >
-                  <X className="size-3" />
-                </span>
-              </span>
-            ))
-          ) : (
-            <span className="text-base text-muted-foreground">Wybierz...</span>
-          )}
-        </span>
-        <ChevronDown className={`size-4 shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-
-      {open ? (
-        <div className="mt-2 overflow-hidden rounded-md border bg-card shadow-juz" id="multi-select-list">
-          <div className="border-b p-2">
-            <div className="flex h-10 items-center gap-2 rounded-md border bg-background px-3">
-              <Search className="size-4 text-muted-foreground" />
-              <input
-                aria-label="Szukaj kanałów"
-                className="h-full min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Szukaj..."
-                value={query}
-              />
-            </div>
-          </div>
-          <div className="max-h-64 overflow-y-auto p-1" role="listbox" aria-multiselectable="true">
-            {filtered.length ? (
-              filtered.map((option) => {
-                const checked = selected.includes(option);
-                return (
-                  <button
-                    aria-selected={checked}
-                    className="flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-left text-sm font-semibold hover:bg-primary-soft focus-visible:bg-primary-soft focus-visible:outline-none"
-                    key={option}
-                    onClick={() => toggleOption(option)}
-                    role="option"
-                    type="button"
-                  >
-                    <span
-                      className={[
-                        "grid size-5 place-items-center rounded-sm border",
-                        checked ? "border-primary bg-primary text-primary-foreground" : "border-input bg-card"
-                      ].join(" ")}
-                    >
-                      {checked ? <Check className="size-3.5" /> : null}
-                    </span>
-                    {option}
-                  </button>
-                );
-              })
-            ) : (
-              <p className="px-3 py-6 text-center text-sm text-muted-foreground">Brak wyników</p>
-            )}
-          </div>
-        </div>
-      ) : null}
+      </Label>
+      <MultiSelect
+        options={options}
+        value={selected}
+        onValueChange={setSelected}
+        placeholder="Wybierz..."
+        searchPlaceholder="Szukaj..."
+        empty="Brak wyników"
+      />
       <div className="mt-3 flex items-center justify-between gap-3 text-sm text-muted-foreground">
         <span>Wybrano: {selected.length || 0}</span>
         {selected.length ? (
@@ -1920,117 +1684,19 @@ function MultiSelectDemo() {
 }
 
 function DateFilterDemo() {
-  const monthNames = ["maj", "czerwiec", "lipiec"];
-  const monthLengths = [31, 30, 31];
-  const leadingCounts = [4, 0, 2];
-  const [open, setOpen] = React.useState(true);
-  const [monthIndex, setMonthIndex] = React.useState(0);
-  const [day, setDay] = React.useState<number | null>(24);
-  const weekDays = ["p", "w", "s", "c", "p", "s", "n"];
-  const days = Array.from({ length: monthLengths[monthIndex] }, (_, index) => index + 1);
-  const leading = Array.from({ length: leadingCounts[monthIndex] }, (_, index) => index);
-  const trailing = Array.from({ length: (7 - ((leading.length + days.length) % 7)) % 7 }, (_, index) => index + 1);
-  const value = day ? `${String(day).padStart(2, "0")}.${String(monthIndex + 5).padStart(2, "0")}.2026` : "";
-
-  function changeMonth(direction: -1 | 1) {
-    setMonthIndex((current) => {
-      const next = Math.min(monthNames.length - 1, Math.max(0, current + direction));
-      setDay((currentDay) => currentDay ? Math.min(currentDay, monthLengths[next]) : currentDay);
-      return next;
-    });
-  }
+  const [value, setValue] = React.useState<Date | undefined>(new Date(2026, 4, 24));
 
   return (
     <div className="w-[520px] max-w-full">
-      <label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="date-filter">
+      <Label className="mb-2 block text-sm font-bold text-muted-foreground" htmlFor="date-filter">
         Data wystawienia
-      </label>
-      <div className="relative">
-        <Input
-          className="h-12 pr-12 text-base"
-          id="date-filter"
-          placeholder="dd.mm.rrrr"
-          readOnly
-          value={value}
-          onClick={() => setOpen(true)}
-        />
-        <button
-          aria-label="Otwórz kalendarz"
-          className="absolute right-3 top-1/2 grid size-7 -translate-y-1/2 place-items-center rounded-sm text-foreground hover:bg-primary-soft hover:text-primary"
-          onClick={() => setOpen((value) => !value)}
-          type="button"
-        >
-          <Calendar className="size-4" />
-        </button>
-      </div>
-
-      {open ? (
-        <div className="mt-2 w-[380px] rounded-md border bg-card p-5 shadow-juz" role="dialog" aria-label="Kalendarz">
-          <div className="mb-5 flex items-center justify-between">
-            <button className="flex items-center gap-1 text-lg font-extrabold capitalize" type="button">
-              {monthNames[monthIndex]} 2026 <ChevronDown className="size-4" />
-            </button>
-            <div className="flex gap-3">
-              <Button
-                disabled={monthIndex === 0}
-                onClick={() => changeMonth(-1)}
-                size="icon"
-                variant="ghost"
-                aria-label="Poprzedni miesiąc"
-              >
-                <ChevronLeft className="size-5" />
-              </Button>
-              <Button
-                disabled={monthIndex === monthNames.length - 1}
-                onClick={() => changeMonth(1)}
-                size="icon"
-                variant="ghost"
-                aria-label="Następny miesiąc"
-              >
-                <ChevronRight className="size-5" />
-              </Button>
-            </div>
-          </div>
-          <div className="grid grid-cols-7 gap-2 text-center text-sm font-bold text-foreground">
-            {weekDays.map((label, index) => (
-              <span className="py-1" key={`${label}-${index}`}>{label}</span>
-            ))}
-          </div>
-          <div className="mt-2 grid grid-cols-7 gap-2 text-center text-base">
-            {leading.map((value) => (
-              <span className="grid size-9 place-items-center font-semibold text-muted-foreground" key={`lead-${value}`} />
-            ))}
-            {days.map((date) => {
-              return (
-                <button
-                  aria-current={day === date ? "date" : undefined}
-                  className="grid size-9 place-items-center rounded-sm font-semibold hover:bg-primary-soft hover:text-primary aria-[current=date]:bg-primary aria-[current=date]:text-primary-foreground"
-                  key={date}
-                  onClick={() => setDay(date)}
-                  type="button"
-                >
-                  {date}
-                </button>
-              );
-            })}
-            {trailing.map((value) => (
-              <span className="grid size-9 place-items-center font-semibold text-muted-foreground" key={`trail-${value}`}>{value}</span>
-            ))}
-          </div>
-          <div className="mt-5 flex items-center justify-between">
-            <Button variant="ghost" onClick={() => setDay(null)}>Wyczyść</Button>
-            <Button
-              variant="ghost"
-              onClick={() => {
-                setMonthIndex(0);
-                setDay(24);
-              }}
-            >
-              Dzisiaj
-            </Button>
-          </div>
-        </div>
-      ) : null}
+      </Label>
+      <DateFilter
+        value={value}
+        onValueChange={setValue}
+        placeholder="dd.mm.rrrr"
+        className="h-12"
+      />
     </div>
   );
 }
@@ -2075,15 +1741,16 @@ function AdvancedFiltersPanelDemo() {
           </label>
           <label className="space-y-2">
             <span className="block text-sm font-bold text-muted-foreground">Status</span>
-            <select
-              className="h-12 w-full rounded-md border bg-card px-3 text-foreground shadow-juz-sm"
-              onChange={(event) => update("status", event.target.value)}
-              value={filters.status}
-            >
-              <option>Wszystkie</option>
-              <option>Aktywne</option>
-              <option>W przygotowaniu</option>
-            </select>
+            <Select value={filters.status} onValueChange={(value) => update("status", value)}>
+              <SelectTrigger className="h-12 w-full">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Wszystkie">Wszystkie</SelectItem>
+                <SelectItem value="Aktywne">Aktywne</SelectItem>
+                <SelectItem value="W przygotowaniu">W przygotowaniu</SelectItem>
+              </SelectContent>
+            </Select>
           </label>
           <label className="space-y-2">
             <span className="block text-sm font-bold text-muted-foreground">Magazyn</span>
@@ -2140,52 +1807,19 @@ function AdvancedFiltersPanelDemo() {
 }
 
 function TextEditorDemo() {
-  const [bold, setBold] = React.useState(true);
-  const [italic, setItalic] = React.useState(false);
-  const [hasImage, setHasImage] = React.useState(false);
   const [content, setContent] = React.useState("Seria MarkerPro startuje w poniedziałek. Potwierdź plan publikacji i materiały graficzne.");
 
   return (
-    <div className="w-[680px] max-w-full overflow-hidden rounded-lg border bg-card shadow-juz-sm">
-      <div className="flex flex-wrap gap-1 border-b p-2">
-        <Button
-          aria-pressed={bold}
-          size="sm"
-          variant={bold ? "default" : "ghost"}
-          onClick={() => setBold((value) => !value)}
-        >
-          B
-        </Button>
-        <Button
-          aria-pressed={italic}
-          size="sm"
-          variant={italic ? "default" : "ghost"}
-          onClick={() => setItalic((value) => !value)}
-        >
-          I
-        </Button>
-        <Button
-          aria-pressed={hasImage}
-          size="sm"
-          variant={hasImage ? "default" : "ghost"}
-          onClick={() => setHasImage((value) => !value)}
-        >
-          <Image /> Media
-        </Button>
-      </div>
-      <Textarea
-        className={[
-          "min-h-36 border-0 shadow-none",
-          bold ? "font-bold" : "font-normal",
-          italic ? "italic" : "not-italic"
-        ].join(" ")}
-        onChange={(event) => setContent(event.target.value)}
-        placeholder="Treść posta..."
+    <div className="w-[680px] max-w-full">
+      <TextEditor
         value={content}
+        onValueChange={setContent}
+        placeholder="Treść posta..."
+        ariaLabel="Treść posta"
       />
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t bg-muted/25 px-3 py-2 text-sm text-muted-foreground">
-        <span>{content.length} znaków</span>
-        {hasImage ? <Badge>1 plik media</Badge> : <span>Bez mediow</span>}
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-3 rounded-b-md border-t bg-muted/25 px-3 py-2 text-sm text-muted-foreground">
+        <span>{content.replace(/<[^>]+>/g, "").length} znaków</span>
+        <span>Bez mediow</span>
       </div>
     </div>
   );
@@ -2254,101 +1888,54 @@ function DropdownMenuDemo() {
 }
 
 function ComboboxDemo() {
-  const [open, setOpen] = React.useState(true);
-  const [query, setQuery] = React.useState("");
+  const options = ["MarkerPro", "PaperLine", "KolorMix", "OfficePilot"].map((label) => ({
+    value: label,
+    label
+  }));
   const [selected, setSelected] = React.useState("MarkerPro");
-  const options = ["MarkerPro", "PaperLine", "KolorMix", "OfficePilot"];
-  const filtered = options.filter((option) => option.toLowerCase().includes(query.toLowerCase()));
 
   return (
     <div className="w-[360px] max-w-full">
-      <Button aria-expanded={open} className="w-full justify-between" onClick={() => setOpen((value) => !value)} variant="outline">
-        {selected} <ChevronDown className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} />
-      </Button>
-      {open ? (
-        <div className="mt-2 overflow-hidden rounded-lg border bg-card shadow-juz-sm">
-          <div className="border-b p-2">
-            <div className="flex h-10 items-center gap-2 rounded-md border bg-background px-3">
-              <Search className="size-4 text-muted-foreground" />
-              <input
-                aria-label="Szukaj klienta"
-                className="h-full min-w-0 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Szukaj..."
-                value={query}
-              />
-            </div>
-          </div>
-          <div className="p-1" role="listbox">
-            {filtered.length ? filtered.map((option) => (
-              <button
-                aria-selected={selected === option}
-                className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left font-semibold hover:bg-primary-soft"
-                key={option}
-                onClick={() => {
-                  setSelected(option);
-                  setQuery("");
-                  setOpen(false);
-                }}
-                role="option"
-                type="button"
-              >
-                {option}
-                {selected === option ? <Check className="size-4 text-primary" /> : null}
-              </button>
-            )) : (
-              <p className="px-3 py-6 text-center text-sm text-muted-foreground">Brak wyników</p>
-            )}
-          </div>
-        </div>
-      ) : null}
+      <Combobox
+        options={options}
+        value={selected}
+        onValueChange={setSelected}
+        placeholder="Wybierz klienta"
+        searchPlaceholder="Szukaj..."
+        empty="Brak wyników"
+      />
       <p className="mt-3 text-sm text-muted-foreground">Wybrano: <strong className="text-foreground">{selected}</strong></p>
     </div>
   );
 }
 
 function ContextMenuDemo() {
-  const [open, setOpen] = React.useState(true);
   const [action, setAction] = React.useState("Brak");
+
   return (
     <div className="w-[420px] max-w-full">
-      <div
-        className="rounded-lg border bg-muted/35 p-5"
-        onContextMenu={(event) => {
-          event.preventDefault();
-          setOpen(true);
-        }}
-      >
-        <b>ZP/00042/05/26</b>
-        <p className="mt-1 text-sm text-muted-foreground">Kliknij prawym albo użyj widocznego menu akcji.</p>
-      </div>
-      {open ? (
-        <div className="mt-2 max-w-sm rounded-lg border bg-card p-2 shadow-juz-sm">
+      <ContextMenu>
+        <ContextMenuTrigger asChild>
+          <div className="rounded-lg border bg-muted/35 p-5">
+            <b>ZP/00042/05/26</b>
+            <p className="mt-1 text-sm text-muted-foreground">Kliknij prawym albo użyj widocznego menu akcji.</p>
+          </div>
+        </ContextMenuTrigger>
+        <ContextMenuContent>
           {["Edytuj", "Duplikuj", "Archiwizuj"].map((label) => (
-            <button
-              className="block w-full rounded-md px-3 py-2 text-left font-semibold hover:bg-muted"
-              key={label}
-              onClick={() => {
-                setAction(label);
-                setOpen(false);
-              }}
-              type="button"
-            >
+            <ContextMenuItem key={label} onSelect={() => setAction(label)}>
               {label}
-            </button>
+            </ContextMenuItem>
           ))}
-          <button
-            className="block w-full rounded-md px-3 py-2 text-left font-semibold text-destructive hover:bg-destructive-soft"
-            onClick={() => {
-              setAction("Usuń");
-              setOpen(false);
-            }}
-            type="button"
+          <ContextMenuSeparator />
+          <ContextMenuItem
+            className="text-destructive focus:bg-destructive-soft focus:text-destructive"
+            onSelect={() => setAction("Usuń")}
           >
             Usuń
-          </button>
-        </div>
-      ) : null}
+          </ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
       <p className="mt-3 text-sm text-muted-foreground">Akcja: <strong className="text-foreground">{action}</strong></p>
     </div>
   );
@@ -2358,19 +1945,23 @@ function ModeToggleDemo() {
   const [mode, setMode] = React.useState("Jasny");
   return (
     <div>
-      <div className="inline-flex gap-2 rounded-md bg-muted p-1">
+      <ToggleGroup
+        type="single"
+        value={mode}
+        onValueChange={(value) => value && setMode(value)}
+        className="gap-2 rounded-md bg-muted p-1"
+      >
         {["Jasny", "Ciemny", "System"].map((item) => (
-          <Button
-            className={mode === item ? "" : "shadow-none"}
+          <ToggleGroupItem
             key={item}
-            onClick={() => setMode(item)}
+            value={item}
             size="sm"
-            variant={mode === item ? "default" : "secondary"}
+            className="data-[state=on]:bg-primary data-[state=on]:text-primary-foreground"
           >
             {item}
-          </Button>
+          </ToggleGroupItem>
         ))}
-      </div>
+      </ToggleGroup>
       <p className="mt-3 text-sm text-muted-foreground">Tryb: <strong className="text-foreground">{mode}</strong></p>
     </div>
   );
@@ -2378,12 +1969,12 @@ function ModeToggleDemo() {
 
 function PaginationDemo() {
   const [page, setPage] = React.useState(1);
-  const [pageSize, setPageSize] = React.useState(10);
+  const [pageSize, setPageSize] = React.useState("10");
   const total = 73;
-  const pageCount = Math.ceil(total / pageSize);
+  const pageCount = Math.ceil(total / Number(pageSize));
   const currentPage = Math.min(page, pageCount);
-  const first = (currentPage - 1) * pageSize + 1;
-  const last = Math.min(currentPage * pageSize, total);
+  const first = (currentPage - 1) * Number(pageSize) + 1;
+  const last = Math.min(currentPage * Number(pageSize), total);
 
   React.useEffect(() => {
     setPage(1);
@@ -2395,31 +1986,23 @@ function PaginationDemo() {
         <p className="text-sm font-semibold text-muted-foreground">
           Pokazano <span className="text-foreground">{first}-{last}</span> z <span className="text-foreground">{total}</span> wyników
         </p>
-        <div className="flex flex-wrap items-center gap-1">
-          <Button aria-label="Poprzednia strona" disabled={currentPage <= 1} onClick={() => setPage((value) => Math.max(1, value - 1))} size="icon" variant="outline">
-            <ChevronLeft />
-          </Button>
-          {Array.from({ length: pageCount }, (_, index) => index + 1).slice(0, 7).map((item) => (
-            <Button key={item} onClick={() => setPage(item)} size="icon" variant={currentPage === item ? "default" : "outline"}>
-              {item}
-            </Button>
-          ))}
-          {pageCount > 7 ? <span className="px-2 text-sm font-bold text-muted-foreground">...</span> : null}
-          <Button aria-label="Następna strona" disabled={currentPage >= pageCount} onClick={() => setPage((value) => Math.min(pageCount, value + 1))} size="icon" variant="outline">
-            <ChevronRight />
-          </Button>
-        </div>
+        <DsPagination
+          page={currentPage}
+          pageCount={pageCount}
+          onPageChange={setPage}
+        />
         <label className="flex items-center gap-2 text-sm font-semibold text-muted-foreground">
           Wyników na stronie
-          <select
-            className="h-10 rounded-md border bg-card px-3 pr-10 font-bold text-foreground shadow-juz-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            onChange={(event) => setPageSize(Number(event.target.value))}
-            value={pageSize}
-          >
-            {[10, 20, 40, 60].map((size) => (
-              <option key={size} value={size}>{size}</option>
-            ))}
-          </select>
+          <Select value={pageSize} onValueChange={setPageSize}>
+            <SelectTrigger className="h-10 w-24">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {[10, 20, 40, 60].map((size) => (
+                <SelectItem key={size} value={String(size)}>{size}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </label>
       </div>
     </div>
@@ -2427,23 +2010,20 @@ function PaginationDemo() {
 }
 
 function ProfileMenuDemo() {
-  const [open, setOpen] = React.useState(true);
   const [action, setAction] = React.useState("Brak");
+
   return (
     <div className="w-[320px] max-w-full">
-      <button className="flex w-full items-center justify-between rounded-lg border p-3" onClick={() => setOpen((value) => !value)} type="button">
-        <span className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-full bg-primary text-white">KP</span><b>Kamil</b></span>
-        <ChevronDown className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} />
-      </button>
-      {open ? (
-        <div className="mt-2 rounded-lg border bg-card p-2 shadow-juz-sm">
-          {["Profil", "Ustawienia", "Wyloguj"].map((label) => (
-            <button className="block w-full rounded-md px-3 py-2 text-left font-semibold hover:bg-muted" key={label} onClick={() => setAction(label)} type="button">
-              {label}
-            </button>
-          ))}
-        </div>
-      ) : null}
+      <ProfileMenu
+        user={{ name: "Kamil Pawłowski", email: "kamil@juz.pl", role: "Brygadzista" }}
+        items={[
+          { key: "profile", label: "Profil", onClick: () => setAction("Profil") },
+          { key: "settings", label: "Ustawienia", onClick: () => setAction("Ustawienia") }
+        ]}
+        onLogout={() => setAction("Wyloguj")}
+        showName
+        align="start"
+      />
       <p className="mt-3 text-sm text-muted-foreground">Akcja: <strong className="text-foreground">{action}</strong></p>
     </div>
   );
@@ -2499,33 +2079,17 @@ function MoleculeTabsDemo() {
 }
 
 function TimePickerDemo() {
-  const [open, setOpen] = React.useState(true);
   const [time, setTime] = React.useState("19:30");
-  const times = ["10:00", "15:00", "19:30", "22:00"];
 
   return (
     <div className="w-[260px] max-w-full">
-      <Button aria-expanded={open} className="w-full justify-between" onClick={() => setOpen((value) => !value)} variant="outline">
-        <span className="flex items-center gap-2"><Clock /> {time}</span>
-        <ChevronDown className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} />
-      </Button>
-      {open ? (
-        <div className="mt-2 rounded-lg border bg-card p-2 shadow-juz-sm">
-          {times.map((item) => (
-            <button className="flex w-full items-center justify-between rounded-md px-3 py-2 font-semibold hover:bg-primary-soft" key={item} onClick={() => { setTime(item); setOpen(false); }} type="button">
-              {item}
-              {time === item ? <Check className="size-4 text-primary" /> : null}
-            </button>
-          ))}
-        </div>
-      ) : null}
+      <TimePicker value={time} onValueChange={setTime} />
       <p className="mt-3 text-sm text-muted-foreground">Godzina: <strong className="text-foreground">{time}</strong></p>
     </div>
   );
 }
 
 function CollapsibleMenuItemDemo() {
-  const [open, setOpen] = React.useState(true);
   const [active, setActive] = React.useState("Linia A");
   const items = [
     { label: "Linia A", count: 18 },
@@ -2537,39 +2101,17 @@ function CollapsibleMenuItemDemo() {
   return (
     <div className="w-[360px] max-w-full space-y-3">
       <nav aria-label="Menu produkcji" className="rounded-lg border bg-card p-2 shadow-juz-sm">
-        <button
-          aria-expanded={open}
-          className="flex min-h-12 w-full items-center justify-between rounded-md px-3 text-left font-bold text-foreground transition hover:bg-primary-soft hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          onClick={() => setOpen((value) => !value)}
-          type="button"
-        >
-          <span>Obszary</span>
-          <ChevronDown className={`size-5 transition-transform ${open ? "rotate-180" : ""}`} />
-        </button>
-
-        {open ? (
-          <div className="mt-1 space-y-1 border-l pl-3">
-            {items.map((item) => {
-              const selected = active === item.label;
-              return (
-                <button
-                  aria-current={selected ? "page" : undefined}
-                  className={`flex min-h-11 w-full items-center justify-between rounded-md px-3 text-left text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
-                    selected
-                      ? "bg-primary-soft text-primary"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                  }`}
-                  key={item.label}
-                  onClick={() => setActive(item.label)}
-                  type="button"
-                >
-                  <span>{item.label}</span>
-                  <Badge variant={selected ? "default" : "neutral"}>{item.count}</Badge>
-                </button>
-              );
-            })}
-          </div>
-        ) : null}
+        <CollapsibleMenuItem
+          label="Obszary"
+          defaultOpen
+          items={items.map((item) => ({
+            key: item.label,
+            label: item.label,
+            count: item.count,
+            active: active === item.label,
+            onClick: () => setActive(item.label)
+          }))}
+        />
       </nav>
       <div className="rounded-md border bg-muted/40 px-3 py-2 text-sm font-semibold text-muted-foreground">
         Wybrana pozycja: <span className="text-foreground">{active}</span>
@@ -2580,7 +2122,7 @@ function CollapsibleMenuItemDemo() {
 
 function FileActionsDemo() {
   const [action, setAction] = React.useState("Brak");
-  const actions = [
+  const buttons = [
     { label: "Podgląd", icon: Eye, variant: "outline" as const },
     { label: "Pobierz", icon: Download, variant: "outline" as const },
     { label: "Kopiuj link", icon: Link, variant: "outline" as const },
@@ -2593,7 +2135,7 @@ function FileActionsDemo() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
-        {actions.map(({ label, icon: Icon, variant }) => (
+        {buttons.map(({ label, icon: Icon, variant }) => (
           <Button key={label} onClick={() => setAction(label)} size="sm" variant={variant}>
             <Icon />
             {label}
@@ -2604,99 +2146,120 @@ function FileActionsDemo() {
         </Button>
       </div>
 
-      <div className="flex flex-wrap items-center gap-2 rounded-lg border bg-muted/30 p-3">
-        <FileText className="size-5 text-primary" />
-        <div className="min-w-0 flex-1">
-          <p className="truncate font-bold">faktura-markerpro-05-2026.pdf</p>
-          <p className="text-sm text-muted-foreground">PDF · 248 KB · ostatnia akcja: {action}</p>
-        </div>
-        <div className="flex gap-1">
-          <Button aria-label="Szybki podglad" onClick={() => setAction("Szybki podglad")} size="icon" variant="ghost">
-            <Eye />
-          </Button>
-          <Button aria-label="Szybkie pobranie" onClick={() => setAction("Szybkie pobranie")} size="icon" variant="ghost">
-            <Download />
-          </Button>
-          <Button aria-label="Szybkie usuniecie" onClick={() => setAction("Szybkie usuniecie")} size="icon" variant="ghost">
-            <Trash2 />
-          </Button>
-        </div>
-      </div>
+      <FileActions
+        file={{
+          name: "faktura-markerpro-05-2026.pdf",
+          size: 248 * 1024,
+          type: "application/pdf"
+        }}
+        actions={[
+          { key: "preview", label: "Szybki podglad", icon: <Eye />, onClick: () => setAction("Szybki podglad") },
+          { key: "download", label: "Szybkie pobranie", icon: <Download />, onClick: () => setAction("Szybkie pobranie") },
+          { key: "delete", label: "Szybkie usuniecie", icon: <Trash2 />, onClick: () => setAction("Szybkie usuniecie") }
+        ]}
+      />
+      <p className="text-sm text-muted-foreground">Ostatnia akcja: <strong className="text-foreground">{action}</strong></p>
     </div>
   );
 }
 
 function UploadDemo({ compact = false }: { compact?: boolean }) {
-  const [files, setFiles] = React.useState([
-    { name: "brief-markerpro.pdf", size: "248 KB", status: "Gotowy" },
-    { name: "etykieta-flamaster.png", size: "1.2 MB", status: "Przeslany" }
+  const [files, setFiles] = React.useState<File[]>(() => [
+    new File(["brief"], "brief-markerpro.pdf", { type: "application/pdf" }),
+    new File(["etykieta"], "etykieta-flamaster.png", { type: "image/png" })
   ]);
-  const [error, setError] = React.useState("");
-  const [dragging, setDragging] = React.useState(false);
-
-  function addDemoFile() {
-    if (files.some((file) => file.name === "harmonogram-produkcji.xlsx")) {
-      setError("Ten plik jest juz na liscie.");
-      return;
-    }
-    setError("");
-    setFiles((current) => [
-      ...current,
-      { name: "harmonogram-produkcji.xlsx", size: "86 KB", status: "Nowy" }
-    ]);
-  }
 
   return (
     <div className={compact ? "w-[520px] max-w-full" : "w-[720px] max-w-full"}>
-      <button
-        className={[
-          "grid min-h-40 w-full place-items-center rounded-lg border border-dashed bg-muted/30 p-6 text-center transition-colors",
-          dragging ? "border-primary bg-primary-soft" : "hover:border-primary/60 hover:bg-primary-soft/40"
-        ].join(" ")}
-        onClick={addDemoFile}
-        onDragEnter={(event) => {
-          event.preventDefault();
-          setDragging(true);
-        }}
-        onDragLeave={(event) => {
-          event.preventDefault();
-          setDragging(false);
-        }}
-        onDragOver={(event) => event.preventDefault()}
-        onDrop={(event) => {
-          event.preventDefault();
-          setDragging(false);
-          addDemoFile();
-        }}
-        type="button"
-      >
-        <span>
-          <UploadCloud className="mx-auto mb-2 size-8 text-primary" />
-          <b>{compact ? "Dodaj plik" : "Prześlij media lub dokument"}</b>
-          <span className="mt-1 block text-sm text-muted-foreground">PDF, PNG, JPG, XLSX do 25 MB</span>
-        </span>
-      </button>
-      {error ? <p className="mt-3 rounded-md bg-destructive-soft px-3 py-2 text-sm font-semibold text-destructive">{error}</p> : null}
-      <div className="mt-4 space-y-2">
-        {files.map((file) => (
-          <div className="flex items-center gap-3 rounded-md border bg-card px-3 py-2 shadow-juz-sm" key={file.name}>
-            <FileText className="size-5 text-primary" />
-            <div className="min-w-0 flex-1">
-              <p className="truncate font-bold">{file.name}</p>
-              <p className="text-sm text-muted-foreground">{file.size} · {file.status}</p>
-            </div>
-            <Button
-              aria-label={`Usuń ${file.name}`}
-              onClick={() => setFiles((current) => current.filter((item) => item.name !== file.name))}
-              size="icon"
-              variant="ghost"
-            >
-              <X />
-            </Button>
-          </div>
-        ))}
-      </div>
+      <Upload
+        value={files}
+        onValueChange={setFiles}
+        label={compact ? "Dodaj plik" : "Prześlij media lub dokument"}
+        hint="PDF, PNG, JPG, XLSX do 25 MB"
+      />
     </div>
+  );
+}
+
+function ColumnVisibilitySwitchDemo() {
+  const [columns, setColumns] = React.useState([
+    { id: "code", label: "Numer dokumentu", visible: true },
+    { id: "date", label: "Data", visible: true },
+    { id: "status", label: "Status", visible: true },
+    { id: "warehouse", label: "Magazyn", visible: false }
+  ]);
+
+  return (
+    <ColumnVisibilitySwitch
+      columns={columns}
+      onChange={(id, visible) =>
+        setColumns((prev) =>
+          prev.map((column) => (column.id === id ? { ...column, visible } : column))
+        )
+      }
+    />
+  );
+}
+
+function DateRangeInputDemo() {
+  const [range, setRange] = React.useState<import("react-day-picker").DateRange | undefined>(() => ({
+    from: new Date(2026, 4, 1),
+    to: new Date(2026, 4, 14)
+  }));
+
+  return (
+    <div className="w-[540px] max-w-full">
+      <DateRangeInput value={range} onValueChange={setRange} />
+    </div>
+  );
+}
+
+function BarChartAtomDemo() {
+  return (
+    <div className="w-[540px] max-w-full">
+      <DsBarChart
+        data={[
+          { label: "Pn", value: 42 },
+          { label: "Wt", value: 66 },
+          { label: "Śr", value: 38 },
+          { label: "Cz", value: 84 },
+          { label: "Pt", value: 71 }
+        ]}
+        categoryKey="label"
+        series={[{ key: "value", label: "Operacje" }]}
+      />
+    </div>
+  );
+}
+
+function LineChartAtomDemo() {
+  return (
+    <div className="w-[540px] max-w-full">
+      <DsLineChart
+        data={[
+          { label: "Pn", value: 52 },
+          { label: "Wt", value: 71 },
+          { label: "Śr", value: 63 },
+          { label: "Cz", value: 82 },
+          { label: "Pt", value: 68 }
+        ]}
+        categoryKey="label"
+        series={[{ key: "value", label: "Skuteczność" }]}
+      />
+    </div>
+  );
+}
+
+function DonutChartAtomDemo() {
+  return (
+    <DonutChart
+      data={[
+        { key: "production", value: 48, label: "W produkcji" },
+        { key: "done", value: 24, label: "Gotowe" },
+        { key: "planned", value: 17, label: "Planowane" },
+        { key: "attention", value: 11, label: "Wymaga uwagi" }
+      ]}
+    />
   );
 }
 
@@ -2715,17 +2278,7 @@ export const atoms = {
   AspectRatio: () => <AspectRatioDemo />,
   Avatar: () => <AvatarDemo />,
   Badge: () => <div className="flex gap-2"><Badge>Online</Badge><Badge variant="success">Aktywny</Badge><Badge variant="warning">Pauza</Badge></div>,
-  BarChart: () => (
-    <TokenBarChart
-      data={[
-        { label: "Pn", value: 42 },
-        { label: "Wt", value: 66 },
-        { label: "Śr", value: 38 },
-        { label: "Cz", value: 84 },
-        { label: "Pt", value: 71 }
-      ]}
-    />
-  ),
+  BarChart: () => <BarChartAtomDemo />,
   Breadcrumb: () => <BreadcrumbDemo />,
   Button: () => (
     <div className="flex flex-wrap gap-2">
@@ -2754,56 +2307,18 @@ export const atoms = {
   Carousel: () => <CarouselDemo />,
   Chart: () => <ChartExamples />,
   Checkbox: () => <CheckboxDemo />,
-  ColumnVisibilitySwitch: () => (
-    <div className="w-[360px] space-y-3 rounded-lg border bg-card p-4 shadow-juz-sm">
-      {["Numer dokumentu", "Data", "Status", "Magazyn"].map((label) => (
-        <label className="flex min-h-12 items-center justify-between gap-4 rounded-md border bg-background px-3 text-sm font-bold" key={label}>
-          <span className="flex items-center gap-3">
-            <GripVertical className="size-4 text-muted-foreground" />
-            {label}
-          </span>
-          <input aria-label={`Pokaż kolumnę ${label}`} className="h-5 w-9 accent-primary" defaultChecked type="checkbox" />
-        </label>
-      ))}
-    </div>
-  ),
+  ColumnVisibilitySwitch: () => <ColumnVisibilitySwitchDemo />,
   Collapsible: () => (
     <Collapsible defaultOpen trigger="Zaawansowane ustawieńia linii">
       Limity serii, priorytet i rezerwacja stanowiska.
     </Collapsible>
   ),
   Command: () => <CommandDemo />,
-  DateRangeInput: () => (
-    <div className="grid w-[540px] max-w-full gap-3 sm:grid-cols-2">
-      <label className="space-y-2">
-        <span className="text-sm font-bold text-muted-foreground">Od</span>
-        <div className="flex min-h-12 items-center gap-3 rounded-md border bg-background px-3">
-          <Input className="border-0 p-0 shadow-none focus-visible:ring-0" placeholder="dd.mm.rrrr" />
-          <Calendar className="size-5 text-muted-foreground" />
-        </div>
-      </label>
-      <label className="space-y-2">
-        <span className="text-sm font-bold text-muted-foreground">Do</span>
-        <div className="flex min-h-12 items-center gap-3 rounded-md border bg-background px-3">
-          <Input className="border-0 p-0 shadow-none focus-visible:ring-0" placeholder="dd.mm.rrrr" />
-          <Calendar className="size-5 text-muted-foreground" />
-        </div>
-      </label>
-    </div>
-  ),
+  DateRangeInput: () => <DateRangeInputDemo />,
   DecimalInput: () => <DecimalInputDemo />,
   DateFilter: () => <DateFilterDemo />,
   Dialog: () => <DialogDemo />,
-  DonutChart: () => (
-    <TokenDonutChart
-      data={[
-        { label: "W produkcji", value: 48, tone: "primary" },
-        { label: "Gotowe", value: 24, tone: "success" },
-        { label: "Planowane", value: 17, tone: "warning" },
-        { label: "Wymaga uwagi", value: 11, tone: "destructive" }
-      ]}
-    />
-  ),
+  DonutChart: () => <DonutChartAtomDemo />,
   Drawer: () => <DrawerDemo />,
   Empty: () => <EmptyDemo />,
   EmptyState: () => (
@@ -2859,32 +2374,17 @@ export const atoms = {
   ),
   Kbd: () => <KbdDemo />,
   Label: () => <LabelDemo />,
-  LineChart: () => (
-    <TokenLineChart
-      data={[
-        { label: "Pn", value: 52 },
-        { label: "Wt", value: 71 },
-        { label: "Śr", value: 63 },
-        { label: "Cz", value: 82 },
-        { label: "Pt", value: 68 }
-      ]}
-    />
-  ),
+  LineChart: () => <LineChartAtomDemo />,
   Logo: () => <JuzLogo />,
   MetricCard: () => (
     <div className="grid w-[880px] max-w-full gap-4 md:grid-cols-3">
       {metricCardItems.map(([label, value, Icon]) => (
-        <Card className="min-h-[128px] p-5" key={label}>
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="text-sm font-semibold leading-5 text-muted-foreground">{label}</p>
-              <p className="mt-2 text-xl font-extrabold leading-tight tracking-normal">{value}</p>
-            </div>
-            <span className="grid size-11 shrink-0 place-items-center rounded-md bg-primary-soft text-primary">
-              <Icon className="size-5" />
-            </span>
-          </div>
-        </Card>
+        <MetricCard
+          key={label}
+          label={label}
+          value={value}
+          icon={<Icon />}
+        />
       ))}
     </div>
   ),
@@ -2907,19 +2407,18 @@ export const atoms = {
   MultiSelect: () => <MultiSelectDemo />,
   NativeSelect: () => <SelectDemo />,
   AddressCard: () => (
-    <Card className="w-[520px] max-w-full overflow-hidden">
-      <div className="p-5">
-        <p className="text-sm font-bold uppercase tracking-[0.16em] text-muted-foreground">Adres</p>
-        <h3 className="mt-2 text-xl font-extrabold">Magazyn główny</h3>
-        <p className="mt-1 text-muted-foreground">ul. Papierowa 12, 30-001 Kraków, Polska</p>
-      </div>
-      <div className="grid min-h-40 place-items-center border-t bg-primary-soft/40">
-        <MapPin className="size-12 text-primary" />
-      </div>
-      <div className="p-5">
-        <Button variant="outline"><Copy /> Kopiuj współrzędne</Button>
-      </div>
-    </Card>
+    <AddressCard
+      className="w-[520px] max-w-full"
+      name="Magazyn główny"
+      street="ul. Papierowa 12"
+      postalCode="30-001"
+      city="Kraków"
+      country="Polska"
+      tax="6761234568"
+      phone="+48 12 345 67 89"
+      email="kontakt@firma.pl"
+      isPrimary
+    />
   ),
   PageSizeControl: () => (
     <div className="flex flex-wrap items-center gap-3 rounded-lg border bg-card p-4">
@@ -2974,18 +2473,12 @@ export const atoms = {
     </div>
   ),
   SummaryTile: () => (
-    <Card className="w-[320px] p-5">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-sm font-semibold text-muted-foreground">Rozliczenie</p>
-          <p className="mt-2 text-xl font-extrabold">2 460 PLN</p>
-          <p className="mt-1 text-sm font-semibold text-success">Opłacone</p>
-        </div>
-        <span className="grid size-11 place-items-center rounded-md bg-primary-soft text-primary">
-          <BarChart3 className="size-5" />
-        </span>
-      </div>
-    </Card>
+    <SummaryTile
+      className="w-[320px]"
+      label="Rozliczenie"
+      value="2 460 PLN"
+      hint="Opłacone"
+    />
   ),
   Switch: () => <SwitchDemo />,
   Tabs: () => <TabsDemo />,
