@@ -82,6 +82,107 @@ npm run storybook
 
 ---
 
+## Użycie w innym projekcie
+
+Od wersji **0.2.0** paczka `@juz/design-system` ma prawdziwe komponenty + entry points, więc można ją zainstalować i używać bezpośrednio (zamiast kopiować pliki ręcznie jak w opcji A wyżej).
+
+### 1. Instalacja
+
+Paczka jest oznaczona jako `private: true` (nie publikowana na npm). Importujemy ją przez git URL lub workspace link.
+
+**Opcja A — Git URL (rekomendowane dla projektów spoza monorepo):**
+
+```jsonc
+// w package.json konsumenta:
+"dependencies": {
+  "@juz/design-system": "github:erp77flow/design.juz.pl#v0.2.0"
+}
+```
+
+Pinuj po tagu (`#v0.2.0`), nie po branchu (`#main`) — branch idzie z każdym push-em.
+
+**Opcja B — workspace/file: (gdy konsument jest w tym samym katalogu):**
+
+```jsonc
+"dependencies": {
+  "@juz/design-system": "file:../../../design/design_juz_pl"
+}
+```
+
+Następnie: `pnpm install`.
+
+### 2. Konfiguracja Tailwind w projekcie konsumenta
+
+Paczka używa Tailwind CSS jako engine + customowych tokenów. W swoim `tailwind.config.ts`:
+
+```ts
+import type { Config } from "tailwindcss";
+
+export default {
+  presets: [require("@juz/design-system/tailwind.config")],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@juz/design-system/src/**/*.{ts,tsx}", // ważne: scanuje klasy z paczki
+  ],
+} satisfies Config;
+```
+
+### 3. Import CSS (tokeny + globale)
+
+Raz, w głównym entry point apki (np. `src/main.tsx`):
+
+```ts
+import "@juz/design-system/styles.css";
+```
+
+To załaduje wszystkie CSS variables (`--primary`, `--shadow-juz`, `--success` itd.). Bez tego komponenty wyrenderują się bezbarwnie.
+
+### 4. Użycie komponentów
+
+```tsx
+import { Button, Card, DataTable, Sidebar } from "@juz/design-system";
+import { cn } from "@juz/design-system/lib/utils";
+
+function App() {
+  return (
+    <Card>
+      <Button variant="default">Zatwierdź</Button>
+    </Card>
+  );
+}
+```
+
+**Subpath-y** (dla lepszego tree-shakingu lub gdy bundler ma problem z barrel exports):
+
+```tsx
+import { Button } from "@juz/design-system/atoms/button";
+import { DataTable } from "@juz/design-system/layout/data-table";
+```
+
+### 5. Custom branding (opcjonalne)
+
+Wszystkie kolory są CSS variables HSL — nadpisz je w swoim CSS po imporcie:
+
+```css
+@import "@juz/design-system/styles.css";
+
+:root {
+  --primary: 220 89% 59%;     /* niebieski zamiast fioletowego */
+  --primary-soft: 220 100% 97%;
+  --shadow-juz: 0 10px 30px rgb(45 90 240 / 0.12), 0 1px 2px rgb(16 24 40 / 0.06);
+}
+```
+
+### 6. Aktualizacje
+
+- **Patch (0.2.0 → 0.2.1):** tylko fixy — bezpiecznie aktualizować.
+- **Minor (0.2.x → 0.3.0):** nowe komponenty, kompatybilne.
+- **Major (0.x.y → 1.0.0):** zmiany breaking — sprawdź [`MIGRATIONS.md`](MIGRATIONS.md).
+
+Każde wydanie ma GitHub Release z notami: https://github.com/erp77flow/design.juz.pl/releases
+
+---
+
 ## Architektura: pięć warstw
 
 Każdy element UI należy do jednej z warstw — od najprostszego do najwyższego:

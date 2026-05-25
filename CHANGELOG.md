@@ -11,6 +11,31 @@ Format bazuje na prostym modelu:
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-05-25
+
+### Added
+
+- Atomy w `src/components/ui/` (58 nowych plików): `accordion`, `address-card`, `alert`, `aspect-ratio`, `avatar`, `bar-chart`, `breadcrumb`, `button-group`, `calendar`, `carousel`, `chart`, `checkbox`, `column-visibility-switch`, `command`, `context-menu`, `date-filter`, `date-range-input`, `decimal-input`, `donut-chart`, `drawer`, `empty`, `empty-state`, `field-display`, `filter-select`, `hover-card`, `icon-action-button`, `icon-tile`, `input-group`, `input-otp`, `kbd`, `line-chart`, `menubar`, `meta-tile`, `metric-card`, `mini-month`, `multi-select`, `native-select`, `page-size-control`, `phone-frame`, `popover`, `progress`, `radio-group`, `scroll-area`, `searchable-select`, `section-nav-item`, `separator`, `sheet`, `skeleton`, `slider`, `spinner`, `summary-tile`, `switch`, `table-primitive`, `toast`, `toggle`, `toggle-group`, `typography`, `upload`. Każdy to prawdziwy komponent (Radix-owy wrapper lub własna implementacja), nie mockup.
+- Molekuły w `src/components/ds/` (19 nowych plików): `action-buttons`, `advanced-filters-panel`, `autocomplete`, `basic-menu-item`, `calendar-event-section`, `collapsible-menu-item`, `combobox`, `date-picker`, `file-actions`, `form-field`, `header`, `mode-toggle`, `pagination`, `prefix-input`, `profile-menu`, `text-editor`, `time-input`, `time-picker`, `week-workstations`.
+- Organizmy w `src/components/layout/` (11 nowych plików, kategoria wcześniej pusta): `app-layout`, `data-table` (oparte o `@tanstack/react-table`), `document-line-items`, `document-parties`, `document-preview`, `document-section`, `document-totals`, `navbar`, `schedule`, `sidebar`, `top-bar`.
+- Entry point biblioteki: `src/index.ts` (126 linii) z 115 re-eksportami — 72 atomy + 32 molekuły + 11 organizmów. Pominięte 9 plików "showcase" w `ds/` (auth-screens, chart-showcase, client-detail, enterprise-screens, form-showcase, production-orders-list, production-screens, token-showcase, typography-scale — to demo Storybooka, nie reużywalne komponenty).
+- `package.json`: pola `main`, `module`, `types`, `exports` (z subpath-ami `./atoms/*`, `./molecules/*`, `./layout/*`, `./lib/utils`, `./styles.css`, `./tailwind.config`), `peerDependencies` (`react ^18 || ^19`, `react-dom ^18 || ^19`), `sideEffects: ["**/*.css"]`, `files: ["src", "tailwind.config.ts", "components.json"]`.
+- Nowe zależności runtime (Radix): `@radix-ui/react-accordion`, `react-aspect-ratio`, `react-avatar`, `react-checkbox`, `react-context-menu`, `react-hover-card`, `react-menubar`, `react-popover`, `react-progress`, `react-radio-group`, `react-scroll-area`, `react-separator`, `react-slider`, `react-switch`, `react-toggle`, `react-toggle-group`.
+- Nowe zależności runtime (inne): `@tanstack/react-table`, `recharts`, `react-day-picker` v10, `date-fns`, `cmdk`, `vaul`, `input-otp`, `sonner`, `react-dropzone`, `embla-carousel-react`, `next-themes`, `bwip-js`.
+
+### Changed
+
+- `src/stories/story-parts.tsx`: ~43 funkcje `XxxDemo` przepisane — zamiast inline'owych HTML mockupów (`<div role="switch">`, `<div class="rounded border">` itd.) używają teraz prawdziwych komponentów z biblioteki (`<Switch />`, `<Card />`, `<DataTable />` itd.). To znaczy: Storybook od 0.2.0 prezentuje faktyczną implementację, nie wizualną atrapę.
+- `src/components/ui/calendar.tsx`, `mini-month.tsx`, `date-filter.tsx`, `date-range-input.tsx`: dostosowane do API `react-day-picker` v10 — `caption` → `month_caption`, `IconLeft`/`IconRight` → komponent `Chevron`, `head_cell` → `weekday`, `day` → `day_button` itd.
+- `src/components/ui/card.tsx`: subkomponenty `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter` przerobione na `React.forwardRef` — wcześniej zwykłe komponenty funkcyjne, teraz można forwardować ref do węzła DOM.
+- Importy `lucide-react`: ikony `Calendar` i `Clock` aliasowane jako `CalendarIcon` / `ClockIcon` w miejscach kolidujących z naszymi komponentami `Calendar` / `DatePicker` (story-parts i wybrane molekuły).
+
+### Removed
+
+- HTML mockupy w funkcjach `Demo` w `src/stories/story-parts.tsx` — ~43 instancje ad-hoc HTML udającego komponenty (np. `<div role="switch">` zamiast `<Switch />`, `<table>` zamiast `<DataTable />`). Zastąpione importami z biblioteki.
+
+## [0.1.0] - 2026-05-24
+
 ### Added
 
 - Prawdziwy znak graficzny juz.pl jako SVG (`public/logo.svg` + komponent `JuzLogoMark`). Logo zostało wstawione jako `brandImage` w sidebarze Storybooka — w lewym górnym rogu widać teraz markę juz.pl, klikalną do GitHub repo.
