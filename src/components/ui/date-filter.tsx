@@ -38,53 +38,56 @@ const DateFilter = React.forwardRef<HTMLButtonElement, DateFilterProps>(
 
     const display = value ? format(value, "d MMM yyyy", { locale: pl }) : null;
 
+    const showClear = clearable && value;
     return (
-      <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <Button
-            ref={ref}
+      // Clear affordance lives next to the trigger button rather than inside
+      // it because axe-core `nested-interactive` forbids interactive
+      // children (role="button", tabindex>=0, focusable) under another
+      // button. Wrapping both in a single inline-flex preserves the visual
+      // pill shape.
+      <div className={cn("inline-flex items-stretch", className)}>
+        <Popover open={open} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              ref={ref}
+              type="button"
+              variant="secondary"
+              disabled={disabled}
+              aria-label={label ?? placeholder}
+              className={cn(
+                "h-10 justify-start gap-2 font-semibold",
+                !value && "text-muted-foreground",
+                showClear && "rounded-r-none"
+              )}
+            >
+              <CalendarIcon className="size-4" />
+              {label ? <span>{label}:</span> : null}
+              <span>{display ?? placeholder}</span>
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent align="start" className="w-auto p-0">
+            <Calendar
+              mode="single"
+              selected={value}
+              onSelect={(date) => {
+                onValueChange?.(date);
+                setOpen(false);
+              }}
+              autoFocus
+            />
+          </PopoverContent>
+        </Popover>
+        {showClear ? (
+          <button
             type="button"
-            variant="secondary"
-            disabled={disabled}
-            aria-label={label ?? placeholder}
-            className={cn(
-              "h-10 justify-start gap-2 font-semibold",
-              !value && "text-muted-foreground",
-              className
-            )}
+            aria-label="Wyczyść datę"
+            onClick={() => onValueChange?.(undefined)}
+            className="inline-flex h-10 items-center justify-center rounded-r-md border border-l-0 border-input bg-secondary px-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
-            <CalendarIcon className="size-4" />
-            {label ? <span>{label}:</span> : null}
-            <span>{display ?? placeholder}</span>
-            {clearable && value ? (
-              <span
-                role="button"
-                tabIndex={-1}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  onValueChange?.(undefined);
-                }}
-                className="ml-1 inline-flex size-4 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground"
-                aria-label="Wyczyść"
-              >
-                <X className="size-3" />
-              </span>
-            ) : null}
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent align="start" className="w-auto p-0">
-          <Calendar
-            mode="single"
-            selected={value}
-            onSelect={(date) => {
-              onValueChange?.(date);
-              setOpen(false);
-            }}
-            autoFocus
-          />
-        </PopoverContent>
-      </Popover>
+            <X className="size-3" />
+          </button>
+        ) : null}
+      </div>
     );
   }
 );

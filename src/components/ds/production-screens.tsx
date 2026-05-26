@@ -349,7 +349,7 @@ export function ProductionMobileUserScreen() {
               </Card>
             ))}
           </div>
-          <MobileNav />
+          <MobileNav label="Nawigacja mobilna — kolejka zadań" />
         </PhoneFrame>
 
         <PhoneFrame>
@@ -389,7 +389,7 @@ export function ProductionMobileUserScreen() {
             <Button><Check /> Zakończ etap</Button>
             <Button variant="outline"><Bell /> Zglos problem</Button>
           </div>
-          <MobileNav />
+          <MobileNav label="Nawigacja mobilna — karta zadania" />
         </PhoneFrame>
 
         <PhoneFrame>
@@ -414,7 +414,7 @@ export function ProductionMobileUserScreen() {
             <Input placeholder="Napisz wiadomość..." />
             <Button size="icon" aria-label="Wyślij"><MessageSquare /></Button>
           </div>
-          <MobileNav />
+          <MobileNav label="Nawigacja mobilna — czat produkcyjny" />
         </PhoneFrame>
       </div>
     </ScreenShell>
@@ -429,9 +429,9 @@ function PhoneFrame({ children }: { children: React.ReactNode }) {
   );
 }
 
-function MobileNav() {
+function MobileNav({ label = "Nawigacja mobilna" }: { label?: string }) {
   return (
-    <nav className="sticky bottom-0 mt-5 grid grid-cols-5 gap-1 rounded-lg border bg-card p-2 text-center text-[11px] leading-[1.5] font-bold text-muted-foreground">
+    <nav aria-label={label} className="sticky bottom-0 mt-5 grid grid-cols-5 gap-1 rounded-lg border bg-card p-2 text-center text-[11px] leading-[1.5] font-bold text-muted-foreground">
       {[
         [FileText, "Zadania"],
         [Smartphone, "Skan"],

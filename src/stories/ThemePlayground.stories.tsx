@@ -228,6 +228,7 @@ function Playground() {
                         if (/^#[0-9a-fA-F]{6}$/.test(v)) updateToken(key, v);
                       }}
                       className="font-mono uppercase"
+                      aria-label={`Hex tokenu ${key}`}
                     />
                   </div>
                 </div>

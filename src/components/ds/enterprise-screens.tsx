@@ -77,7 +77,7 @@ export function EnterpriseShell({
           </span>
           <b>juz.pl</b>
         </div>
-        <nav className="hidden min-w-0 flex-1 items-center gap-1 lg:flex">
+        <nav aria-label="Główna nawigacja" className="hidden min-w-0 flex-1 items-center gap-1 lg:flex">
           {nav.map((item) => (
             <button className="rounded-md px-3 py-2 text-sm font-semibold text-muted-foreground hover:bg-primary-soft hover:text-primary" key={item}>
               {item}
@@ -121,8 +121,8 @@ function SideModuleShell({ children, active = "Zamówienia" }: { children: React
 
   return (
     <div className="grid min-h-[calc(100vh-56px)] grid-cols-1 lg:grid-cols-[272px_minmax(0,1fr)]">
-      <aside className="hidden border-r bg-card px-5 py-6 lg:block">
-        <nav className="space-y-1">
+      <aside aria-label="Moduły aplikacji" className="hidden border-r bg-card px-5 py-6 lg:block">
+        <nav aria-label="Moduły" className="space-y-1">
           {items.map(([label, Icon]) => (
             <button
               className={[
@@ -146,7 +146,7 @@ const steps = ["Nowe", "Weryfikacja", "Planowanie", "Na produkcji", "Pakowanie",
 
 export function ProcessStepper({ current = 4 }: { current?: number }) {
   return (
-    <div className="overflow-x-auto bg-card px-6 py-6">
+    <div className="overflow-x-auto bg-card px-6 py-6" role="region" aria-label="Etapy zlecenia" tabIndex={0}>
       <div className="min-w-[980px]">
         <Stepper current={current} steps={steps} />
       </div>
@@ -289,7 +289,12 @@ function NoteRail() {
     ["Info", "Kontrola jakości poprosila o dodatkowy test tuszu.", "16.05.2026, 15:20"]
   ];
   return (
-    <aside className="space-y-4">
+    // Not an `<aside>` because this rail is nested inside `<main>` of
+    // EnterpriseShell — axe `landmark-complementary-is-top-level` requires
+    // aside landmarks to sit outside other landmarks. A `role="group"` with
+    // an aria-label keeps the screen-reader announcement without the
+    // landmark conflict.
+    <div className="space-y-4" role="group" aria-label="Notatki i historia kontaktu">
       <Card className="p-4">
         <div className="mb-3 flex items-center justify-between">
           <b>Wazne notatki</b>
@@ -318,7 +323,7 @@ function NoteRail() {
           ]}
         />
       </Card>
-    </aside>
+    </div>
   );
 }
 
@@ -573,7 +578,7 @@ export function MobileOperatorShowcase() {
                 <>
                   <div className="rounded-lg bg-primary p-5 text-primary-foreground shadow-juz">
                     <p className="text-xs font-bold uppercase">Dzis · środa</p>
-                    <h3 className="mt-2 text-2xl font-extrabold">4 prace w kolejce</h3>
+                    <h2 className="mt-2 text-2xl font-extrabold">4 prace w kolejce</h2>
                     <div className="mt-4 grid grid-cols-3 gap-3 text-sm"><b>1<br />w toku</b><b>3<br />oczekuje</b><b>2<br />pilne</b></div>
                   </div>
                   <div className="mt-5 space-y-3">
@@ -590,7 +595,7 @@ export function MobileOperatorShowcase() {
                 <>
                   <div className="rounded-lg bg-primary p-5 text-primary-foreground">
                     <p className="text-xs font-bold uppercase">Obecny etap</p>
-                    <h3 className="text-2xl font-extrabold">Pakowanie</h3>
+                    <h2 className="text-2xl font-extrabold">Pakowanie</h2>
                     <p className="mt-3 font-semibold">65% · ok. 1h 10m do konca</p>
                     <div className="mt-2 h-2 rounded-full bg-white/30"><div className="h-full w-2/3 rounded-full bg-white" /></div>
                   </div>
@@ -611,7 +616,7 @@ export function MobileOperatorShowcase() {
                   <div className="mt-auto flex gap-2"><Input placeholder="Napisz wiadomość..." /><Button size="icon" aria-label="Wyślij"><Send /></Button></div>
                 </div>
               )}
-              <MobileProductionNav />
+              <MobileProductionNav label={`Nawigacja mobilna — ${title}`} />
             </div>
           </div>
         ))}
@@ -620,9 +625,9 @@ export function MobileOperatorShowcase() {
   );
 }
 
-function MobileProductionNav() {
+function MobileProductionNav({ label = "Nawigacja mobilna" }: { label?: string }) {
   return (
-    <nav className="sticky bottom-0 mt-5 grid grid-cols-5 gap-1 rounded-lg border bg-card p-2 text-center text-[11px] leading-[1.5] font-bold text-muted-foreground">
+    <nav aria-label={label} className="sticky bottom-0 mt-5 grid grid-cols-5 gap-1 rounded-lg border bg-card p-2 text-center text-[11px] leading-[1.5] font-bold text-muted-foreground">
       {[
         [FileText, "Zadania"],
         [Smartphone, "Skan"],

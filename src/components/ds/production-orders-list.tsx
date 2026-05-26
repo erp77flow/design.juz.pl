@@ -560,12 +560,18 @@ export function ProductionOrdersListPattern() {
                     {statusBadge(selected.status)}
                     {jobBadge(selected.jobStatus)}
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  {/*
+                    Wrapping in <dl> so the <dt>/<dd> nodes inside PreviewField
+                    have a description-list ancestor. Required by axe-core
+                    `dlitem` rule; HTML5 also allows <div> wrappers around
+                    each dt/dd pair within a <dl>.
+                  */}
+                  <dl className="grid grid-cols-2 gap-3">
                     <PreviewField label="Data" value={selected.date} />
                     <PreviewField label="Termin" value={selected.deadline} />
                     <PreviewField label="Nr zlecenia" value={selected.jobNumber} />
                     <PreviewField label="Faktura" value={selected.invoice} />
-                  </div>
+                  </dl>
                   <div>
                     <span className="text-sm text-muted-foreground">Produkty</span>
                     <div className="mt-2 flex flex-wrap gap-2">
