@@ -1,5 +1,89 @@
 # Changelog
 
+## 1.0.0
+
+### Major Changes
+
+- [#2](https://github.com/erp77flow/design.juz.pl/pull/2) [`842d690`](https://github.com/erp77flow/design.juz.pl/commit/842d6908de4cf7ebff64abb5e53cc9b353761495) Thanks [@erp77flow](https://github.com/erp77flow)! - Migrate to Tailwind CSS v4 (breaking).
+
+  **Breaking changes for consumers**
+
+  - Tailwind CSS peer is now **v4.x** (was v3.x). Consumer apps must upgrade
+    in lockstep — Tailwind v3 will no longer pick up the design system's
+    source styles, and the precompiled `dist/styles.css` is emitted by v4.
+  - The package no longer exports `./tailwind.config` (the file is gone).
+    Theme tokens (`--color-primary`, `--color-background`, `--radius-*`, …)
+    now live as `@theme` in `dist/styles.css`. If you were extending the
+    shared config, switch to importing the stylesheet and overriding tokens
+    via `@theme { … }` in your own CSS.
+  - Underlying utility renames bundled by the v4 codemod:
+    `outline-none` → `outline-hidden`, `shadow-sm` → `shadow-xs`, etc.
+    Consumers who copied source classes onto wrapper elements may need
+    the same renames — run `npx @tailwindcss/upgrade` on your app.
+
+  **Non-breaking improvements**
+
+  - `Calendar`: the selected day now fills the button with the primary
+    color and white text instead of just an outline ring (fixes a v3
+    styling bug where the selected modifier landed on the `<td>` and was
+    visually masked by the inner ghost button).
+  - `--background` token fixed: was authored as invalid HSL `252 252 255`
+    which different browsers parsed differently (yellow in headless,
+    near-white in real Chrome). Now `240 100% 99%` — the near-white the
+    author intended — so behaviour is consistent everywhere.
+  - v3 semantics for `space-y-*` / `space-x-*` restored via a small CSS
+    shim, because v4 moved the margin to the _first_ child where it is
+    silently ignored on inline elements (`<b>`, `<span>`), shrinking form
+    layouts that pair an inline label with a block input.
+  - Explicit `leading-*` paired with every arbitrary `text-[Npx]`, since
+    v4 no longer inherits the parent line-height for arbitrary font sizes.
+  - New `CardFooter` primitive.
+
+### Minor Changes
+
+- [#4](https://github.com/erp77flow/design.juz.pl/pull/4) [`c39dea8`](https://github.com/erp77flow/design.juz.pl/commit/c39dea856a3b025a7fefe164e0f53caeaac082e6) Thanks [@erp77flow](https://github.com/erp77flow)! - Add `AppSidebar` suite — a composable app-shell sidebar with pin/hover/collapse state and per-group collapsing.
+
+  New exports:
+
+  - `SidebarProvider`, `useSidebar` (from `@juz/design-system`) — context with
+    pinned / hovered / mobile-open state, derived `isExpanded`, and per-group
+    collapsed state. Persists `isPinned` and `collapsedGroups` to
+    `localStorage`; storage namespace is configurable via the
+    `storagePrefix` prop (default `"juz-sidebar"`).
+  - `AppSidebar` — fixed left rail with logo slot, scroll body, mobile
+    drawer pattern, and a pin/collapse toggle at the bottom.
+  - `AppSidebarGroup` — collapsible nav section with a header (icon + label
+    - chevron). Degrades to a single tooltipped icon when the sidebar is
+      in icon-only mode.
+  - `AppSidebarItem` — nav row that supports `asChild` + Radix `Slot` so
+    the host app composes its own routing primitive (Next.js `<Link>`,
+    React Router `<Link>`, plain anchor, …) without the DS taking a hard
+    dependency on a router. Plus `isActive` / `isStandalone` modifiers.
+
+  The suite is intended to compose with the existing `Navbar` for the
+  top-bar — the demo story under `Organisms / AppSidebar` shows the
+  intended layout. No new top-bar component is added; the sidebar-aware
+  margin is one line of consumer-side composition shown in the story.
+
+### Patch Changes
+
+- [#3](https://github.com/erp77flow/design.juz.pl/pull/3) [`b592c56`](https://github.com/erp77flow/design.juz.pl/commit/b592c564462bf7f88890f5145be82c74503d7e7a) Thanks [@erp77flow](https://github.com/erp77flow)! - Small post-v1.0.0 polish across menus, charts and InputGroup.
+
+  - **Menubar**: items now paint the `bg-muted` background on keyboard
+    navigation as well as on hover (Radix tracks the highlighted item via
+    `data-highlighted`, not `:focus`).
+  - **Popover background**: `--popover` / `--popover-foreground` tokens are
+    now declared, so Radix popovers (Menubar dropdown, HoverCard, Popover,
+    Command) no longer render transparent under Tailwind v4.
+  - **BarChart / LineChart**: dropped the `aspect-video` constraint inherited
+    from `ChartContainer` so the chart fills the parent width when an
+    explicit `h-*` is set. Their Storybook preview wrappers also lost the
+    fixed `w-[540px]`.
+  - **InputGroup**: cleaner slot styling — leading slot keeps a soft
+    `bg-muted/40` wash, trailing slot is transparent with a `border-l`
+    separator, and any button inside the trailing slot gets its rounding,
+    border and shadow stripped so it sits flush inside the group.
+
 ## 0.2.0
 
 ### Minor Changes
