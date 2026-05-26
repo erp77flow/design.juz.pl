@@ -111,6 +111,7 @@ export * from "./components/ds/week-workstations";
 
 // ─── Organisms / layouts (src/components/layout/) ───
 export * from "./components/layout/app-layout";
+export * from "./components/layout/app-sidebar";
 export * from "./components/layout/data-table";
 export * from "./components/layout/document-line-items";
 export * from "./components/layout/document-parties";
@@ -119,8 +120,13 @@ export * from "./components/layout/document-section";
 export * from "./components/layout/document-totals";
 export * from "./components/layout/navbar";
 export * from "./components/layout/schedule";
+export * from "./components/layout/app-sidebar-group";
+export * from "./components/layout/app-sidebar-item";
 export * from "./components/layout/sidebar";
 export * from "./components/layout/top-bar";
+
+// ─── Hooks ───
+export * from "./hooks/use-sidebar";
 
 // ─── Utils ───
 export { cn } from "./lib/utils";
