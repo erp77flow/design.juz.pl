@@ -11,6 +11,7 @@ const badgeVariants = cva(
         success: "bg-success-soft text-success",
         warning: "bg-warning-soft text-warning",
         destructive: "bg-destructive-soft text-destructive",
+        info: "bg-info-soft text-info",
         neutral: "bg-muted text-muted-foreground",
         outline: "border bg-card text-foreground"
       }

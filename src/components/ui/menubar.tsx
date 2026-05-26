@@ -31,7 +31,7 @@ const MenubarTrigger = React.forwardRef<
   <MenubarPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-semibold outline-hidden data-[highlighted]:bg-muted focus:bg-muted data-[state=open]:bg-muted",
+      "flex cursor-pointer select-none items-center rounded-sm px-3 py-1.5 text-sm font-semibold outline-hidden hover:bg-muted data-[highlighted]:bg-muted focus:bg-muted data-[state=open]:bg-muted",
       className
     )}
     {...props}
@@ -48,7 +48,7 @@ const MenubarSubTrigger = React.forwardRef<
   <MenubarPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden data-[highlighted]:bg-muted focus:bg-muted data-[state=open]:bg-muted",
+      "flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden hover:bg-muted data-[highlighted]:bg-muted focus:bg-muted data-[state=open]:bg-muted",
       inset && "pl-8",
       className
     )}
@@ -109,7 +109,7 @@ const MenubarItem = React.forwardRef<
   <MenubarPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden data-[highlighted]:bg-muted focus:bg-muted data-disabled:pointer-events-none data-disabled:opacity-50",
+      "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-hidden hover:bg-muted data-[highlighted]:bg-muted focus:bg-muted data-disabled:pointer-events-none data-disabled:opacity-50",
       inset && "pl-8",
       className
     )}
@@ -125,7 +125,7 @@ const MenubarCheckboxItem = React.forwardRef<
   <MenubarPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-hidden data-[highlighted]:bg-muted focus:bg-muted",
+      "relative flex cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-hidden hover:bg-muted data-[highlighted]:bg-muted focus:bg-muted",
       className
     )}
     checked={checked}
@@ -148,7 +148,7 @@ const MenubarRadioItem = React.forwardRef<
   <MenubarPrimitive.RadioItem
     ref={ref}
     className={cn(
-      "relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-hidden data-[highlighted]:bg-muted focus:bg-muted",
+      "relative flex cursor-pointer select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-hidden hover:bg-muted data-[highlighted]:bg-muted focus:bg-muted",
       className
     )}
     {...props}
