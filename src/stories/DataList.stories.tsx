@@ -7,7 +7,13 @@ const meta = {
   component: DataList,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Wzorzec listy ze sticky-nagłówkiem, toolbarem filtrów, zarządcą kolumn i paginacją — używaj w widokach „Lista X” (klienci, zlecenia, dokumenty). Kopiuj strukturę, nie sam komponent: każda lista ma własne kolumny, filtry i akcje."
+      }
+    }
   }
 } satisfies Meta<typeof DataList>;
 

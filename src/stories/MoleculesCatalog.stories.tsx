@@ -5,7 +5,13 @@ const meta = {
   title: "Molecules/Overview",
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Indeks wszystkich molekuł — używaj jako wizualnej ściągi przy projektowaniu nowych ekranów. Nie reeksportuj tego komponentu w aplikacji."
+      }
+    }
   }
 } satisfies Meta;
 

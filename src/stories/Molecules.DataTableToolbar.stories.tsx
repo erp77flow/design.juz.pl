@@ -7,7 +7,13 @@ const meta = {
   title: "Molecules/DataTableToolbar",
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Górny pasek tabeli z wyszukiwarką, filtrami, zarządcą kolumn i przyciskami eksportu/dodania. Używaj zawsze nad listami z 50+ wierszami — bez tych narzędzi użytkownik nie znajdzie nic w dużym zbiorze danych."
+      }
+    }
   }
 } satisfies Meta;
 

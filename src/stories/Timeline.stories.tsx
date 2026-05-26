@@ -6,7 +6,13 @@ const meta = {
   title: "Patterns/Timeline",
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Trzy warianty osi czasu: `HorizontalTimeline` dla krótkiej sekwencji (status zlecenia), `VerticalTimeline` dla pełnej historii rekordu i `PlainTimeline` dla prostej listy zdarzeń bez ikon. Używaj w panelach „Historia” rekordu — pokazuje sekwencję, autora i datę każdej zmiany."
+      }
+    }
   }
 } satisfies Meta;
 

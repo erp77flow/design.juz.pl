@@ -5,7 +5,15 @@ import { StorySpec } from "./story-parts";
 
 const meta = {
   title: "Molecules/ColumnManagerPanel",
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Panel zarządzania widocznością i kolejnością kolumn tabeli — otwieraj go z toolbara (`ColumnVisibilitySwitch`). Używaj wszędzie tam, gdzie tabela ma 8+ kolumn i różni użytkownicy potrzebują różnych zestawów."
+      }
+    }
+  }
 } satisfies Meta;
 
 export default meta;

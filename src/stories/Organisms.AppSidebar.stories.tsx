@@ -25,7 +25,13 @@ const meta = {
     // Render in an iframe (not inline) so `position: fixed` + the `lg:` mobile
     // breakpoint behave like in a real page; inline render would clip the
     // sidebar off-canvas in the narrow Docs preview.
-    docs: { story: { inline: false, iframeHeight: 600 } },
+    docs: {
+      story: { inline: false, iframeHeight: 600 },
+      description: {
+        component:
+          "Lewy sidebar aplikacji z trybem pinned/collapsed, grupami i pozycjami nawigacji. Wymaga `SidebarProvider` w korzeniu drzewa — bez niego stan pin/hover nie działa, a `useSidebar` rzuci wyjątkiem. W parze z `Navbar` daje pełny szablon aplikacji."
+      }
+    },
   },
 } satisfies Meta;
 export default meta;

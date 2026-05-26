@@ -7,7 +7,13 @@ const meta = {
   component: SocialCalendar,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Kalendarz publikacji w social mediach z kafelkami postów per kanał (FB, IG, LI, TT) — wzorzec do zaadaptowania pod konkretną listę kanałów zespołu. Używaj jako referencji dla widoków marketingu/PR, nie jako gotowego komponentu produkcyjnego."
+      }
+    }
   }
 } satisfies Meta<typeof SocialCalendar>;
 

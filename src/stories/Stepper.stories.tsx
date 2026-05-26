@@ -7,7 +7,13 @@ const meta = {
   component: Stepper,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Pełen wzorzec wieloetapowego stepperka (kreator publikacji) — używaj dla onboardingu, kreatorów dokumentów i procesów wymagających kontekstu krok po kroku. Wrapuj w `Card` żeby oddzielić wizualnie od reszty widoku. Dla krótkich (2-3 ekranów) formularzy wystarczy `Tabs`."
+      }
+    }
   }
 } satisfies Meta<typeof Stepper>;
 

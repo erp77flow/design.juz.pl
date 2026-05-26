@@ -4,7 +4,13 @@ import { LoginScreen, NewPasswordScreen, RegisterScreen, ResetPasswordScreen } f
 const meta = {
   title: "Screens/Auth",
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Komplet ekranów autoryzacyjnych (logowanie, rejestracja, reset hasła, ustawienie nowego) zbudowanych z atomów. Dokumentacja referencyjna do kopiowania układów — w aplikacji buduj własne strony na tych samych komponentach, zamiast importować te ekrany bezpośrednio."
+      }
+    }
   }
 } satisfies Meta;
 

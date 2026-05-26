@@ -7,7 +7,13 @@ const meta = {
   component: DetailHeader,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Nagłówek ekranu rekordu z tytułem, kodem, statusem i akcjami głównymi — używaj jako pierwszy element w widokach rekordu (zlecenie, klient, dokument). Definiuje wysokość i wyrównanie z resztą szablonu; nie zagnieżdżaj w `Card`, sam pełni rolę kontenera."
+      }
+    }
   }
 } satisfies Meta<typeof DetailHeader>;
 

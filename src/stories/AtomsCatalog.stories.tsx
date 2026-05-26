@@ -5,7 +5,13 @@ const meta = {
   title: "Atoms/Overview",
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Indeks wszystkich atomów design systemu juz.pl — używaj jako szybkiej wizualnej ściągi przy projektowaniu nowego widoku. Nie reeksportuj tego komponentu w aplikacji."
+      }
+    }
   }
 } satisfies Meta;
 

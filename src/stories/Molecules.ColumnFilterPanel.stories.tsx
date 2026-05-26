@@ -7,7 +7,13 @@ const meta = {
   title: "Molecules/ColumnFilterPanel",
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Popover z filtrem pojedynczej kolumny tabeli — używaj po kliknięciu w ikonkę filtra w nagłówku kolumny. Dla wielu filtrów jednocześnie sięgnij po `AdvancedFiltersPanel`."
+      }
+    }
   }
 } satisfies Meta;
 

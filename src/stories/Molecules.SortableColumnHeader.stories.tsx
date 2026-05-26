@@ -5,7 +5,15 @@ import { StorySpec } from "./story-parts";
 
 const meta = {
   title: "Molecules/SortableColumnHeader",
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Klikalny nagłówek kolumny tabeli ze strzałkami sortowania (asc/desc) i ikoną filtra. Używaj zamiast zwykłego `TableHead` w kolumnach, po których użytkownik ma sortować lub filtrować."
+      }
+    }
+  }
 } satisfies Meta;
 
 export default meta;

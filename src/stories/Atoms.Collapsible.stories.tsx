@@ -7,7 +7,13 @@ const meta = {
   component: Collapsible,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Pojedyncza składana sekcja z triggerem i zawartością — używaj dla zaawansowanych ustawień ukrytych pod „Pokaż więcej”. Dla wielu powiązanych sekcji (FAQ, panel filtrów) lepiej Accordion."
+      }
+    }
   },
   argTypes: {
     trigger: { control: "text", description: "Widoczny nagłówek/trigger sekcji." },

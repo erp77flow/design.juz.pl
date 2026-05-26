@@ -6,7 +6,13 @@ const meta = {
   component: ChartShowcase,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Galeria wszystkich wykresów (Bar, Line, Donut, Composed) z presetami juz.pl — używaj jako referencji wyboru typu wykresu pod konkretne dane: trend w czasie → Line, porównanie kategorii → Bar, udział procentowy → Donut."
+      }
+    }
   }
 } satisfies Meta<typeof ChartShowcase>;
 

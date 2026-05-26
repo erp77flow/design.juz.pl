@@ -1,10 +1,26 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { expect, screen, userEvent, within } from "@storybook/test";
 import { atoms, StorySpec } from "./story-parts";
-const meta = { title: "Atoms/Select", tags: ["autodocs"] } satisfies Meta;
+const meta = {
+  title: "Atoms/Select",
+  tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: { component: `Pojedynczy select Radix z dropdownem stylowanym do juz.pl. Używaj dla 2-10 opcji bez wyszukiwania; dla dłuższych list — SearchableSelect, dla wielu wartości — MultiSelect, dla mobilnych formularzy — NativeSelect.` },
+    },
+  },
+} satisfies Meta;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Docs: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Trzy odmiany selecta obok siebie ułatwiają wybór: prosty (Radix) dla krótkiej listy, z wyszukiwarką dla 10+ opcji, multi dla tagów/ról. Wszystkie używają tego samego stylu triggera — wybór nie zmienia layoutu formularza."
+      }
+    }
+  },
   render: () => (
     <StorySpec name="Select" type="Atom">
       <div className="grid gap-8 xl:grid-cols-3">

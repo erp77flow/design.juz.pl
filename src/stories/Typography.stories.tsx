@@ -6,7 +6,13 @@ const meta = {
   component: TypographyScale,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Pełna skala typograficzna juz.pl (od `h1` do `caption`) z przykładami użycia — punkt odniesienia przy projektowaniu nowych nagłówków i bloków treści. W produkcji używaj komponentu `Typography` lub klas tailwind opartych na tokenach, nie hardkoduj rozmiarów."
+      }
+    }
   }
 } satisfies Meta<typeof TypographyScale>;
 

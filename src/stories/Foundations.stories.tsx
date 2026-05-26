@@ -6,7 +6,13 @@ const meta = {
   component: TokenShowcase,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Tokeny i fundamenty design systemu — kolory, typografia, spacing, cienie, radii. Pierwszy przystanek przy onboardingu projektanta/dewelopera do DS juz.pl; w aplikacji nigdy nie używaj wartości hex bezpośrednio, tylko nazwane tokeny."
+      }
+    }
   }
 } satisfies Meta<typeof TokenShowcase>;
 

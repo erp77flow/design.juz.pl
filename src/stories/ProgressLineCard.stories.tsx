@@ -6,7 +6,13 @@ const meta = {
   component: ProgressLineCards,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Karta linii produkcyjnej z paskiem postępu, godzinami i statusem zadania — używaj w dashboardach produkcyjnych i w widokach operatora. Dla pustej linii (brak aktywnego zlecenia) pokazuj inny pusty stan, sam ProgressLineCard zakłada aktywne zadanie."
+      }
+    }
   }
 } satisfies Meta<typeof ProgressLineCards>;
 

@@ -7,7 +7,13 @@ const meta = {
   component: CalendarEvent,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Kafelek wydarzenia w widokach kalendarzowych (dzień, tydzień, Gantt, harmonogram operatora). Status koloruje pasek boczny — używaj `new/planned/progress/done/warning/blocked` zgodnie ze statusem zlecenia produkcyjnego, nie dekoracyjnie."
+      }
+    }
   },
   argTypes: {
     eventId: { control: "number", description: "Identyfikator wydarzenia przekazywany do onClick." },

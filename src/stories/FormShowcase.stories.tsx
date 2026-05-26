@@ -6,7 +6,13 @@ const meta = {
   component: FormShowcase,
   tags: ["autodocs"],
   parameters: {
-    layout: "fullscreen"
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component:
+          "Referencyjny formularz z wszystkimi typami pól (text, select, multi, daty, upload, switch, walidacja) — używaj jako wzorca przy projektowaniu nowych formularzy. Kopiuj sekcje i grupowanie, nie cały komponent; każdy realny formularz ma własne pola i logikę walidacji."
+      }
+    }
   }
 } satisfies Meta<typeof FormShowcase>;
 
