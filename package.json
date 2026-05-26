@@ -54,7 +54,8 @@
     "visual:snap": "node tests/visual/snap.mjs tests/visual/current",
     "visual:baseline": "node tests/visual/snap.mjs tests/visual/baseline",
     "visual:diff": "python3 tests/visual/diff.py",
-    "visual:check": "start-server-and-test serve-storybook http://127.0.0.1:6006 \"visual:snap && visual:diff\""
+    "visual:run": "pnpm visual:snap && pnpm visual:diff",
+    "visual:check": "start-server-and-test serve-storybook http://127.0.0.1:6006 visual:run"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
