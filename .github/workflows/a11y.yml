@@ -37,6 +37,11 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Install Playwright Chromium
+        # `test:storybook` overrides HOME to keep Storybook telemetry/cache
+        # contained — Playwright caches the browser under $HOME/.cache, so the
+        # install step has to use the same HOME or test-runner won't find it.
+        env:
+          HOME: ${{ github.workspace }}/.storybook-home
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Build Storybook
