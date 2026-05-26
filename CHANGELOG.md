@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.2
+
+### Patch Changes
+
+- [#22](https://github.com/erp77flow/design.juz.pl/pull/22) [`b4bfaa5`](https://github.com/erp77flow/design.juz.pl/commit/b4bfaa5dfc0fa6df70ac85ad4518fbd06f095de0) Thanks [@erp77flow](https://github.com/erp77flow)! - Add `prepare` script so the package is installable from GitHub URL (`npm install erp77flow/design.juz.pl#v1.2.x`). Consumers no longer need to clone+build manually — `dist/` is generated automatically on install via `vite build:lib`.
+
 ## 1.2.1
 
 ### Patch Changes
