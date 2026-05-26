@@ -5,3 +5,7 @@ storybook-static
 .DS_Store
 npm-debug.log*
 *.tsbuildinfo
+
+# Visual regression — only the baseline is committed
+tests/visual/current/
+tests/visual/diff/

@@ -50,7 +50,11 @@
     "qa": "npm run build && npm run build-storybook && npm run test:storybook:ci",
     "changeset": "changeset",
     "changeset:version": "changeset version",
-    "release": "pnpm build:lib && changeset publish"
+    "release": "pnpm build:lib && changeset publish",
+    "visual:snap": "node tests/visual/snap.mjs tests/visual/current",
+    "visual:baseline": "node tests/visual/snap.mjs tests/visual/baseline",
+    "visual:diff": "python3 tests/visual/diff.py",
+    "visual:check": "start-server-and-test serve-storybook http://127.0.0.1:6006 \"visual:snap && visual:diff\""
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.12",
