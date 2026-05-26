@@ -1,0 +1,132 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# @juz/design-system
+
+Witaj w Storybooku design systemu **juz.pl**. To miejsce, w którym żyją wszystkie
+komponenty, tokeny i wzorce ekranów, na których budujemy nowe aplikacje juz.pl.
+
+Pakiet jest publikowany jako [`@juz/design-system`](https://www.npmjs.com/package/@juz/design-system)
+i można go używać w dowolnej aplikacji React 19.
+
+## Co to jest
+
+`@juz/design-system` to design system dla apek juz.pl. Pod maską:
+
+- **Tailwind CSS v4** — tokeny, theme, dark mode przez CSS variables.
+- **React 19** — peer dependency, działa też z React 18.
+- **Radix UI** — primitives dla wszystkich interakcji (dialog, dropdown, select, tabs, tooltip, popover).
+- **shadcn-style** — API komponentów zgodne z shadcn/ui, ale stylowane tokenami juz.pl.
+
+Wszystkie wartości wizualne (kolor, spacing, radius, cienie) płyną z jednego pliku
+`src/styles/globals.css` — nie wpisujemy hexów ani pixeli w komponentach.
+
+## Jak zainstalować
+
+```bash
+pnpm add @juz/design-system
+```
+
+Peer dependencies (musisz zainstalować osobno, jeżeli jeszcze ich nie masz):
+
+```bash
+pnpm add react@^19 react-dom@^19
+```
+
+Następnie zaimportuj globalne style **raz**, najczęściej w pliku
+`src/main.tsx` lub `app/layout.tsx`:
+
+```ts
+import "@juz/design-system/styles.css";
+```
+
+Bez tego importu komponenty będą się renderować, ale bez tokenów koloru, radius i cieni.
+
+## Jak importować
+
+Wszystkie komponenty publiczne są re-exportowane z głównego entry pointu:
+
+```tsx
+import { Button, Card, AppSidebar } from "@juz/design-system";
+```
+
+Możesz też importować bezpośrednio z warstw, jeśli wolisz mniejszy bundle (przy
+prawidłowym tree-shakingu różnica jest pomijalna):
+
+```tsx
+import { Button } from "@juz/design-system/atoms/button";
+import { DataList } from "@juz/design-system/molecules/data-list";
+import { AppLayout } from "@juz/design-system/layout/app-layout";
+```
+
+Util `cn` (clsx + tailwind-merge) jest też wystawiony:
+
+```ts
+import { cn } from "@juz/design-system";
+```
+
+## Konwencje
+
+Komponenty są zorganizowane w warstwy — od najmniejszej do największej:
+
+- **Atoms** — pojedyncze prymitywy (`Button`, `Input`, `Badge`, `Dialog`).
+- **Molecules** — gotowe złożenia atomów (`DatePicker`, `Combobox`, `Toolbar`).
+- **Patterns** — wzorce pracy (`DataList`, kalendarze, timeline, charts).
+- **Layouts** — układy ekranów (`AppLayout`, `AppSidebar`, `Navbar`).
+- **Screens** — kompletne przykłady ekranów biznesowych do skopiowania.
+
+### Tokeny semantyczne
+
+Zawsze używaj klas Tailwind opartych na tokenach — **nigdy** hexów ani `text-white` /
+`bg-gray-100`. Tokeny dostają wartości z `globals.css` i działają w obu themach.
+
+```tsx
+// dobrze
+<div className="bg-card text-card-foreground border-border">
+
+// źle
+<div className="bg-white text-gray-900 border-gray-200">
+```
+
+### Dark mode
+
+Dark mode jest **opt-in** przez dodanie klasy `.dark` na elemencie `<html>`.
+Możesz to robić ręcznie albo użyć biblioteki typu `next-themes`:
+
+```tsx
+import { ThemeProvider } from "next-themes";
+
+<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+  <App />
+</ThemeProvider>
+```
+
+Wszystkie komponenty same przełączą kolory — nie musisz nic dodawać po stronie
+komponentów. W Storybooku przełącz theme ikonką w toolbarze.
+
+## Versioning
+
+Wersjonowanie idzie przez [Changesets](https://github.com/changesets/changesets)
+i SemVer:
+
+- **Major** — usunięty eksport, breaking change w API komponentu, zmiana typu, która
+  wymaga migracji w aplikacjach konsumenckich.
+- **Minor** — nowy komponent, nowy wariant, nowy prop, nowy token.
+- **Patch** — bugfix, poprawka kontrastu, korekta opisu w Storybooku.
+
+Po każdej zmiance konsumenta dodaj plik w `.changeset/` — release i changelog
+generują się automatycznie w CI.
+
+## Linki
+
+- **npm** — [@juz/design-system](https://www.npmjs.com/package/@juz/design-system)
+- **GitHub** — [erp77flow/design.juz.pl](https://github.com/erp77flow/design.juz.pl)
+- **Storybook** — [design.juz.pl](https://design.juz.pl)
+
+## Dalej
+
+- Zacznij od **Foundations / Colors**, żeby zobaczyć paletę tokenów w light i dark.
+- Przejdź do **Foundations / Tokens** dla pełnej listy radius, cieni i typografii.
+- Komponenty znajdziesz w sekcjach **Atoms**, **Molecules**, **Patterns**, **Layouts**.
+- Kompletne ekrany biznesowe są w **Screens** — to gotowe szablony do skopiowania.
