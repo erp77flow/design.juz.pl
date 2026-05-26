@@ -51,8 +51,17 @@ function Calendar({
         selected:
           "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
         today: "bg-muted text-foreground",
+        // Outside (adjacent-month) days are decorative — but axe-core still
+        // checks their text contrast. `opacity-50` on `text-muted-foreground`
+        // blends to ~#878a92 on a white card (~3.4:1, FAIL). Drop the opacity
+        // and rely on the tinted `bg-primary-soft/40` parent to keep outside
+        // days visually de-emphasised without dropping below WCAG AA in
+        // either light or dark mode (muted-foreground alone reads ~5.4:1).
         outside:
-          "day-outside text-muted-foreground opacity-50 aria-selected:bg-primary-soft/40 aria-selected:text-muted-foreground aria-selected:opacity-30",
+          "day-outside text-muted-foreground aria-selected:bg-primary-soft/40 aria-selected:text-muted-foreground",
+        // `disabled` calendar buttons get the native `disabled` attribute from
+        // react-day-picker which axe-core's color-contrast rule skips — so
+        // the opacity here is fine and preserves the "unavailable" look.
         disabled: "text-muted-foreground opacity-50",
         range_middle:
           "aria-selected:bg-primary-soft aria-selected:text-foreground",

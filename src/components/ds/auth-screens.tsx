@@ -13,7 +13,10 @@ function AuthShell({ title, subtitle, children }: { title: string; subtitle: str
         </div>
         <div>
           <h2 className="max-w-md text-4xl font-extrabold leading-tight">Dołącz do juz.pl za darmo.</h2>
-          <p className="mt-4 max-w-xl text-primary-foreground/80">Skracaj linki, planuj publikacje, analizuj wyniki i pracuj szybciej z jednym panelem.</p>
+          {/* Was `text-primary-foreground/80` — white-on-primary at 80% alpha
+              blends to #e3d7fd (~4.3:1, FAIL AA). Drop the alpha and keep
+              full primary-foreground so the marketing copy stays legible. */}
+          <p className="mt-4 max-w-xl text-primary-foreground">Skracaj linki, planuj publikacje, analizuj wyniki i pracuj szybciej z jednym panelem.</p>
         </div>
       </div>
       <div className="grid place-items-center p-8">

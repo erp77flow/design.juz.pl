@@ -2432,7 +2432,10 @@ export const atoms = {
     <div className="w-[340px] rounded-4xl border-10 border-foreground bg-background p-4 shadow-juz-lg">
       <div className="mx-auto mb-4 h-6 w-28 rounded-full bg-foreground" />
       <Card className="bg-primary p-5 text-primary-foreground">
-        <p className="text-sm font-bold uppercase tracking-[0.16em] opacity-80">Dziś</p>
+        {/* `opacity-80` on inherited `text-primary-foreground` (white) over
+            `bg-primary` blends to #e3d7fd (~4.3:1, FAIL AA). Drop the opacity
+            so this hero label still reads on the dark primary surface. */}
+        <p className="text-sm font-bold uppercase tracking-[0.16em]">Dziś</p>
         <p className="mt-2 text-3xl font-extrabold">4 prace w kolejce</p>
       </Card>
       <div className="mt-4 space-y-3">
