@@ -165,15 +165,24 @@
     --primary-foreground: 0 0% 100%;
     --primary-soft: 261 100% 97%;
 
-    --success: 166 44% 41%;
+    /* Darkened from 41% -> 33% L so text-success on white / success-soft hits
+       WCAG AA. Old #3b9781 ≈ 3.22–3.58:1 (FAIL). New #2f7967 ≈ 4.72–5.18:1. */
+    --success: 166 44% 33%;
     --success-foreground: 0 0% 100%;
     --success-soft: 165 54% 94%;
 
-    --warning: 41 66% 47%;
+    /* Amber at 47% L was the worst offender (≈2.53:1 on warning-soft) because
+       axe weights the green channel heavily. Darkened to 33% gives a richer
+       ochre that still reads as "warning" but hits AA. Old #c69428 → new
+       #8b681c (≈4.80:1 on soft, 5.13:1 on white). */
+    --warning: 41 66% 33%;
     --warning-foreground: 0 0% 100%;
     --warning-soft: 42 92% 95%;
 
-    --destructive: 348 68% 55%;
+    /* Darkened from 55% -> 48% L so destructive text on destructive-soft hits
+       WCAG AA (#da3e5d on #ffebef ≈ 3.78:1 FAIL; #cd2748 on #ffebef ≈ 4.62:1
+       PASS). Also lifts white-on-destructive from 4.35:1 to 5.28:1. */
+    --destructive: 348 68% 48%;
     --destructive-foreground: 0 0% 100%;
     --destructive-soft: 348 100% 96%;
 
@@ -182,7 +191,12 @@
     --info-soft: 214 95% 93%;
 
     --muted: 250 43% 97%;
-    --muted-foreground: 220 15% 54%;
+    /* Darkened from 54% -> 44% L to meet WCAG AA contrast (≥4.5:1) against
+       every light surface this token paints on: white (#ffffff), background
+       (#fdfcfe), card tints (#fafaff/#f9f8fc), bg-muted (#f5f4fb) AND the
+       worst-case bg-destructive-soft (#ffebef). Old #78839b ≈ 3.44–3.81:1
+       (FAIL). New #5f6a81 ≈ 4.76–5.43:1 (PASS). */
+    --muted-foreground: 220 15% 44%;
     --border: 222 26% 89%;
     --input: 222 26% 89%;
     --ring: 258 89% 59%;
