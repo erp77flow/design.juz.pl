@@ -1,0 +1,53 @@
+name: Accessibility
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: a11y-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  a11y:
+    name: axe-core against every Storybook story
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install JS deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Build Storybook
+        env:
+          HOME: ${{ github.workspace }}/.storybook-home
+          STORYBOOK_DISABLE_TELEMETRY: "1"
+        run: pnpm build-storybook
+
+      - name: Run axe-core on every story
+        # `test:storybook:ci` boots `serve-storybook` on :6006 and runs
+        # `@storybook/test-runner`, which calls our `.storybook/test-runner.ts`
+        # `postVisit` hook against each story. The hook fails the test on any
+        # axe-core violation, which fails the job.
+        run: pnpm test:storybook:ci
