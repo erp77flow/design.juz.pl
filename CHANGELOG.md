@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.5.0
+
+### Minor Changes
+
+- [#28](https://github.com/erp77flow/design.juz.pl/pull/28) [`367393d`](https://github.com/erp77flow/design.juz.pl/commit/367393dfdba1f357e5a85e1cbe128c90a69db7cf) Thanks [@erp77flow](https://github.com/erp77flow)! - Extract record-page shell sub-components from `NewClientPattern` / `ClientDetailPattern` so other apps can build create/detail screens without copying the monolith:
+
+  - `InfoSection` — Card section with icon, title, optional `wymagane` badge and toolbar
+  - `SectionNav` + `SectionNavEntry` — left sticky nav with scroll-to-anchor highlight
+  - `RecordPageLayout` — 3-column shell (260px / 1fr / 340px), `columns="2"` skips the right rail
+  - `FieldGrid` + `Field` — `<dl>` grid for label/value pairs, with `mono` flag and `—` fallback for empty values
+  - `SummaryPanel` + `SummaryRow` — right-rail validation/summary card
+
+  Also exports `NewClientPattern` and `ClientDetailPattern` from the package root as reference patterns.
+
 ## 1.4.0
 
 ### Minor Changes
