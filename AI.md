@@ -1,6 +1,6 @@
 # AI instructions for design.juz.pl
 
-Ten plik jest źródłem reguł dla AI (Claude / Copilot / Cursor / inne) budujących aplikacje na bazie design.juz.pl. Powinien być aktualizowany razem z kodem.
+Ten plik jest źródłem reguł dla AI budujących aplikacje na bazie design.juz.pl. Powinien być aktualizowany razem z kodem.
 
 Przed startem sesji przeczytaj też:
 
@@ -82,7 +82,7 @@ W stopce wdrażanej aplikacji wstaw widoczną atrybucję:
 
 ### Architektura
 - ❌ **Nie pomijaj warstw DS** — nie wklejaj nowego primitive UI bezpośrednio do screena bez wcześniejszego wyniesienia go do `Atoms`.
-- ❌ **Nie używaj branż ani marek spoza juz.pl** w przykładach biznesowych (żadnych "Cerec", "Britenet", branż medycznych/stomatologicznych). Domyślny kontekst biznesowy: firma produkcyjna (długopisy, markery, papier, magazyn, produkcja, PZ, zamówienia).
+- ❌ **Nie używaj branż ani marek spoza juz.pl** w przykładach biznesowych. Używaj uniwersalnych placeholderów: "Firma testowa sp. z o.o.", "Imię Nazwisko", "Klient testowy" itp. Domyślny kontekst biznesowy: firma produkcyjna (długopisy, markery, papier, magazyn, produkcja, PZ, zamówienia).
 - ❌ **Nie zostawiaj literówek bez polskich znaków** w dokumentacji i story (np. „wartosc", „zamow", „naglow", „glown", „domysln" — używaj poprawnych form z polskimi znakami).
 
 ### Licencja
