@@ -1,0 +1,74 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Implementation/Developer tools" />
+
+# Developer tools
+
+Na tym etapie nie potrzebujemy osobnych rozbudowanych stron `Utilities`, `Hooks` i `Constants` jak w większym systemie, jeżeli nie mamy jeszcze publicznego pakietu narzędziowego. Potrzebujemy jednak jednej strony, która mówi co juz istnieje i kiedy rozbijać to na osobne działy.
+
+## Utilities
+
+Aktualnie podstawowym helperem jest:
+
+```ts
+import { cn } from "@/lib/utils";
+```
+
+`cn` służy do łączenia klas Tailwind i wariantów komponentów. Nie twórz lokalnych helperów typu `classNames`, `mergeClass`, `cls`, jeżeli `cn` wystarcza.
+
+## Tokens
+
+Tokeny są w:
+
+```txt
+src/styles/globals.css
+tailwind.config.ts
+```
+
+Zmiana theme odbywa sie przez zmienne CSS, nie przez edycje komponentów.
+
+## Scripts
+
+```bash
+npm run storybook
+npm run build
+npm run build-storybook
+npm run test:storybook
+npm run qa
+```
+
+`npm run qa` jest komendą przed publikacją i większym refaktorem.
+
+## Hooks
+
+Nie tworzymy katalogu hooks tylko po to, żeby istniał. Hook dodajemy, kiedy:
+
+- jest używany przez więcej niż jeden komponent,
+- izoluje realna logike interakcji,
+- da sie go przetestowac albo pokazac w Storybooku,
+- nie jest tylko wrapperem na jeden `useState`.
+
+Przyklady kandydatow na przyszłosc:
+
+- `useDataListState` dla sortowania, filtrów i ukrywania kolumn,
+- `useThemeTokens` dla panelu zmiany theme,
+- `useDisclosure` dla prostych open/close, jeżeli zacznie sie powtarzac.
+
+## Constants
+
+Stałe wynosimy, gdy są wspólne dla wielu ekranów:
+
+- statusy dokumentow,
+- typy kanałów publikacji,
+- warianty badge,
+- nazwy krokow procesu.
+
+Nie wynosimy danych demo tylko dlatego, ze są długie. Dane demo mogą zostać przy story, jeżeli służą tylko prezentacji.
+
+## Kiedy rozbic na osobne strony
+
+Jeśli pojawia się co najmniej 5 publicznych utilities, hooks albo constants używanych przez wiele komponentów, rozbijamy ten dział na:
+
+- `Developer tools / Utilities`
+- `Developer tools / Hooks`
+- `Developer tools / Constants`

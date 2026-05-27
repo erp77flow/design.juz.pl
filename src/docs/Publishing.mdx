@@ -1,0 +1,46 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Implementation/Publishing design.juz.pl" />
+
+# Publishing design.juz.pl
+
+Ta dokumentacja opisuje przygotowanie publicznej wersji design systemu. Publikacja jest osobnym krokiem i nie jest wykonywana automatycznie.
+
+## Build
+
+```bash
+npm run build
+npm run build-storybook
+```
+
+Wynik Storybooka trafia do:
+
+```txt
+storybook-static/
+```
+
+## Hosting
+
+Storybook to statyczne pliki — wystawiamy je na GitHub Pages z brancha `gh-pages` (workflow `.github/workflows/pages.yml` robi to automatycznie po pushu na `main`).
+
+Minimalne wymagania alternatywnego hostingu:
+
+- statyczny hosting plików HTML/CSS/JS,
+- HTTPS,
+- cache dla assetów z hashem,
+- brak cache albo krótki cache dla `index.html`.
+
+## Publiczne README
+
+Repo publiczne powinno zawierać:
+
+- cel projektu,
+- sposób uruchomienia lokalnie,
+- zasady tokenów i theme,
+- zasady atrybucji,
+- informacje, że właścicielem rozwiązania i marki juz.pl jest Alfabet sp. z o.o. (`www.alfabet.lu`),
+- informacje, że marka juz.pl nie jest objęta licencją komponentów.
+
+## Licencja
+
+Aktualna robocza licencja jest w `LICENSE.md`. Zezwala na użycie komponentów i układów z atrybucją `UI based on design.juz.pl`, ale nie przenosi praw do marki juz.pl należącej do Alfabet sp. z o.o.

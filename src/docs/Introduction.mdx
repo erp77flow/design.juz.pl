@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Overview" />
+
+# design.juz.pl
+
+Design system juz.pl jest baza dla nowych aplikacji: tokeny, komponenty shadcn-compatible, wzorce ekranów i zasady dostepnosci.
+
+Właścicielem rozwiązania i marki juz.pl jest Alfabet sp. z o.o.,
+[www.alfabet.lu](https://www.alfabet.lu).
+
+Autorem design systemu jest **Rafał Mazur**.
+
+Kontakt projektowy i firmowy:
+
+- Alfabet sp. z o.o.
+- [www.alfabet.lu](https://www.alfabet.lu)
+
+## Co zawiera
+
+- **Foundations**: tokeny koloru, typografia, spacing, radius, cienie i zasady WCAG AA.
+- **Atoms**: komponenty bazowe zgodne z architekturą shadcn/Radix, ale stylowane tokenami juz.pl.
+- **Molecules**: złozenia atomów, np. toolbar tabeli, filtry, date picker, menu profilu, akcje plikow.
+- **Patterns**: kompletne wzorce pracy, np. listy danych, wykresy, kalendarze, timeline i steppery.
+- **Layouts**: układy ekranów, nagłówki rekordu, ramy aplikacji i struktury podglądu.
+- **Screens**: przyklady ekranów biznesowych do kopiowania jako baza nowych aplikacji.
+- **Implementation**: zasady shadcn, tokenów, publikacji i pracy z AI.
+
+## Cel
+
+- zachować obecny charakter juz.pl: fiolet, czyste karty, lekkie tabele, wyrazne akcje
+- mieć techniczną bazę w React, Tailwind, Radix i shadcn
+- publikowac dokumentacje pod `design.juz.pl`
+- dawac AI jednoznaczna instrukcje, jak budowac nowe aplikacje na tej bazie
+
+## Jak korzystac
+
+1. Zacznij od `Introduction / Component map`, żeby sprawdzić, czy komponent juz istnieje.
+2. Dla implementacji użyj atomów z `src/components/ui/*`.
+3. Dla ekranów biznesowych wybierz najblizszy wzorzec z `Patterns`, `Layouts` albo `Screens`.
+4. Jeśli brakuje elementu, dodaj go najpierw do warstwy `Atoms` albo `Molecules`, a dopiero potem użyj w ekranie.
+5. Po zmianach dopisz wpis w `Changelog` i uruchom testy Storybooka.
+
+## Zasada wdrozenia
+
+`ds.html` jest wzorcem wizualnym. Ten projekt jest docelową implementacją developerska.
+
+## Pliki z zasadami
+
+Te pliki są częścią repo i mają być utrzymywane razem z kodem:
+
+- `AI.md` - instrukcje dla AI budujacego nowe ekrany.
+- `DESIGN_SYSTEM_GUIDELINES.md` - zasady architektury i wygladu.
+- `CHANGELOG.md` - historia zmian design systemu.
+- `README.md` - uruchomienie, publikacją i podstawowa mapa projektu.

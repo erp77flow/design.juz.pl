@@ -1,0 +1,70 @@
+name: Visual regression
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: visual-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  visual:
+    name: Pixel-diff every story vs committed baseline
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python deps
+        run: pip install --quiet Pillow
+
+      - name: Install JS deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Build Storybook
+        env:
+          HOME: ${{ github.workspace }}/.storybook-home
+          STORYBOOK_DISABLE_TELEMETRY: "1"
+        run: pnpm build-storybook
+
+      - name: Run visual regression
+        # `visual:check` boots `serve-storybook` on :6006, then runs
+        # `visual:snap && visual:diff`. `diff.py` exits 1 when any story
+        # crosses the per-pixel threshold or a baseline is missing/extra.
+        run: pnpm visual:check
+
+      - name: Upload diff artifacts on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diff
+          path: |
+            tests/visual/current/
+            tests/visual/diff/
+          retention-days: 14

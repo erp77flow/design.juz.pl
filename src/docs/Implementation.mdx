@@ -1,0 +1,62 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Implementation/Tokens and shadcn" />
+
+# Tokens and shadcn
+
+design.juz.pl jest budowany jak system zgodny z shadcn/Radix, ale wizualnie sterowany tokenami juz.pl. Komponenty mogą być kopiowane do nowych aplikacji, jeżeli zachowuja API shadcn i nie omijaja tokenów.
+
+## Zasada implementacji
+
+1. Używaj komponentów z `src/components/ui/*` jako atomów.
+2. Molecules, patterns, layouts i screens skladaj z atomów, nie z lokalnie rysowanych zamiennikow.
+3. Kolory zapisuj jako tokeny: `primary`, `success`, `warning`, `destructive`, `muted`, `border`, `ring-3`.
+4. Spacing, radius i cienie bierz z klas Tailwind opartych na tokenach projektu: `rounded-md`, `rounded-lg`, `shadow-juz-sm`, `shadow-juz`, `shadow-juz-lg`.
+5. Interakcje typu modal, dropdown, select, tabs i tooltip buduj na Radix primitives przez wrappery `ui/*`.
+
+## Theme jednym zestawem zmiennych
+
+Podstawowy theme siedzi w `src/styles/globals.css` w `:root`.
+
+```css
+:root {
+  --primary: 258 89% 59%;
+  --primary-foreground: 0 0% 100%;
+  --primary-soft: 261 100% 97%;
+
+  --success: 166 44% 41%;
+  --warning: 41 66% 47%;
+  --destructive: 348 68% 55%;
+
+  --background: 252 252 255;
+  --foreground: 225 44% 10%;
+  --card: 0 0% 100%;
+  --border: 222 26% 89%;
+  --ring: 258 89% 59%;
+}
+```
+
+Zmiana fioletowego na niebieski powinna zaczynać się od zmiany `--primary`, `--primary-soft`, `--ring` i ewentualnie tonalnego dostrojenia statusów. Komponenty nie powinny mieć wpisanych ręcznie wartości `#...` dla kolorów semantycznych.
+
+## API komponentów
+
+Wrappery zachowują nazwy i sposób użycia znany z shadcn:
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+```
+
+Nowe komponenty dodajemy do odpowiedniej warstwy:
+
+- `Atoms`: pojedynczy prymityw UI, np. Button, Input, Select, Dialog.
+- `Molecules`: gotowe zestawy atomów, np. filtr dat, menu profilu, toolbar tabeli.
+- `Patterns`: pełne wzorce pracy, np. DataList, calendar, charts, detail record.
+- `Layouts`: układy ekranów i ramy aplikacji.
+- `Screens`: pełne przykłady ekranów biznesowych.
+
+## Dostępność
+
+Każdy komponent interaktywny musi działać klawiaturą, mieć widoczny focus i odpowiednie `aria-*`. Radix zapewnia bazę zachowania dla modali, dropdownów, selectów, tabsów i tooltipów. Dla customowych komponentów trzeba dopisać role, stany i etykiety ręcznie.

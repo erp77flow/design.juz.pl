@@ -1,0 +1,46 @@
+name: Bundle size
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: size-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  size:
+    name: Measure dist/ vs size-limit budgets
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build library (dist/)
+        # We measure the LIBRARY bundle (vite.lib.config.ts), not the
+        # Storybook demo. `build:lib` emits dist/index.js + dist/styles.css —
+        # the two files size-limit checks against `.size-limit.json`.
+        run: pnpm build:lib
+
+      - name: Check bundle size
+        run: pnpm size

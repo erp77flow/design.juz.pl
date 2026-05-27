@@ -1,0 +1,192 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction/Components map" />
+
+# Components map
+
+Płaska tabela wszystkich komponentów wystawionych z paczki `@juz/design-system`.
+Każdy wiersz pokazuje: nazwę komponentu, warstwę architektury (Atom / Molecule /
+Pattern / Layout / Screen), ścieżkę do pliku źródłowego w repo i link do strony
+docs w tym Storybooku.
+
+Tabela jest **generowana automatycznie** ze źródeł:
+
+- lista komponentów: `src/index.ts` (publiczne re-exporty per warstwa),
+- mapowanie komponent → story title: skan `src/stories/*.stories.tsx`.
+
+Refresh po dodaniu nowego komponentu:
+
+```bash
+node scripts/regen-component-map.mjs
+```
+
+Skrypt nadpisuje tylko fragment między markerami `components-map:start` /
+`components-map:end` poniżej — reszta strony jest pisana ręcznie i bezpieczna.
+
+## Jak czytać warstwy
+
+- **Atom** — pojedynczy primitive UI (`src/components/ui/`).
+- **Molecule** — złożenie kilku atomów z domeną biznesową (`src/components/ds/`).
+- **Pattern** — powtarzalny wzorzec pracy (DataList, Timeline, Charts). Pliki
+  patternów również żyją w `src/components/ds/` razem z molecules.
+- **Layout** — rama ekranu albo aplikacji (`src/components/layout/`).
+- **Screen** — kompletny widok biznesowy w `src/stories/Screen.*.stories.tsx`.
+  Screeny nie są re-exportowane jako komponenty (są przykładami do kopiowania),
+  więc nie pojawiają się w tej tabeli — listę znajdziesz w sekcji **Screens** w
+  navigation Storybooka.
+
+## Czego brakuje w tej tabeli
+
+- **Foundations** (kolory, typografia, tokeny, theme playground) — patrz sekcja
+  **Foundations** w nawigacji.
+- **Hooks** (`useSidebar`) — eksport publiczny, ale nie ma story.
+- **Catalog overview** (`Atoms/Overview`, `Molecules/Overview`) — to przeglądowe
+  story, a nie pojedyncze komponenty.
+
+---
+
+{/* components-map:start */}
+
+| Component | Category | Source file | Story |
+|-----------|----------|-------------|-------|
+| `Accordion` | Atom | `src/components/ui/accordion.tsx` | [Atoms/Accordion](?path=/docs/atoms-accordion--docs) |
+| `ActionButtons` | Molecule | `src/components/ds/action-buttons.tsx` | [Molecules/ActionButtons](?path=/docs/molecules-actionbuttons--docs) |
+| `AddressCard` | Atom | `src/components/ui/address-card.tsx` | [Atoms/AddressCard](?path=/docs/atoms-addresscard--docs) |
+| `AdvancedFiltersPanel` | Molecule | `src/components/ds/advanced-filters-panel.tsx` | [Molecules/AdvancedFiltersPanel](?path=/docs/molecules-advancedfilterspanel--docs) |
+| `Alert` | Atom | `src/components/ui/alert.tsx` | [Atoms/Alert](?path=/docs/atoms-alert--docs) |
+| `AlertDialog` | Atom | `src/components/ui/alert-dialog.tsx` | [Atoms/AlertDialog](?path=/docs/atoms-alertdialog--docs) |
+| `AppLayout` | Layout | `src/components/layout/app-layout.tsx` | _brak story_ |
+| `AppSidebar` | Layout | `src/components/layout/app-sidebar.tsx` | [Organisms/AppSidebar](?path=/docs/organisms-appsidebar--docs) |
+| `AppSidebarGroup` | Layout | `src/components/layout/app-sidebar-group.tsx` | _brak story_ |
+| `AppSidebarItem` | Layout | `src/components/layout/app-sidebar-item.tsx` | _brak story_ |
+| `AspectRatio` | Atom | `src/components/ui/aspect-ratio.tsx` | [Atoms/AspectRatio](?path=/docs/atoms-aspectratio--docs) |
+| `Autocomplete` | Molecule | `src/components/ds/autocomplete.tsx` | [Molecules/Autocomplete](?path=/docs/molecules-autocomplete--docs) |
+| `Avatar` | Atom | `src/components/ui/avatar.tsx` | [Atoms/Avatar](?path=/docs/atoms-avatar--docs) |
+| `Badge` | Atom | `src/components/ui/badge.tsx` | [Atoms/Badge](?path=/docs/atoms-badge--docs) |
+| `BarChart` | Atom | `src/components/ui/bar-chart.tsx` | [Atoms/BarChart](?path=/docs/atoms-barchart--docs) |
+| `BasicMenuItem` | Molecule | `src/components/ds/basic-menu-item.tsx` | [Molecules/BasicMenuItem](?path=/docs/molecules-basicmenuitem--docs) |
+| `Breadcrumb` | Atom | `src/components/ui/breadcrumb.tsx` | [Atoms/Breadcrumb](?path=/docs/atoms-breadcrumb--docs) |
+| `Button` | Atom | `src/components/ui/button.tsx` | [Atoms/Button](?path=/docs/atoms-button--docs) |
+| `ButtonGroup` | Atom | `src/components/ui/button-group.tsx` | [Atoms/ButtonGroup](?path=/docs/atoms-buttongroup--docs) |
+| `Calendar` | Atom | `src/components/ui/calendar.tsx` | [Atoms/Calendar](?path=/docs/atoms-calendar--docs) |
+| `CalendarEvent` | Molecule | `src/components/ds/calendar-event.tsx` | [Atoms/CalendarEvent](?path=/docs/atoms-calendarevent--docs) |
+| `CalendarEventSection` | Molecule | `src/components/ds/calendar-event-section.tsx` | [Molecules/CalendarEventSection](?path=/docs/molecules-calendareventsection--docs) |
+| `Card` | Atom | `src/components/ui/card.tsx` | [Atoms/Card](?path=/docs/atoms-card--docs) |
+| `Carousel` | Atom | `src/components/ui/carousel.tsx` | [Atoms/Carousel](?path=/docs/atoms-carousel--docs) |
+| `Chart` | Atom | `src/components/ui/chart.tsx` | [Atoms/Chart](?path=/docs/atoms-chart--docs) |
+| `ChartPrimitives` | Molecule | `src/components/ds/chart-primitives.tsx` | _brak story_ |
+| `Checkbox` | Atom | `src/components/ui/checkbox.tsx` | [Atoms/Checkbox](?path=/docs/atoms-checkbox--docs) |
+| `Collapsible` | Atom | `src/components/ui/collapsible.tsx` | [Atoms/Collapsible](?path=/docs/atoms-collapsible--docs) |
+| `CollapsibleMenuItem` | Molecule | `src/components/ds/collapsible-menu-item.tsx` | [Molecules/CollapsibleMenuItem](?path=/docs/molecules-collapsiblemenuitem--docs) |
+| `ColumnVisibilitySwitch` | Atom | `src/components/ui/column-visibility-switch.tsx` | [Atoms/ColumnVisibilitySwitch](?path=/docs/atoms-columnvisibilityswitch--docs) |
+| `Combobox` | Molecule | `src/components/ds/combobox.tsx` | [Molecules/Combobox](?path=/docs/molecules-combobox--docs) |
+| `Command` | Atom | `src/components/ui/command.tsx` | [Atoms/Command](?path=/docs/atoms-command--docs) |
+| `ContextMenu` | Atom | `src/components/ui/context-menu.tsx` | [Molecules/ContextMenu](?path=/docs/molecules-contextmenu--docs) |
+| `DataList` | Molecule | `src/components/ds/data-list.tsx` | [Patterns/DataList](?path=/docs/patterns-datalist--docs) |
+| `DataTable` | Layout | `src/components/layout/data-table.tsx` | _brak story_ |
+| `DataTableMolecules` | Molecule | `src/components/ds/data-table-molecules.tsx` | _brak story_ |
+| `DataTablePattern` | Molecule | `src/components/ds/data-table-pattern.tsx` | _brak story_ |
+| `DateFilter` | Atom | `src/components/ui/date-filter.tsx` | [Atoms/DateFilter](?path=/docs/atoms-datefilter--docs) |
+| `DatePicker` | Molecule | `src/components/ds/date-picker.tsx` | [Molecules/DatePicker](?path=/docs/molecules-datepicker--docs) |
+| `DateRangeInput` | Atom | `src/components/ui/date-range-input.tsx` | [Atoms/DateRangeInput](?path=/docs/atoms-daterangeinput--docs) |
+| `DecimalInput` | Atom | `src/components/ui/decimal-input.tsx` | [Atoms/DecimalInput](?path=/docs/atoms-decimalinput--docs) |
+| `DetailHeader` | Molecule | `src/components/ds/detail-header.tsx` | [Layouts/DetailHeader](?path=/docs/layouts-detailheader--docs) |
+| `Dialog` | Atom | `src/components/ui/dialog.tsx` | [Atoms/Dialog](?path=/docs/atoms-dialog--docs) |
+| `DocumentLineItems` | Layout | `src/components/layout/document-line-items.tsx` | _brak story_ |
+| `DocumentParties` | Layout | `src/components/layout/document-parties.tsx` | _brak story_ |
+| `DocumentPreview` | Layout | `src/components/layout/document-preview.tsx` | _brak story_ |
+| `DocumentSection` | Layout | `src/components/layout/document-section.tsx` | _brak story_ |
+| `DocumentTotals` | Layout | `src/components/layout/document-totals.tsx` | _brak story_ |
+| `DonutChart` | Atom | `src/components/ui/donut-chart.tsx` | [Atoms/DonutChart](?path=/docs/atoms-donutchart--docs) |
+| `Drawer` | Atom | `src/components/ui/drawer.tsx` | [Atoms/Drawer](?path=/docs/atoms-drawer--docs) |
+| `DropdownMenu` | Atom | `src/components/ui/dropdown-menu.tsx` | [Molecules/DropdownMenu](?path=/docs/molecules-dropdownmenu--docs) |
+| `Empty` | Atom | `src/components/ui/empty.tsx` | [Atoms/Empty](?path=/docs/atoms-empty--docs) |
+| `EmptyState` | Atom | `src/components/ui/empty-state.tsx` | [Atoms/EmptyState](?path=/docs/atoms-emptystate--docs) |
+| `FieldDisplay` | Atom | `src/components/ui/field-display.tsx` | [Atoms/FieldDisplay](?path=/docs/atoms-fielddisplay--docs) |
+| `FileActions` | Molecule | `src/components/ds/file-actions.tsx` | [Molecules/FileActions](?path=/docs/molecules-fileactions--docs) |
+| `FilterSelect` | Atom | `src/components/ui/filter-select.tsx` | [Atoms/FilterSelect](?path=/docs/atoms-filterselect--docs) |
+| `FormField` | Molecule | `src/components/ds/form-field.tsx` | [Molecules/FormField](?path=/docs/molecules-formfield--docs) |
+| `Header` | Molecule | `src/components/ds/header.tsx` | [Molecules/Header](?path=/docs/molecules-header--docs) |
+| `HoverCard` | Atom | `src/components/ui/hover-card.tsx` | [Atoms/HoverCard](?path=/docs/atoms-hovercard--docs) |
+| `IconActionButton` | Atom | `src/components/ui/icon-action-button.tsx` | [Atoms/IconActionButton](?path=/docs/atoms-iconactionbutton--docs) |
+| `IconTile` | Atom | `src/components/ui/icon-tile.tsx` | [Atoms/IconTile](?path=/docs/atoms-icontile--docs) |
+| `Input` | Atom | `src/components/ui/input.tsx` | [Atoms/Input](?path=/docs/atoms-input--docs) |
+| `InputGroup` | Atom | `src/components/ui/input-group.tsx` | [Atoms/InputGroup](?path=/docs/atoms-inputgroup--docs) |
+| `InputOtp` | Atom | `src/components/ui/input-otp.tsx` | _brak story_ |
+| `Kbd` | Atom | `src/components/ui/kbd.tsx` | [Atoms/Kbd](?path=/docs/atoms-kbd--docs) |
+| `Label` | Atom | `src/components/ui/label.tsx` | [Atoms/Label](?path=/docs/atoms-label--docs) |
+| `LineChart` | Atom | `src/components/ui/line-chart.tsx` | [Atoms/LineChart](?path=/docs/atoms-linechart--docs) |
+| `Logo` | Molecule | `src/components/ds/logo.tsx` | [Atoms/Logo](?path=/docs/atoms-logo--docs) |
+| `Menubar` | Atom | `src/components/ui/menubar.tsx` | [Atoms/Menubar](?path=/docs/atoms-menubar--docs) |
+| `MetaTile` | Atom | `src/components/ui/meta-tile.tsx` | [Atoms/MetaTile](?path=/docs/atoms-metatile--docs) |
+| `MetricCard` | Atom | `src/components/ui/metric-card.tsx` | [Atoms/MetricCard](?path=/docs/atoms-metriccard--docs) |
+| `MiniMonth` | Atom | `src/components/ui/mini-month.tsx` | [Atoms/MiniMonth](?path=/docs/atoms-minimonth--docs) |
+| `ModeToggle` | Molecule | `src/components/ds/mode-toggle.tsx` | [Molecules/ModeToggle](?path=/docs/molecules-modetoggle--docs) |
+| `MultiSelect` | Atom | `src/components/ui/multi-select.tsx` | [Atoms/MultiSelect](?path=/docs/atoms-multiselect--docs) |
+| `NativeSelect` | Atom | `src/components/ui/native-select.tsx` | [Atoms/NativeSelect](?path=/docs/atoms-nativeselect--docs) |
+| `Navbar` | Layout | `src/components/layout/navbar.tsx` | _brak story_ |
+| `PageSizeControl` | Atom | `src/components/ui/page-size-control.tsx` | [Atoms/PageSizeControl](?path=/docs/atoms-pagesizecontrol--docs) |
+| `Pagination` | Molecule | `src/components/ds/pagination.tsx` | [Molecules/Pagination](?path=/docs/molecules-pagination--docs) |
+| `PhoneFrame` | Atom | `src/components/ui/phone-frame.tsx` | [Atoms/PhoneFrame](?path=/docs/atoms-phoneframe--docs) |
+| `Popover` | Atom | `src/components/ui/popover.tsx` | [Atoms/Popover](?path=/docs/atoms-popover--docs) |
+| `PrefixInput` | Molecule | `src/components/ds/prefix-input.tsx` | [Molecules/PrefixInput](?path=/docs/molecules-prefixinput--docs) |
+| `ProfileMenu` | Molecule | `src/components/ds/profile-menu.tsx` | [Molecules/ProfileMenu](?path=/docs/molecules-profilemenu--docs) |
+| `Progress` | Atom | `src/components/ui/progress.tsx` | [Atoms/Progress](?path=/docs/atoms-progress--docs) |
+| `ProgressLineCard` | Molecule | `src/components/ds/progress-line-card.tsx` | [Patterns/ProgressLineCard](?path=/docs/patterns-progresslinecard--docs) |
+| `RadioGroup` | Atom | `src/components/ui/radio-group.tsx` | [Atoms/RadioGroup](?path=/docs/atoms-radiogroup--docs) |
+| `RecordTabs` | Molecule | `src/components/ds/record-tabs.tsx` | [Molecules/RecordTabs](?path=/docs/molecules-recordtabs--docs) |
+| `Schedule` | Layout | `src/components/layout/schedule.tsx` | _brak story_ |
+| `ScrollArea` | Atom | `src/components/ui/scroll-area.tsx` | [Atoms/ScrollArea](?path=/docs/atoms-scrollarea--docs) |
+| `SearchableSelect` | Atom | `src/components/ui/searchable-select.tsx` | [Atoms/SearchableSelect](?path=/docs/atoms-searchableselect--docs) |
+| `SectionNavItem` | Atom | `src/components/ui/section-nav-item.tsx` | [Atoms/SectionNavItem](?path=/docs/atoms-sectionnavitem--docs) |
+| `SegmentedTabs` | Molecule | `src/components/ds/segmented-tabs.tsx` | [Molecules/SegmentedTabs](?path=/docs/molecules-segmentedtabs--docs) |
+| `Select` | Atom | `src/components/ui/select.tsx` | [Atoms/Select](?path=/docs/atoms-select--docs) |
+| `Separator` | Atom | `src/components/ui/separator.tsx` | [Atoms/Separator](?path=/docs/atoms-separator--docs) |
+| `Sheet` | Atom | `src/components/ui/sheet.tsx` | [Atoms/Sheet](?path=/docs/atoms-sheet--docs) |
+| `Sidebar` | Layout | `src/components/layout/sidebar.tsx` | _brak story_ |
+| `Skeleton` | Atom | `src/components/ui/skeleton.tsx` | [Atoms/Skeleton](?path=/docs/atoms-skeleton--docs) |
+| `Slider` | Atom | `src/components/ui/slider.tsx` | [Atoms/Slider](?path=/docs/atoms-slider--docs) |
+| `SocialCalendar` | Molecule | `src/components/ds/social-calendar.tsx` | [Patterns/SocialCalendar](?path=/docs/patterns-socialcalendar--docs) |
+| `Spinner` | Atom | `src/components/ui/spinner.tsx` | [Atoms/Spinner](?path=/docs/atoms-spinner--docs) |
+| `Stepper` | Molecule | `src/components/ds/stepper.tsx` | [Atoms/Stepper](?path=/docs/atoms-stepper--docs) |
+| `SummaryTile` | Atom | `src/components/ui/summary-tile.tsx` | [Atoms/SummaryTile](?path=/docs/atoms-summarytile--docs) |
+| `Switch` | Atom | `src/components/ui/switch.tsx` | [Atoms/Switch](?path=/docs/atoms-switch--docs) |
+| `Table` | Atom | `src/components/ui/table.tsx` | [Molecules/Table](?path=/docs/molecules-table--docs) |
+| `TablePrimitive` | Atom | `src/components/ui/table-primitive.tsx` | [Atoms/TablePrimitive](?path=/docs/atoms-tableprimitive--docs) |
+| `Tabs` | Atom | `src/components/ui/tabs.tsx` | [Atoms/Tabs](?path=/docs/atoms-tabs--docs) |
+| `Textarea` | Atom | `src/components/ui/textarea.tsx` | [Atoms/Textarea](?path=/docs/atoms-textarea--docs) |
+| `TextEditor` | Molecule | `src/components/ds/text-editor.tsx` | [Molecules/TextEditor](?path=/docs/molecules-texteditor--docs) |
+| `TimeInput` | Molecule | `src/components/ds/time-input.tsx` | [Molecules/TimeInput](?path=/docs/molecules-timeinput--docs) |
+| `Timeline` | Molecule | `src/components/ds/timeline.tsx` | [Atoms/Timeline](?path=/docs/atoms-timeline--docs) |
+| `TimePicker` | Molecule | `src/components/ds/time-picker.tsx` | [Molecules/TimePicker](?path=/docs/molecules-timepicker--docs) |
+| `Toast` | Atom | `src/components/ui/toast.tsx` | [Atoms/Toast](?path=/docs/atoms-toast--docs) |
+| `Toggle` | Atom | `src/components/ui/toggle.tsx` | [Atoms/Toggle](?path=/docs/atoms-toggle--docs) |
+| `ToggleGroup` | Atom | `src/components/ui/toggle-group.tsx` | [Atoms/ToggleGroup](?path=/docs/atoms-togglegroup--docs) |
+| `Tooltip` | Atom | `src/components/ui/tooltip.tsx` | [Atoms/Tooltip](?path=/docs/atoms-tooltip--docs) |
+| `TopBar` | Layout | `src/components/layout/top-bar.tsx` | _brak story_ |
+| `Typography` | Atom | `src/components/ui/typography.tsx` | [Atoms/Typography](?path=/docs/atoms-typography--docs) |
+| `Upload` | Atom | `src/components/ui/upload.tsx` | [Atoms/Upload](?path=/docs/atoms-upload--docs) |
+| `WeekWorkstations` | Molecule | `src/components/ds/week-workstations.tsx` | [Molecules/WeekWorkstations](?path=/docs/molecules-weekworkstations--docs) |
+
+{/* components-map:end */}
+
+## Screens
+
+Pełne ekrany biznesowe (do skopiowania jako baza nowych aplikacji) żyją w
+`src/stories/Screen.*.stories.tsx` i nie są publikowane jako komponenty.
+Lista w sekcji **Screens** nawigacji Storybooka:
+
+- `Screens/Admin/RolesPermissions`
+- `Screens/Auth`
+- `Screens/CRM/Phone`
+- `Screens/Content/EmailTemplate`
+- `Screens/Dictionary/CompanyRecord`
+- `Screens/Mobile/OperatorShowcase`
+- `Screens/Orders/OrderDetail`
+- `Screens/Orders/ProductionOrdersList`
+- `Screens/Production/Calendar`
+- `Screens/Production/Costs`
+- `Screens/Production/Gantt`
+- `Screens/Production/MobileUser`
+- `Screens/Records/ClientDetail`
+- `Screens/Warehouse/PZDocument`

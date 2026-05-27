@@ -1,0 +1,52 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Implementation/Design system guidelines" />
+
+# Design system guidelines
+
+Ta strona jest skrótem zasad z pliku `DESIGN_SYSTEM_GUIDELINES.md`. Plik `.md` jest źródłem prawdy dla AI i developerów, Storybook jest wersją czytelną w przeglądarce.
+
+## Czy potrzebujemy osobnej strony guidelines?
+
+Tak, ale praktycznej. Nie potrzebujemy długiego manifestu dla samego manifestu. Potrzebujemy zasad, które chronią spójność:
+
+- nie omijamy tokenów,
+- nie robimy lokalnych makiet interakcji,
+- nie mieszamy obcych shelli i brandingow,
+- nie centrujemy list, które powinny być pełnej szerokości,
+- nie tworzymy drugiej wersji tabeli, jeśli istnieje pattern.
+
+## Warstwy
+
+- **Atoms**: pojedyncze komponenty UI.
+- **Molecules**: male złozenia atomów.
+- **Patterns**: powtarzalne procesy i układy pracy.
+- **Layouts**: ramy ekranów i struktury aplikacji.
+- **Screens**: kompletne przyklady ekranów biznesowych.
+
+## Layout
+
+- Listy są pełnej szerokości obszaru roboczego.
+- Podglądy rekordów są wyrównane do lewej.
+- Sekcje w rekordzie mogą mieć boczna nawigacje.
+- Srodkowy kontent rekordu nie powinien mieć własnego scrolla, chyba ze to celowy pattern typu tabela, terminal albo panel logow.
+
+## Tabele
+
+- Główne tabele używają atomu `Table` albo patternu `DataList`.
+- Tabele zagnieżdżone używają lżejszego wariantu bez osobnej zaokrąglonej ramki nagłówka.
+- Kolumna `Akcje` jest ostatnia.
+- Sortowanie, filtry i ukrywanie kolumn powinny być prawdziwymi interakcjami.
+
+## Formularze
+
+- Inputy, selecty, checkboxy, radio, toggles i textarea używają komponentów DS.
+- Walidacje mają widoczny opis bledu.
+- Selecty i dropdowny muszą mieć wycentrowane ikony i zgodny focus ring.
+
+## Dostępność
+
+- Minimum WCAG AA.
+- Każdy interaktywny element ma focus visible.
+- Modal, dialog, dropdown, select i tabs muszą działać z klawiatury.
+- Ikonowe przyciski wymagaja `aria-label`.
