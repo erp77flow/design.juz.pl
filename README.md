@@ -5,7 +5,7 @@
 - Live demo: https://juzpl.github.io/DesignSystem
 - Theme playground: https://juzpl.github.io/DesignSystem/?path=/story/foundations-theme-playground--playground
 - Repo: https://github.com/juzpl/DesignSystem
-- Author: **Rafał Mazur**
+- Author: **Rafał Mazur, Weronika Mazur**
 - Owner: **Alfabet sp. z o.o.** — https://www.alfabet.lu
 
 Design system zbudowany na React 19 + Tailwind + Radix/shadcn z własnymi tokenami marki. Możesz go używać w projektach komercyjnych — wymagamy tylko widocznej atrybucji w stopce (zobacz [License](#license)).
@@ -299,7 +299,7 @@ Pełna licencja — [LICENSE.md](LICENSE.md). Podstawa:
 - ❌ Nie wolno podszywać się pod markę juz.pl ani usuwać informacji o autorze i właścicielu z `LICENSE.md`
 
 **Właściciel:** Alfabet sp. z o.o. — https://www.alfabet.lu
-**Autor design systemu:** Rafał Mazur
+**Autor design systemu:** Rafał Mazur, Weronika Mazur
 **Kontakt projektowy:** Alfabet sp. z o.o.
 
 ---

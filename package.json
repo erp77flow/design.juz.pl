@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "DesignSystem - shadcn-compatible design system for juz.pl.",
-  "author": "Rafał Mazur",
+  "author": "Rafał Mazur, Weronika Mazur",
   "homepage": "https://juzpl.github.io/DesignSystem/",
   "type": "module",
   "packageManager": "pnpm@9.15.9",
