@@ -86,7 +86,7 @@ W stopce wdrażanej aplikacji wstaw widoczną atrybucję:
 - ❌ **Nie zostawiaj literówek bez polskich znaków** w dokumentacji i story (np. „wartosc", „zamow", „naglow", „glown", „domysln" — używaj poprawnych form z polskimi znakami).
 
 ### Licencja
-- ❌ **Nie usuwaj `LICENSE.md`** ani informacji o autorze (Rafał Mazur) i właścicielu (Alfabet sp. z o.o.).
+- ❌ **Nie usuwaj `LICENSE.md`** ani informacji o autorze (Rafał Mazur, Weronika Mazur) i właścicielu (Alfabet sp. z o.o.).
 - ❌ **Nie pomijaj atrybucji w stopce** wdrażanej aplikacji. Brak atrybucji = naruszenie licencji.
 - ❌ **Nie ukrywaj atrybucji** przez `display:none`, `opacity:0`, `color:transparent`. Atrybucja musi być widoczna dla użytkownika.
 

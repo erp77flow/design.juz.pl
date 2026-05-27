@@ -15,7 +15,7 @@ Właściciel rozwiązania i marki:
 
 Autor design systemu:
 
-- Rafał Mazur
+- Rafał Mazur, Weronika Mazur
 
 ## Stan na teraz
 

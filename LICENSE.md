@@ -2,7 +2,7 @@
 
 Copyright (c) Alfabet sp. z o.o. (`https://www.alfabet.lu`)
 
-Author: Rafał Mazur
+Author: Rafał Mazur, Weronika Mazur
 Owner: Alfabet sp. z o.o.
 
 ---
@@ -41,7 +41,7 @@ Rozszerzona forma (rekomendowana w dokumentacji i README):
 
 ```txt
 UI based on DesignSystem
-Author: Rafał Mazur
+Author: Rafał Mazur, Weronika Mazur
 Owner: Alfabet sp. z o.o. — https://www.alfabet.lu
 Repo: https://github.com/juzpl/DesignSystem
 ```
@@ -59,7 +59,7 @@ W projektach typu CLI / SDK / library bez UI końcowego: wymagana atrybucja w `R
 W każdej kopii lub zmodyfikowanej wersji Design Systemu muszą pozostać:
 
 - Plik `LICENSE.md` (lub równoważne odwołanie do niniejszej licencji).
-- Informacja o autorze: **Rafał Mazur**.
+- Informacja o autorze: **Rafał Mazur, Weronika Mazur**.
 - Informacja o właścicielu: **Alfabet sp. z o.o.** (`https://www.alfabet.lu`).
 
 Nie wolno usuwać tych informacji z plików `LICENSE.md`, `README.md` ani z metadanych `package.json`.

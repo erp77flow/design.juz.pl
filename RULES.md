@@ -5,7 +5,7 @@ Ten plik to **single source of truth** dla zasad, których pilnujemy w tym desig
 ## 1. Co MOŻE być w kodzie i dokumentacji
 
 - ✅ Marka **juz.pl** (właściciel: Alfabet sp. z o.o.).
-- ✅ Autor: **Rafał Mazur** (atrybucja w `LICENSE.md`, `package.json` `author`).
+- ✅ Autor: **Rafał Mazur, Weronika Mazur** (atrybucja w `LICENSE.md`, `package.json` `author`).
 - ✅ Generyczny kontekst biznesowy: firma produkcyjna (długopisy, markery, flamastry, papier, magazyn, produkcja, PZ, zamówienia, KSeF, GUS/VIES, kurier/paleta).
 - ✅ Komponenty z architektury **shadcn/Radix + Tailwind v4 + cva**.
 - ✅ Tokeny z `src/styles/globals.css` (kolory, radius, spacing, cienie).
