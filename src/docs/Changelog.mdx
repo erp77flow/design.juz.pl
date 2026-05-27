@@ -10,6 +10,8 @@ Historia zmian design.juz.pl jest trzymana w pliku `CHANGELOG.md`. Ten widok pok
 
 ### Added
 
+- Wyciągnięte z `NewClientPattern` shell sub-components: `InfoSection`, `SectionNav`, `RecordPageLayout`, `FieldGrid` + `Field`, `SummaryPanel` + `SummaryRow` — pozwalają budować strony create/detail dla dowolnego rekordu (np. Supplier/Goal w ezg77) bez kopiowania monolitu.
+- Eksport `NewClientPattern` i `ClientDetailPattern` z głównego `index.ts` (referencyjny showcase).
 - Storybook jako docelowa dokumentacja `design.juz.pl`.
 - Atoms zgodne z architekturą shadcn/Radix oraz rozszerzenia juz.pl: FilterSelect, SearchableSelect, MultiSelect, DateFilter, CalendarEvent, ProductionCards.
 - Molecules dla tabel, filtrów, menu, uploadu, daty, czasu, akcji plikow i tygodniowego widoku stanowisk.
