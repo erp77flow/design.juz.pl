@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.0
+
+### Minor Changes
+
+- [#26](https://github.com/erp77flow/design.juz.pl/pull/26) [`6b6a982`](https://github.com/erp77flow/design.juz.pl/commit/6b6a9828276c53e9ef954bc142e5585d92a94f33) Thanks [@erp77flow](https://github.com/erp77flow)! - `Navbar`: add `nav` prop — a slot rendered between the logo/breadcrumb section and the central search field, intended for the app's main top-level navigation (e.g. dropdown menus). Hidden below `md` so it doesn't compete with mobile layout; search keeps its `flex-1` and shrinks as needed.
+
 ## 1.3.0
 
 ### Minor Changes
