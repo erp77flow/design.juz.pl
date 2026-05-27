@@ -29,7 +29,7 @@ Zrobione i zweryfikowane:
 - Atom `Collapsible` ma pełną dokumentację i działające warianty.
 - Duplikaty `Atoms/Button/Examples` i `Atoms/Badge/Status Matrix` zostały usunięte. Zostają tylko właściwe atomy `Atoms/Button` i `Atoms/Badge`.
 - Wszystkie atomy, poza katalogiem `AtomsCatalog`, używają wspólnego szablonu dokumentacji `StorySpec`.
-- Storybook nie powinien zawierać realnych starych marek typu Cerec, CL, Britenet ani przykładów medycznych/stomatologicznych.
+- Storybook nie powinien zawierać żadnych zewnętrznych marek ani przykładów branżowych spoza juz.pl. Używamy uniwersalnych placeholderów ("Firma testowa", "Imię Nazwisko", "Klient testowy").
 - Przykłady biznesowe mają iść w stronę neutralnej firmy produkcyjnej: długopisy, markery, flamastry, papier, magazyn, produkcja, PZ, zamówienia.
 
 ## Ostatnia weryfikacja
@@ -110,14 +110,14 @@ npm run test:storybook:ci
 5. Wykonać skany porządkowe:
 
 ```bash
-rg -n "Cerec|CEREC|Britenet|BRITENET|cl\\.test|Stomatolog|stomatolog|dentysta|Dentysta|lekarz|Lekarz|korona|Korona|zęb|Ząb" src README.md LICENSE.md CHANGELOG.md package.json
+rg -niE "ezg|esg77|cereclab|cerec|suus|markerpro|marker.?pro|kowalska|kamińska|kaminska|brzeziński|brzezinski|wójcik|wojcik|linek|dentyst|lekar|MARKERPRO" src README.md LICENSE.md CHANGELOG.md package.json
 rg -n "Wartosc|wartosc|zamow|Zamow|naglow|Glown|Domysln|niedostep|Przeslij|Wiecej|zelowy|Podglad|rozł|filtrówanie" src README.md CHANGELOG.md
 for f in src/stories/Atoms*.stories.tsx; do if ! rg -q "StorySpec" "$f"; then echo "$f"; fi; done
 ```
 
 Oczekiwane:
 
-- brak realnych starych marek i starej branży,
+- brak jakichkolwiek zewnętrznych marek/nazwisk/branży (tylko uniwersalne placeholdery),
 - brak typowych literówek bez polskich znaków,
 - w ostatnim skanie może pojawić się tylko `src/stories/AtomsCatalog.stories.tsx`, bo to katalog, nie dokumentacja pojedynczego atomu.
 

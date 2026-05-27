@@ -217,7 +217,7 @@ Wszystkie komponenty czytają z tokenów (`bg-primary`, `text-primary`, `ring-ri
 
 ---
 
-## Używanie z AI (Claude / Copilot / Cursor)
+## Używanie z AI
 
 Projekt jest gotowy do pracy z AI — masz spójne reguły, gotowe atomy i jasne wzorce. Przed pierwszym promptem podaj AI te pliki jako kontekst:
 
