@@ -377,6 +377,7 @@ export function NewClientPattern() {
                   <div className="flex flex-wrap items-center gap-2">
                     {shipping.length > 0 ? (
                       <NativeSelect
+                        aria-label="Adres wysyłki"
                         className="min-w-[220px]"
                         value={selectedShipIdx ?? ""}
                         onChange={(e) =>
@@ -501,6 +502,7 @@ export function NewClientPattern() {
                 <Field label="Sposób dostawy (można wybrać kilka)" className="md:col-span-2 xl:col-span-3">
                   <div className="flex flex-wrap items-center gap-2">
                     <NativeSelect
+                      aria-label="Dodaj sposób dostawy"
                       className="min-w-[220px] max-w-[280px]"
                       value=""
                       onChange={(e) => {
