@@ -1,6 +1,6 @@
 # Design system guidelines
 
-design.juz.pl jest systemem opartym o architekture shadcn/Radix, ale wyglad, tokeny i wzorce sa wlasne dla juz.pl.
+DesignSystem jest systemem opartym o architekture shadcn/Radix, ale wyglad, tokeny i wzorce sa wlasne dla juz.pl.
 
 ## Warstwy
 

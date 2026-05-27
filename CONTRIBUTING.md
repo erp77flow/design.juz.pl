@@ -15,8 +15,8 @@ Wymagania: **Node 20+**, **pnpm 9+** (paczka zaszywa `packageManager: pnpm@9.15.
 Python 3 z `Pillow` jeżeli chcesz lokalnie liczyć visual diff.
 
 ```bash
-git clone https://github.com/erp77flow/design.juz.pl
-cd design.juz.pl
+git clone https://github.com/juzpl/DesignSystem
+cd DesignSystem
 pnpm install
 pnpm exec playwright install --with-deps chromium
 ```
@@ -266,7 +266,7 @@ ukrycie violation.
 
 ## Pytania, decyzje, długo żyjące notki
 
-- bug / propozycja → [issues](https://github.com/erp77flow/design.juz.pl/issues),
+- bug / propozycja → [issues](https://github.com/juzpl/DesignSystem/issues),
 - decyzja architektoniczna → zapisz w jednym z plików: `AI.md`,
   `DESIGN_SYSTEM_GUIDELINES.md`, `PROJECT_STATUS.md` albo `CHANGELOG.md`.
   Decyzja, której nie ma w pliku, nie istnieje.

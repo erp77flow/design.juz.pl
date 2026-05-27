@@ -1,4 +1,4 @@
-# design.juz.pl Attribution License (v1.0)
+# DesignSystem Attribution License (v1.0)
 
 Copyright (c) Alfabet sp. z o.o. (`https://www.alfabet.lu`)
 
@@ -9,7 +9,7 @@ Owner: Alfabet sp. z o.o.
 
 ## TL;DR
 
-Możesz używać design.juz.pl w projektach **komercyjnych i niekomercyjnych**, modyfikować go i redystrybuować. W zamian wymagamy widocznej **atrybucji w stopce** wdrażanego produktu z linkiem do tego repo.
+Możesz używać DesignSystem w projektach **komercyjnych i niekomercyjnych**, modyfikować go i redystrybuować. W zamian wymagamy widocznej **atrybucji w stopce** wdrażanego produktu z linkiem do tego repo.
 
 ---
 
@@ -32,24 +32,24 @@ Minimalna wymagana treść atrybucji:
 ```html
 <footer>
   UI based on
-  <a href="https://github.com/erp77flow/design.juz.pl"
-     target="_blank" rel="noopener">design.juz.pl</a>
+  <a href="https://github.com/juzpl/DesignSystem"
+     target="_blank" rel="noopener">DesignSystem</a>
 </footer>
 ```
 
 Rozszerzona forma (rekomendowana w dokumentacji i README):
 
 ```txt
-UI based on design.juz.pl
+UI based on DesignSystem
 Author: Rafał Mazur
 Owner: Alfabet sp. z o.o. — https://www.alfabet.lu
-Repo: https://github.com/erp77flow/design.juz.pl
+Repo: https://github.com/juzpl/DesignSystem
 ```
 
 Atrybucja musi być:
 
 - **Widoczna** dla użytkownika końcowego — nie wystarczy ukrycie w komentarzu HTML/JS.
-- **Klikalna** — z hiperłączem do https://github.com/erp77flow/design.juz.pl (`rel="noopener"` jest OK).
+- **Klikalna** — z hiperłączem do https://github.com/juzpl/DesignSystem (`rel="noopener"` jest OK).
 - **Czytelna** — bez celowego ukrywania (`opacity:0`, `display:none`, `color: transparent` itp.).
 
 W projektach typu CLI / SDK / library bez UI końcowego: wymagana atrybucja w `README.md` lub w dokumentacji wystawianej użytkownikom.
@@ -92,4 +92,4 @@ https://www.alfabet.lu
 
 ---
 
-To jest oryginalna licencja produktu **design.juz.pl** w wersji 1.0 (2026-05-25). Wersja angielska jest tłumaczeniem informacyjnym — w przypadku rozbieżności wiążąca jest wersja polska.
+To jest oryginalna licencja produktu **DesignSystem** w wersji 1.0 (2026-05-25). Wersja angielska jest tłumaczeniem informacyjnym — w przypadku rozbieżności wiążąca jest wersja polska.

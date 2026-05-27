@@ -25,6 +25,6 @@ labels: bug
 <Button variant="..." />
 ```
 
-Albo link do Storybooka: https://erp77flow.github.io/design.juz.pl/?path=/docs/atoms-button--docs
+Albo link do Storybooka: https://juzpl.github.io/DesignSystem/?path=/docs/atoms-button--docs
 
 ## Screenshot (jeśli wizualne)

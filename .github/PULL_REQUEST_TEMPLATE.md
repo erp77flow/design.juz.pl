@@ -21,5 +21,5 @@
 
 ## Linki
 
-- Storybook (po deploy): https://erp77flow.github.io/design.juz.pl/?path=/docs/...
+- Storybook (po deploy): https://juzpl.github.io/DesignSystem/?path=/docs/...
 - Powiązany issue: #

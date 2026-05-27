@@ -13,7 +13,7 @@ Pierwsze wydanie z prawdziwymi komponentami. Wcześniej (0.1.0) większość ato
 **Jeśli importowałeś z `@juz/design-system` przed 0.2.0:**
 Najprawdopodobniej **nic nie działało** (paczka nie miała `main`/`exports`). Po 0.2.0 zaczyna działać. Patrz README sekcja "Użycie w innym projekcie".
 
-**Jeśli pisałeś własne komponenty wzorując się na Storybooku design.juz.pl:**
+**Jeśli pisałeś własne komponenty wzorując się na Storybooku DesignSystem:**
 Możesz teraz importować je bezpośrednio zamiast utrzymywać kopie. Np. zamiast lokalnego `Switch` → `import { Switch } from "@juz/design-system"`.
 
 ### Mapowanie komponentów

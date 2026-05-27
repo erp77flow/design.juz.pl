@@ -1,6 +1,6 @@
 # Changelog
 
-Wszystkie istotne zmiany w design.juz.pl zapisujemy w tym pliku.
+Wszystkie istotne zmiany w DesignSystem zapisujemy w tym pliku.
 
 Format bazuje na prostym modelu:
 

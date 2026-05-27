@@ -1,6 +1,6 @@
-# AI instructions for design.juz.pl
+# AI instructions for DesignSystem
 
-Ten plik jest źródłem reguł dla AI budujących aplikacje na bazie design.juz.pl. Powinien być aktualizowany razem z kodem.
+Ten plik jest źródłem reguł dla AI budujących aplikacje na bazie DesignSystem. Powinien być aktualizowany razem z kodem.
 
 Przed startem sesji przeczytaj też:
 
@@ -13,8 +13,8 @@ Przed startem sesji przeczytaj też:
 ## Prompt bazowy
 
 ```txt
-Buduj aplikację na podstawie design.juz.pl
-(https://github.com/erp77flow/design.juz.pl).
+Buduj aplikację na podstawie DesignSystem
+(https://github.com/juzpl/DesignSystem).
 
 Używaj atomów, molecules i patterns z design systemu. Nie twórz lokalnych
 zamienników kolorów, buttonów, tabel, formularzy ani layoutów.
@@ -28,7 +28,7 @@ Komponenty interaktywne muszą używać prawdziwych Radix/shadcn wrapperów
 Każdy nowy element UI ma być responsywny i dostępny klawiaturą (WCAG AA).
 
 W stopce wdrażanej aplikacji wstaw widoczną atrybucję:
-  UI based on design.juz.pl (https://github.com/erp77flow/design.juz.pl)
+  UI based on DesignSystem (https://github.com/juzpl/DesignSystem)
 ```
 
 ---
@@ -61,7 +61,7 @@ W stopce wdrażanej aplikacji wstaw widoczną atrybucję:
   ```html
   <footer>
     UI based on
-    <a href="https://github.com/erp77flow/design.juz.pl">design.juz.pl</a>
+    <a href="https://github.com/juzpl/DesignSystem">DesignSystem</a>
   </footer>
   ```
 

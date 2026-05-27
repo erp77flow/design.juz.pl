@@ -31,7 +31,7 @@ type Preset = {
 const PRESETS: Preset[] = [
   {
     name: "juz.pl (default)",
-    description: "Aktualna paleta design.juz.pl.",
+    description: "Aktualna paleta DesignSystem.",
     tokens: DEFAULTS,
     radius: 14
   },
@@ -140,7 +140,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          "Interaktywny playground tokenów design.juz.pl. Zmień kolory i radius — wszystkie komponenty po prawej odświeżają się natychmiast. Wartości publikowane jako CSS variables (HSL) tylko w obrębie tego playgroundu, nie wpływają na inne stories."
+          "Interaktywny playground tokenów DesignSystem. Zmień kolory i radius — wszystkie komponenty po prawej odświeżają się natychmiast. Wartości publikowane jako CSS variables (HSL) tylko w obrębie tego playgroundu, nie wpływają na inne stories."
       }
     }
   }
@@ -297,7 +297,7 @@ function Playground() {
           <header>
             <h1 className="text-2xl font-bold">Theme Playground</h1>
             <p className="mt-1 text-muted-foreground">
-              Zobacz jak design.juz.pl wygląda w Twoich kolorach. Przełącz zakładki, żeby zobaczyć
+              Zobacz jak DesignSystem wygląda w Twoich kolorach. Przełącz zakładki, żeby zobaczyć
               atomy lub pełen ekran zamówienia. CSS na dole wklejasz do
               <code className="mx-1 rounded bg-muted px-1.5 py-0.5 font-mono text-xs">src/styles/globals.css</code>
               w swoim projekcie.

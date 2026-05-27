@@ -225,7 +225,7 @@ const atomDocCopy: Record<string, { description: string; features: string[]; usa
 };
 
 const defaultAtomDoc = (name: string) => ({
-  description: `Atom ${name} jest najmniejszym stabilnym klockiem UI w design.juz.pl. Używaj go w molekułach, patternach, layoutach i ekranach zamiast lokalnych makiet.`,
+  description: `Atom ${name} jest najmniejszym stabilnym klockiem UI w DesignSystem. Używaj go w molekułach, patternach, layoutach i ekranach zamiast lokalnych makiet.`,
   features: [
     "oparty o tokeny kolorów, spacingu, radiusów i cieni juz.pl",
     "zgodny z architekturą shadcn/Radix albo z lokalnym prymitywem DS",

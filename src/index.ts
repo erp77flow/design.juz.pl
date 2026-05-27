@@ -1,4 +1,4 @@
-// AUTO-GENERATED — re-export wszystkich komponentów design.juz.pl
+// AUTO-GENERATED — re-export wszystkich komponentów DesignSystem
 // Edytuj poszczególne pliki w src/components/, NIE ten plik
 
 // ─── Atoms (src/components/ui/) ───

@@ -1,4 +1,4 @@
-# Zasady projektu design.juz.pl
+# Zasady projektu DesignSystem
 
 Ten plik to **single source of truth** dla zasad, których pilnujemy w tym design systemie. Każda nowa zmiana ma się temu podporządkować. Edytuj ten plik jeśli zasada ewoluuje — nie zostawiaj decyzji wyłącznie w rozmowie z AI.
 
@@ -44,9 +44,9 @@ Następujące słowa/marki/odniesienia są **zabronione** w plikach źródłowyc
 - ❌ Trailery `Co-Authored-By: Claude` w commit messages — **nigdy**.
 
 ### Adresy URL
-- ❌ `https://design.juz.pl` jako URL działającego deploymentu (projekt leży tylko na GitHub Pages).
-- ✅ Można użyć `design.juz.pl` jako nazwy projektu (identity), bez `https://`.
-- ✅ Jeśli musimy podać adres Storybooka: `https://erp77flow.github.io/design.juz.pl/`.
+- ❌ `https://DesignSystem` jako URL działającego deploymentu (projekt leży tylko na GitHub Pages).
+- ✅ Można użyć `DesignSystem` jako nazwy projektu (identity), bez `https://`.
+- ✅ Jeśli musimy podać adres Storybooka: `https://juzpl.github.io/DesignSystem/`.
 
 ## 3. Komendy weryfikacyjne
 
@@ -57,7 +57,7 @@ Przed każdym commitem do `main` puść te skanery — mają zwrócić zero traf
 rg -niE "ezg|esg77|cereclab|cerec|suus|markerpro|marker.?pro|kowalska|kamińska|kaminska|brzeziński|brzezinski|wójcik|wojcik|linek|dentyst|lekar|MARKERPRO|britenet|stomatolog|claude" \
   --type ts --type tsx --type md --type mdx --type json --type yaml --type css
 
-# Wycieki URL https://design.juz.pl:
+# Wycieki URL https://DesignSystem:
 rg -niE "https?://design\\.juz\\.pl" --type ts --type tsx --type md --type mdx --type json --type yaml
 ```
 
@@ -108,7 +108,7 @@ pnpm run size                     # bundle size budget
 
 ## 8. Kontekst publikacji
 
-- Repo jest **publiczne**: `https://github.com/erp77flow/design.juz.pl`.
-- Storybook hostowany na **GitHub Pages**: `https://erp77flow.github.io/design.juz.pl/`.
-- Paczka npm: `@juz/design-system` (na razie `private: true` w package.json — instalacja przez GitHub URL: `npm install github:erp77flow/design.juz.pl#vX.Y.Z`).
+- Repo jest **publiczne**: `https://github.com/juzpl/DesignSystem`.
+- Storybook hostowany na **GitHub Pages**: `https://juzpl.github.io/DesignSystem/`.
+- Paczka npm: `@juz/design-system` (na razie `private: true` w package.json — instalacja przez GitHub URL: `npm install github:juzpl/DesignSystem#vX.Y.Z`).
 - Licencja: Attribution License v1.0 (`LICENSE.md`) — wymagana atrybucja w stopce produktu pochodnego.

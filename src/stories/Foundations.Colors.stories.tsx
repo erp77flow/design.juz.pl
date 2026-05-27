@@ -211,7 +211,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Pełna paleta tokenów kolorów design.juz.pl — wszystkie semantyczne zmienne CSS z `globals.css` w jednym widoku. Hex jest czytany na żywo z `document.documentElement`, więc po przełączeniu themu w toolbarze (light ↔ dark) widzisz aktualne wartości obu trybów. Używaj tej strony jako referencji przy onboardingu i przy review zmian palety."
+          "Pełna paleta tokenów kolorów DesignSystem — wszystkie semantyczne zmienne CSS z `globals.css` w jednym widoku. Hex jest czytany na żywo z `document.documentElement`, więc po przełączeniu themu w toolbarze (light ↔ dark) widzisz aktualne wartości obu trybów. Używaj tej strony jako referencji przy onboardingu i przy review zmian palety."
       }
     },
     // Reference page renders every token swatch — axe sees the hex label

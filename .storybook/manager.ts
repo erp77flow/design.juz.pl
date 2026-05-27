@@ -63,7 +63,7 @@ addons.setConfig({
   theme: create({
     base: "light",
     brandTitle: "juz.pl | Design System",
-    brandUrl: "https://github.com/erp77flow/design.juz.pl",
+    brandUrl: "https://github.com/juzpl/DesignSystem",
     brandImage: "./logo.svg",
     brandTarget: "_blank",
     colorPrimary: "#6f35f2",

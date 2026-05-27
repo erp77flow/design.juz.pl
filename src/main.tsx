@@ -40,12 +40,12 @@ function App() {
 
         <div className="juz-doc-main">
           <section id="introduction" className="juz-section">
-            <Badge>design.juz.pl</Badge>
+            <Badge>DesignSystem</Badge>
             <h1 className="mt-4 max-w-4xl text-5xl font-extrabold leading-tight">
               Design system juz.pl oparty o shadcn, ale z naszym stylem produktu.
             </h1>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-muted-foreground">
-              Publiczna baza pod design.juz.pl: tokeny, komponenty, layouty, wzorce
+              Publiczna baza pod DesignSystem: tokeny, komponenty, layouty, wzorce
               ekranów i instrukcje dla AI — gotowe do użycia w aplikacjach juz.pl.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -153,12 +153,12 @@ function App() {
                   <CardTitle>AI Usage</CardTitle>
                 </div>
                 <CardDescription>
-                  Instrukcja dla AI i devow, jak budowac nowe aplikacje na bazie design.juz.pl.
+                  Instrukcja dla AI i devow, jak budowac nowe aplikacje na bazie DesignSystem.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <pre className="overflow-auto rounded-lg bg-muted p-4 font-mono text-sm leading-7 text-muted-foreground">
-{`Buduj aplikacje na podstawie design.juz.pl.
+{`Buduj aplikacje na podstawie DesignSystem.
 Używaj komponentów @juz/design-system opartych o shadcn/ui.
 Nie twórz własnych kolorów, radiusów, spacingu ani buttonów.
 Listy rekordów buduj przez DataList/TableLayout.

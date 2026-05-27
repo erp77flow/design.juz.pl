@@ -1,4 +1,4 @@
-# Status projektu design.juz.pl
+# Status projektu DesignSystem
 
 Data zapisu: 2026-05-25
 
@@ -6,7 +6,7 @@ Ten plik jest punktem startowym do dalszych prac po przerwie. Ma przechowywać a
 
 ## Cel projektu
 
-`design.juz.pl` to docelowy design system juz.pl oparty o Storybook, shadcn/Radix, Tailwind i tokeny marki juz.pl. Ma być używany jako baza dla nowych aplikacji: najpierw wybieramy gotowe Atoms, Molecules, Patterns, Layouts i Screens, a dopiero gdy czegoś brakuje, dodajemy element do najniższej sensownej warstwy DS.
+`DesignSystem` to docelowy design system juz.pl oparty o Storybook, shadcn/Radix, Tailwind i tokeny marki juz.pl. Ma być używany jako baza dla nowych aplikacji: najpierw wybieramy gotowe Atoms, Molecules, Patterns, Layouts i Screens, a dopiero gdy czegoś brakuje, dodajemy element do najniższej sensownej warstwy DS.
 
 Właściciel rozwiązania i marki:
 
@@ -144,4 +144,4 @@ Oczekiwane:
 
 Na dziś projekt jest skończony jako lokalna, testowana baza design systemu. Kolejne prace powinny być traktowane jako rozwój wersji, a nie naprawianie fundamentu.
 
-Przed publikacją pod `design.juz.pl` pozostaje decyzja operacyjna dotycząca hostingu i domeny, ale katalog `storybook-static/` buduje się poprawnie i jest gotowy jako artefakt publikacyjny.
+Przed publikacją pod `DesignSystem` pozostaje decyzja operacyjna dotycząca hostingu i domeny, ale katalog `storybook-static/` buduje się poprawnie i jest gotowy jako artefakt publikacyjny.
