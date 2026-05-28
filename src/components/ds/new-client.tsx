@@ -149,7 +149,11 @@ const COUNTRY_LABEL: Record<string, string> = {
   SK: "Słowacja"
 };
 
-export function NewClientPattern() {
+export interface NewClientPatternProps {
+  headerStyle?: "joined" | "split";
+}
+
+export function NewClientPattern({ headerStyle = "joined" }: NewClientPatternProps = {}) {
   const [activeSection, setActiveSection] = React.useState<SectionId>("sec-firma");
 
   // Dane firmy
@@ -288,6 +292,7 @@ export function NewClientPattern() {
         paymentMethod={paymentMethod}
         paymentDays={paymentDays}
         ksefLabel={ksefLabel}
+        style={headerStyle}
       />
 
       <div className="grid gap-4 xl:grid-cols-[260px_minmax(0,1fr)_340px]">
@@ -672,7 +677,8 @@ function RecordHeader({
   opiekunLabel,
   paymentMethod,
   paymentDays,
-  ksefLabel
+  ksefLabel,
+  style = "joined"
 }: {
   shortName: string;
   company: Company;
@@ -683,74 +689,97 @@ function RecordHeader({
   paymentMethod: string;
   paymentDays: string;
   ksefLabel: string;
+  style?: "joined" | "split";
 }) {
   const addressLine = [company.street, company.buildingNumber].filter(Boolean).join(" ");
   const cityLine = [company.postalCode, company.city].filter(Boolean).join(" ");
 
+  const topBar = (
+    <div
+      className={cn(
+        "flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between",
+        style === "joined" ? "border-b p-5" : "px-1 pt-1"
+      )}
+    >
+      <div className="flex min-w-0 items-center gap-3">
+        <Button variant="outline" size="sm">
+          <ArrowLeft />
+          Wróć
+        </Button>
+        <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-primary-soft text-primary">
+          <Building2 className="size-5" />
+        </div>
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center gap-2">
+            <h2 className="truncate text-xl font-extrabold">Nowa firma</h2>
+            <Badge variant="warning">Szkic</Badge>
+          </div>
+          <p className="mt-0.5 text-sm text-muted-foreground">
+            Uzupełnij wymagane sekcje i zapisz, aby utworzyć rekord klienta.
+          </p>
+        </div>
+      </div>
+      <div className="flex flex-wrap items-stretch gap-2">
+        <Button variant="outline">Anuluj</Button>
+        <div className="inline-flex items-stretch overflow-hidden rounded-md">
+          <Button className="rounded-r-none">Zapisz firmę</Button>
+          <Button
+            aria-label="Więcej opcji zapisu"
+            className="rounded-l-none border-l border-primary-foreground/20 px-2"
+          >
+            <ChevronDown />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+
+  const metaRow = (
+    <div className="juz-record-meta-row">
+      <HeaderMeta label="Nazwa">
+        <strong>{shortName || company.name || "—"}</strong>
+        {addressLine || cityLine ? (
+          <span>
+            {addressLine}
+            {addressLine && cityLine ? ", " : ""}
+            {cityLine}
+          </span>
+        ) : null}
+        {opiekunLabel !== "—" ? <span>Opiekun: {opiekunLabel}</span> : null}
+      </HeaderMeta>
+      <HeaderMeta label="NIP">
+        <strong>{nip || "—"}</strong>
+      </HeaderMeta>
+      <HeaderMeta label="Role">
+        <strong>{rolesLabel || "—"}</strong>
+        {extraTypes.length > 0 ? <span>{extraTypes.join(", ")}</span> : null}
+      </HeaderMeta>
+      <HeaderMeta label="Opiekun">
+        <strong>{opiekunLabel}</strong>
+      </HeaderMeta>
+      <HeaderMeta label="Płatność">
+        <strong>{paymentMethod || "—"}</strong>
+        {paymentDays ? <span>Termin: {paymentDays} dni</span> : null}
+      </HeaderMeta>
+      <HeaderMeta label="KSeF">
+        <strong>{ksefLabel || "—"}</strong>
+      </HeaderMeta>
+    </div>
+  );
+
+  if (style === "split") {
+    return (
+      <div className="space-y-4">
+        {topBar}
+        <Card className="overflow-hidden shadow-juz-sm">{metaRow}</Card>
+      </div>
+    );
+  }
+
   return (
     <Card className="overflow-hidden shadow-juz-sm">
-      <div className="flex flex-col gap-4 border-b p-5 xl:flex-row xl:items-center xl:justify-between">
-        <div className="flex min-w-0 items-center gap-3">
-          <Button variant="outline" size="sm">
-            <ArrowLeft />
-            Wróć
-          </Button>
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-md bg-primary-soft text-primary">
-            <Building2 className="size-5" />
-          </div>
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2">
-              <h2 className="truncate text-xl font-extrabold">Nowa firma</h2>
-              <Badge variant="warning">Szkic</Badge>
-            </div>
-            <p className="mt-0.5 text-sm text-muted-foreground">
-              Uzupełnij wymagane sekcje i zapisz, aby utworzyć rekord klienta.
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-wrap items-stretch gap-2">
-          <Button variant="outline">Anuluj</Button>
-          <div className="inline-flex items-stretch overflow-hidden rounded-md">
-            <Button className="rounded-r-none">Zapisz firmę</Button>
-            <Button
-              aria-label="Więcej opcji zapisu"
-              className="rounded-l-none border-l border-primary-foreground/20 px-2"
-            >
-              <ChevronDown />
-            </Button>
-          </div>
-        </div>
-      </div>
-      <div className="juz-record-meta-row">
-        <HeaderMeta label="Nazwa">
-          <strong>{shortName || company.name || "—"}</strong>
-          {addressLine || cityLine ? (
-            <span>
-              {addressLine}
-              {addressLine && cityLine ? ", " : ""}
-              {cityLine}
-            </span>
-          ) : null}
-          {opiekunLabel !== "—" ? <span>Opiekun: {opiekunLabel}</span> : null}
-        </HeaderMeta>
-        <HeaderMeta label="NIP">
-          <strong>{nip || "—"}</strong>
-        </HeaderMeta>
-        <HeaderMeta label="Role">
-          <strong>{rolesLabel || "—"}</strong>
-          {extraTypes.length > 0 ? <span>{extraTypes.join(", ")}</span> : null}
-        </HeaderMeta>
-        <HeaderMeta label="Opiekun">
-          <strong>{opiekunLabel}</strong>
-        </HeaderMeta>
-        <HeaderMeta label="Płatność">
-          <strong>{paymentMethod || "—"}</strong>
-          {paymentDays ? <span>Termin: {paymentDays} dni</span> : null}
-        </HeaderMeta>
-        <HeaderMeta label="KSeF">
-          <strong>{ksefLabel || "—"}</strong>
-        </HeaderMeta>
-      </div>
+      {topBar}
+      {metaRow}
     </Card>
   );
 }
