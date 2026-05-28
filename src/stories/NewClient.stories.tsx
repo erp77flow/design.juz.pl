@@ -27,3 +27,19 @@ export const Default: Story = {
     </ScreenPreviewFrame>
   )
 };
+
+export const SplitHeader: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Wariant z odłączonym górnym paskiem akcji (Wróć / tytuł / Anuluj / Zapisz). Pasek nie ma tła ani obramowania — karta zaczyna się dopiero od wiersza meta (Nazwa, NIP, Role…) z zaokrąglonymi rogami na górze."
+      }
+    }
+  },
+  render: () => (
+    <ScreenPreviewFrame>
+      <NewClientPattern headerStyle="split" />
+    </ScreenPreviewFrame>
+  )
+};
