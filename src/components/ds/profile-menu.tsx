@@ -101,18 +101,27 @@ function ProfileMenu({
         {items.length > 0 ? (
           <>
             <DropdownMenuSeparator />
-            {items.map((item) => (
-              <DropdownMenuItem
-                key={item.key}
-                disabled={item.disabled}
-                onSelect={(e) => {
-                  e.preventDefault();
-                  item.onClick?.();
-                }}
-              >
-                {item.icon}
-                <span>{item.label}</span>
-              </DropdownMenuItem>
+            {items.map((item, index) => (
+              <React.Fragment key={item.key}>
+                {index > 0 ? (
+                  <div
+                    role="separator"
+                    aria-orientation="horizontal"
+                    className="mx-3 border-t border-dashed border-border"
+                  />
+                ) : null}
+                <DropdownMenuItem
+                  disabled={item.disabled}
+                  onSelect={(e) => {
+                    e.preventDefault();
+                    item.onClick?.();
+                  }}
+                  className="rounded-tl-none rounded-tr-none rounded-bl-none rounded-br-none focus-visible:ring-offset-0"
+                >
+                  {item.icon}
+                  <span>{item.label}</span>
+                </DropdownMenuItem>
+              </React.Fragment>
             ))}
           </>
         ) : null}
@@ -124,7 +133,7 @@ function ProfileMenu({
                 e.preventDefault();
                 onLogout();
               }}
-              className="text-destructive focus:bg-destructive-soft focus:text-destructive"
+              className="rounded-tl-none rounded-tr-none rounded-bl-md rounded-br-md text-destructive focus:bg-destructive-soft focus:text-destructive focus-visible:ring-destructive focus-visible:ring-offset-0"
             >
               <LogOut className="size-4" />
               <span>{logoutLabel}</span>
