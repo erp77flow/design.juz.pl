@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [#34](https://github.com/juzpl/DesignSystem/pull/34) [`3dba4b7`](https://github.com/juzpl/DesignSystem/commit/3dba4b74abbfbc350c654b1486609411a91688eb) Thanks [@juzpl](https://github.com/juzpl)! - NewClient: nowy prop `headerStyle: "joined" | "split"` (domyślnie `"joined"`, bez zmiany API). Wariant `"split"` odpina górny pasek akcji (Wróć / tytuł / Anuluj / Zapisz) — bez tła karty i bez obramowania, karta z zaokrąglonym górnym brzegiem zaczyna się od wiersza meta (Nazwa/NIP/Role/Opiekun/Płatność/KSeF). Dodana story `Screens/Records/NewClient/SplitHeader`.
+
+### Patch Changes
+
+- [#34](https://github.com/juzpl/DesignSystem/pull/34) [`3dba4b7`](https://github.com/juzpl/DesignSystem/commit/3dba4b74abbfbc350c654b1486609411a91688eb) Thanks [@juzpl](https://github.com/juzpl)! - ProfileMenu: hover dla pozycji Profil/Ustawienia ma teraz kanciastą ramkę (rounded-none), a hover „Wyloguj się" zaokrąglony tylko od dołu — zgodnie z dolnym promieniem menu. Między pozycjami profilu dodana przerywana linia separatora.
+
 Wszystkie istotne zmiany w DesignSystem zapisujemy w tym pliku.
 
 Format bazuje na prostym modelu:
