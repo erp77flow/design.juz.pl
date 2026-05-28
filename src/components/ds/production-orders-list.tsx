@@ -403,7 +403,7 @@ export function ProductionOrdersListPattern() {
 
         <div className={cn("grid", (columnsOpen || previewOpen) && "2xl:grid-cols-[minmax(0,1fr)_390px]")}>
           <div className="min-w-0 overflow-x-auto" role="region" aria-label="Lista zleceń produkcyjnych" tabIndex={0}>
-            <Table>
+            <Table wrapperClassName="rounded-none border-0 bg-transparent shadow-none">
               <TableHeader>
                 <TableRow>
                   {(Object.keys(columnLabels) as ColumnKey[]).map((key) =>
