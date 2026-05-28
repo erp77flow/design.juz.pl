@@ -697,11 +697,11 @@ function RecordHeader({
   const topBar = (
     <div
       className={cn(
-        "flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between",
+        "flex flex-col gap-4 xl:flex-row xl:items-start xl:justify-between",
         style === "joined" ? "border-b p-5" : "px-1 pt-1"
       )}
     >
-      <div className="flex min-w-0 items-center gap-3">
+      <div className="flex min-w-0 items-start gap-3">
         <Button variant="outline" size="sm">
           <ArrowLeft />
           Wróć
@@ -719,7 +719,7 @@ function RecordHeader({
           </p>
         </div>
       </div>
-      <div className="flex flex-wrap items-stretch gap-2">
+      <div className="flex flex-wrap items-start gap-2">
         <Button variant="outline">Anuluj</Button>
         <div className="inline-flex items-stretch overflow-hidden rounded-md">
           <Button className="rounded-r-none">Zapisz firmę</Button>
